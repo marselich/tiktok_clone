@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/router/app_router.dart';
 
 @RoutePage()
@@ -25,13 +26,26 @@ class HomeScreen extends StatelessWidget {
             onTap: (value) {
               tabsRouter.setActiveIndex(value);
             },
-            items: const [
+            items: [
+              const BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.only(bottom: 5),
+                    child: FaIcon(FontAwesomeIcons.house),
+                  ),
+                  label: "Главное"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home_filled), label: "Главное"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.add_box), label: "Добавить"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: "Профиль"),
+                  icon: Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Image.asset("assets/png/button_shape.png",
+                        width: 43, height: 28),
+                  ),
+                  label: ""),
+              const BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.only(bottom: 5),
+                    child: FaIcon(FontAwesomeIcons.solidUser),
+                  ),
+                  label: "Профиль"),
             ],
           ),
         );

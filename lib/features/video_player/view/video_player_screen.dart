@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:video_player/video_player.dart';
 
 @RoutePage()
@@ -45,17 +46,18 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           ],
         ),
       ),
-      body: Container(
-        child: Stack(
-          alignment: Alignment.center,
-          fit: StackFit.loose,
-          children: [
-            AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
+      body: Stack(
+        alignment: Alignment.center,
+        fit: StackFit.loose,
+        children: [
+          AspectRatio(
+            aspectRatio: _controller.value.aspectRatio,
+            child: VideoPlayer(_controller),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 5, bottom: 60),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,25 +75,40 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                   ),
                   const SizedBox(height: 20),
                   TiktokActionButton(
-                    iconData: Icons.favorite,
+                    iconData: FontAwesomeIcons.solidHeart,
                     text: "123.3K",
                     onTap: () {},
                   ),
                   const SizedBox(height: 20),
-                  const TiktokActionButton(
-                    iconData: Icons.share,
-                    text: "Share",
+                  TiktokActionButton(
+                    iconData: FontAwesomeIcons.commentDots,
+                    text: "578",
+                    onTap: () {},
                   ),
                   const SizedBox(height: 20),
-                  const TiktokActionButton(
-                    iconData: Icons.comment,
-                    text: "578",
+                  TiktokActionButton(
+                    iconData: FontAwesomeIcons.share,
+                    text: "Share",
+                    onTap: () {},
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 12),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("@название_канала", style: theme.textTheme.bodyLarge),
+                  Text("описание и #теги", style: theme.textTheme.bodyLarge),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -122,7 +139,8 @@ class TiktokActionButton extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          Icon(iconData, size: 50),
+          FaIcon(iconData, size: 36, color: Colors.white),
+          const SizedBox(height: 5),
           Text(text, style: theme.textTheme.labelLarge),
         ],
       ),
