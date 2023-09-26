@@ -49,6 +49,116 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Auth in TikTok`
+  String get authInTiktok {
+    return Intl.message(
+      'Auth in TikTok',
+      name: 'authInTiktok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Following`
+  String get following {
+    return Intl.message(
+      'Following',
+      name: 'following',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Followers`
+  String get followers {
+    return Intl.message(
+      'Followers',
+      name: 'followers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Likes`
+  String get likes {
+    return Intl.message(
+      'Likes',
+      name: 'likes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auth with Email`
+  String get authWithEmail {
+    return Intl.message(
+      'Auth with Email',
+      name: 'authWithEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account yet?`
+  String get dontHaveAnAccountYet {
+    return Intl.message(
+      'Don\'t have an account yet?',
+      name: 'dontHaveAnAccountYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `register`
+  String get register {
+    return Intl.message(
+      'register',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auth`
+  String get auth {
+    return Intl.message(
+      'Auth',
+      name: 'auth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Email`
+  String get enterEmail {
+    return Intl.message(
+      'Enter Email',
+      name: 'enterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter email`
+  String get pleaseEnterEmail {
+    return Intl.message(
+      'Please enter email',
+      name: 'pleaseEnterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Uncorrect email`
+  String get uncorrectEmail {
+    return Intl.message(
+      'Uncorrect email',
+      name: 'uncorrectEmail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

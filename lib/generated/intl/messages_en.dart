@@ -21,5 +21,21 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "auth": MessageLookupByLibrary.simpleMessage("Auth"),
+        "authInTiktok": MessageLookupByLibrary.simpleMessage("Auth in TikTok"),
+        "authWithEmail":
+            MessageLookupByLibrary.simpleMessage("Auth with Email"),
+        "dontHaveAnAccountYet":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account yet?"),
+        "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Email"),
+        "followers": MessageLookupByLibrary.simpleMessage("Followers"),
+        "following": MessageLookupByLibrary.simpleMessage("Following"),
+        "likes": MessageLookupByLibrary.simpleMessage("Likes"),
+        "pleaseEnterEmail":
+            MessageLookupByLibrary.simpleMessage("Please enter email"),
+        "register": MessageLookupByLibrary.simpleMessage("register"),
+        "uncorrectEmail":
+            MessageLookupByLibrary.simpleMessage("Uncorrect email")
+      };
 }

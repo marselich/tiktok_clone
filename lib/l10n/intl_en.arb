@@ -1,1 +1,13 @@
-{}
+{
+  "authInTiktok": "Auth in TikTok",
+  "following": "Following",
+  "followers": "Followers",
+  "likes": "Likes",
+  "authWithEmail": "Auth with Email",
+  "dontHaveAnAccountYet": "Don't have an account yet?",
+  "register": "register",
+  "auth": "Auth",
+  "enterEmail": "Enter Email",
+  "pleaseEnterEmail": "Please enter email",
+  "uncorrectEmail": "Uncorrect email"
+}

@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 final themeData = ThemeData(
   colorScheme: ColorScheme.fromSeed(seedColor: const Color(0x00ea4359)),
-  scaffoldBackgroundColor: Colors.black,
+  scaffoldBackgroundColor: Colors.white,
+  appBarTheme: const AppBarTheme(
+    color: Colors.white,
+  ),
+  bottomSheetTheme: const BottomSheetThemeData(
+    backgroundColor: Colors.white,
+  ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Colors.black,
     selectedItemColor: Colors.white,
