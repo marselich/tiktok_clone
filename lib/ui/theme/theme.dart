@@ -23,7 +23,24 @@ final themeData = ThemeData(
     color: Colors.white,
   ),
   useMaterial3: true,
-  hintColor: Colors.white,
+  filledButtonTheme: FilledButtonThemeData(
+    style: ButtonStyle(
+      textStyle: MaterialStateProperty.all(
+        const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0),
+        ),
+      ),
+      minimumSize: MaterialStateProperty.all(
+        const Size.fromHeight(50),
+      ),
+    ),
+  ),
   textTheme: const TextTheme(
     labelLarge: TextStyle(
       color: Colors.white,
@@ -31,7 +48,7 @@ final themeData = ThemeData(
       fontWeight: FontWeight.w600,
     ),
     bodyLarge: TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontSize: 16,
       fontWeight: FontWeight.w600,
     ),

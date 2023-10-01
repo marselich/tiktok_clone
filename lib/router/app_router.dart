@@ -18,6 +18,13 @@ class AppRouter extends _$AppRouter {
           AutoRoute(page: AddingVideoRoute.page, path: "adding-video"),
           AutoRoute(page: ProfileRoute.page, path: "profile"),
         ]),
-        AutoRoute(page: AuthRoute.page, path: "/auth"),
+        AutoRoute(
+          page: AuthRoute.page,
+          path: "/auth",
+          children: [
+            AutoRoute(page: RegisterRoute.page, path: "register"),
+            AutoRoute(page: LoginRoute.page, path: "login"),
+          ],
+        ),
       ];
 }

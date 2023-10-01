@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Padding(
                     padding: const EdgeInsets.only(top: 15),
-                    child: Image.asset("assets/png/button_shape.png",
+                    child: Image.asset("assets/image/button_shape.png",
                         width: 43, height: 28),
                   ),
                   label: ""),

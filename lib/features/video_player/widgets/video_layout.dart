@@ -92,8 +92,16 @@ class _VideoLayoutState extends State<VideoLayout> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("@название_канала", style: theme.textTheme.bodyLarge),
-                Text("описание и #теги", style: theme.textTheme.bodyLarge),
+                Text(
+                  "@название_канала",
+                  style:
+                      theme.textTheme.bodyLarge?.copyWith(color: Colors.white),
+                ),
+                Text(
+                  "описание и #теги",
+                  style:
+                      theme.textTheme.bodyLarge?.copyWith(color: Colors.white),
+                ),
               ],
             ),
           ),

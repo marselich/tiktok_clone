@@ -110,10 +110,10 @@ class S {
     );
   }
 
-  /// `register`
+  /// `Register`
   String get register {
     return Intl.message(
-      'register',
+      'Register',
       name: 'register',
       desc: '',
       args: [],
@@ -155,6 +155,76 @@ class S {
     return Intl.message(
       'Uncorrect email',
       name: 'uncorrectEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter nickname`
+  String get enterNickname {
+    return Intl.message(
+      'Enter nickname',
+      name: 'enterNickname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter nickname`
+  String get pleaseEnterNickname {
+    return Intl.message(
+      'Please enter nickname',
+      name: 'pleaseEnterNickname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter password`
+  String get enterPassword {
+    return Intl.message(
+      'Enter password',
+      name: 'enterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repeat password`
+  String get repeatPassword {
+    return Intl.message(
+      'Repeat password',
+      name: 'repeatPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter password`
+  String get pleaseEnterPassword {
+    return Intl.message(
+      'Please enter password',
+      name: 'pleaseEnterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password mismatch`
+  String get passwordMismatch {
+    return Intl.message(
+      'Password mismatch',
+      name: 'passwordMismatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
       desc: '',
       args: [],
     );

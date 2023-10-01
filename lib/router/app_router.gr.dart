@@ -22,11 +22,9 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AuthRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<AuthRouteArgs>(orElse: () => const AuthRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: AuthScreen(key: args.key),
+        child: const AuthScreen(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -35,10 +33,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
+    LoginRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LoginScreen(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProfileScreen(),
+      );
+    },
+    RegisterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RegisterScreen(),
       );
     },
     VideoPlayerRoute.name: (routeData) {
@@ -66,30 +76,16 @@ class AddingVideoRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AuthScreen]
-class AuthRoute extends PageRouteInfo<AuthRouteArgs> {
-  AuthRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class AuthRoute extends PageRouteInfo<void> {
+  const AuthRoute({List<PageRouteInfo>? children})
+      : super(
           AuthRoute.name,
-          args: AuthRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'AuthRoute';
 
-  static const PageInfo<AuthRouteArgs> page = PageInfo<AuthRouteArgs>(name);
-}
-
-class AuthRouteArgs {
-  const AuthRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'AuthRouteArgs{key: $key}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -107,6 +103,20 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [LoginScreen]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
+      : super(
+          LoginRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ProfileScreen]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})
@@ -116,6 +126,20 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RegisterScreen]
+class RegisterRoute extends PageRouteInfo<void> {
+  const RegisterRoute({List<PageRouteInfo>? children})
+      : super(
+          RegisterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

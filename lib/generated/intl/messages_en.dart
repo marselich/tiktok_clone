@@ -29,12 +29,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "dontHaveAnAccountYet":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account yet?"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Email"),
+        "enterNickname": MessageLookupByLibrary.simpleMessage("Enter nickname"),
+        "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
         "followers": MessageLookupByLibrary.simpleMessage("Followers"),
         "following": MessageLookupByLibrary.simpleMessage("Following"),
         "likes": MessageLookupByLibrary.simpleMessage("Likes"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "passwordMismatch":
+            MessageLookupByLibrary.simpleMessage("Password mismatch"),
         "pleaseEnterEmail":
             MessageLookupByLibrary.simpleMessage("Please enter email"),
-        "register": MessageLookupByLibrary.simpleMessage("register"),
+        "pleaseEnterNickname":
+            MessageLookupByLibrary.simpleMessage("Please enter nickname"),
+        "pleaseEnterPassword":
+            MessageLookupByLibrary.simpleMessage("Please enter password"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "repeatPassword":
+            MessageLookupByLibrary.simpleMessage("Repeat password"),
         "uncorrectEmail":
             MessageLookupByLibrary.simpleMessage("Uncorrect email")
       };
