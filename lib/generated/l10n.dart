@@ -229,6 +229,16 @@ class S {
       args: [],
     );
   }
+
+  /// `registration was not successful`
+  String get registrationWasNotSuccessful {
+    return Intl.message(
+      'registration was not successful',
+      name: 'registrationWasNotSuccessful',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

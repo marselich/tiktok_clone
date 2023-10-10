@@ -16,5 +16,6 @@
   "repeatPassword": "Repeat password",
   "pleaseEnterPassword": "Please enter password",
   "passwordMismatch": "Password mismatch",
-  "login": "Login"
+  "login": "Login",
+  "registrationWasNotSuccessful": "registration was not successful"
 }

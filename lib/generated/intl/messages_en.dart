@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseEnterPassword":
             MessageLookupByLibrary.simpleMessage("Please enter password"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "registrationWasNotSuccessful": MessageLookupByLibrary.simpleMessage(
+            "registration was not successful"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat password"),
         "uncorrectEmail":
