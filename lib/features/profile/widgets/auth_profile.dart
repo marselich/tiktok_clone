@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get_it/get_it.dart';
+import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/features/profile/widgets/profile_info.dart';
+import 'package:tiktok_clone/models/user/user_model.dart';
+import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 
 class AuthProfile extends StatefulWidget {
   const AuthProfile({
     super.key,
+    this.userModel,
   });
+
+  final UserModel? userModel;
 
   @override
   State<AuthProfile> createState() => _AuthProfileState();
@@ -23,6 +31,7 @@ class _AuthProfileState extends State<AuthProfile>
 
   @override
   Widget build(BuildContext context) {
+    ProfileCubit cubit = BlocProvider.of(context);
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -30,18 +39,21 @@ class _AuthProfileState extends State<AuthProfile>
             onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.userPlus)),
         actions: [
           IconButton(
-              onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.ellipsis)),
+              onPressed: () {
+                cubit.signOut();
+              },
+              icon: const FaIcon(FontAwesomeIcons.ellipsis)),
         ],
         title: Center(
             child: Text(
-          "Ivan Maslakov",
+          widget.userModel!.nickname,
           style: theme.textTheme.titleMedium,
         )),
       ),
       body: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
-            child: ProfileInfo(),
+          SliverToBoxAdapter(
+            child: ProfileInfo(userModel: widget.userModel),
           ),
           SliverAppBar(
             bottom: TabBar(

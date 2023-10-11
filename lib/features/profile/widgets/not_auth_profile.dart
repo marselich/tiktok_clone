@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
+import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/router/app_router.dart';
 import 'package:tiktok_clone/ui/widgets/auth_bottom_sheet.dart';
 
@@ -9,6 +12,7 @@ class NotAuthProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProfileCubit cubit = BlocProvider.of(context);
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -44,14 +48,12 @@ class NotAuthProfile extends StatelessWidget {
               SizedBox(
                 width: 150,
                 child: FilledButton(
-                  onPressed: () {
-                    AutoRouter.of(context).push(const AuthRoute());
-                    // showModalBottomSheet(
-                    //   context: context,
-                    //   builder: (context) {
-                    //     return const AuthBottomSheet();
-                    //   },
-                    // );
+                  onPressed: () async {
+                    final userModel =
+                        await AutoRouter.of(context).push(const AuthRoute());
+                    if (userModel != null) {
+                      cubit.checkLogin(userModel as UserModel);
+                    }
                   },
                   child: const Text("Sign Up"),
                 ),

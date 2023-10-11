@@ -2,12 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/features/profile/widgets/statistic_column.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
+import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/ui/ui.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({
     super.key,
+    this.userModel,
   });
+
+  final UserModel? userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +23,7 @@ class ProfileInfo extends StatelessWidget {
             radius: 50,
             child: ClipOval(
               child: CachedNetworkImage(
-                imageUrl:
-                    "https://avatars.steamstatic.com/dfeea805bf37a5d89404d6dbe528cd7f9cdb4ebb_full.jpg",
+                imageUrl: userModel!.image.toString(),
                 width: 100,
                 height: 100,
               ),

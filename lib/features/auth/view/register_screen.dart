@@ -1,15 +1,19 @@
 import 'dart:io';
 
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tiktok_clone/features/auth/cubit/auth_cubit.dart';
+import 'package:tiktok_clone/ui/utils/get_image_file_from_assets.dart';
+import 'package:tiktok_clone/ui/utils/show_tiktok_snackbar.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/ui/constants/app_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tiktok_clone/ui/utils/show_loader_dialog.dart';
 
 @RoutePage()
 class RegisterScreen extends StatefulWidget {
@@ -20,7 +24,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final cubit = AuthCubit(GetIt.I.get<IAuthRepository>());
+  // final cubit = AuthCubit(GetIt.I.get<IAuthRepository>());
 
   File? _image;
   String _email = "";
@@ -31,15 +35,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    AuthCubit cubit = BlocProvider.of(context);
     final theme = Theme.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (BuildContext context, AuthState state) {
             state.maybeWhen(
-              imageLoaded: (image) => ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text("Image loaded"))),
-              orElse: () {},
+              loaded: (userModel) {
+                AutoRouter.of(context).pop(userModel);
+              },
+              imageLoaded: (image) =>
+                  showTikTokSnackBar(context, text: "Image loaded"),
+              loading: (isLoading) => isLoading
+                  ? showLoaderDialog(context)
+                  : AutoRouter.of(context).pop(),
+              loadingFailure: (error) =>
+                  showTikTokSnackBar(context, text: error.toString()),
+              orElse: () => showLoaderDialog(context),
             );
           },
           bloc: cubit,
@@ -111,6 +124,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         if (value == null || value.isEmpty) {
                           return S.of(context).pleaseEnterPassword;
                         }
+                        if (value.length < 6) {
+                          return S
+                              .of(context)
+                              .passwordMustContain6OrMoreCharacters;
+                        }
                         return null;
                       },
                       obscureText: true,
@@ -136,9 +154,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     SizedBox(
                         width: double.infinity,
                         child: FilledButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate() &&
-                                _image != null) {
+                          onPressed: () async {
+                            _image ??= await getImageFileFromAssets(
+                                "image/default_avatar.jpg");
+                            if (_formKey.currentState!.validate()) {
                               cubit.createAccount(
                                   _nickname, _email, _password, _image!);
                             }

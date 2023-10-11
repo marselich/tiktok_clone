@@ -37,6 +37,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "passwordMismatch":
             MessageLookupByLibrary.simpleMessage("Password mismatch"),
+        "passwordMustContain6OrMoreCharacters":
+            MessageLookupByLibrary.simpleMessage(
+                "Password must contain 6 or more characters"),
         "pleaseEnterEmail":
             MessageLookupByLibrary.simpleMessage("Please enter email"),
         "pleaseEnterNickname":

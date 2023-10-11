@@ -42,9 +42,32 @@ class AuthCubit extends Cubit<AuthState> {
     File image,
   ) async {
     try {
-      await _repository.createAccount(nickname, email, password, image);
-    } on Exception {
-      emit(const AuthState.loadingFailure("registration was not successful"));
+      emit(const AuthState.loading(isLoading: true));
+      final user =
+          await _repository.createAccount(nickname, email, password, image);
+      emit(const AuthState.loading(isLoading: false));
+      emit(AuthState.loaded(user: user));
+    } catch (e) {
+      var error = e as FirebaseAuthException;
+      emit(const AuthState.loading(isLoading: false));
+      emit(AuthState.loadingFailure(error.message.toString()));
+    }
+  }
+
+  Future<void> loginToAccount(
+    String email,
+    String password,
+  ) async {
+    try {
+      emit(const AuthState.loading(isLoading: true));
+      final user =
+          await _repository.loginToAccount(email: email, password: password);
+      emit(const AuthState.loading(isLoading: false));
+      emit(AuthState.loaded(user: user));
+    } on Exception catch (e) {
+      var error = e as FirebaseAuthException;
+      emit(const AuthState.loading(isLoading: false));
+      emit(AuthState.loadingFailure(error.message.toString()));
     }
   }
 }

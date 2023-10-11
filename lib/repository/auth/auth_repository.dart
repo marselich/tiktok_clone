@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -35,6 +36,51 @@ class AuthRepository implements IAuthRepository {
         .set(userModel.toJson());
 
     return userModel;
+  }
+
+  @override
+  Future<UserModel> loginToAccount({
+    required String email,
+    required String password,
+  }) async {
+    final credential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+    final snapshot = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(credential.user!.uid)
+        .get();
+
+    final userModel = UserModel.fromSnap(snapshot);
+    return userModel;
+  }
+
+  @override
+  bool checkLoginAccount() {
+    if (FirebaseAuth.instance.currentUser != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  Future<UserModel?> getUserInfo() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      return null;
+    }
+    final snapshot = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user.uid)
+        .get();
+
+    UserModel? userModel = UserModel.fromSnap(snapshot);
+    return userModel;
+  }
+
+  @override
+  Future<void> signOutFromAccount() async {
+    await FirebaseAuth.instance.signOut();
   }
 
   Future<String> _uploadImageToStorage(File image) async {

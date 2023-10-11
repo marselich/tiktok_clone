@@ -8,7 +8,9 @@ class AuthState with _$AuthState {
   const factory AuthState.loaded({
     required UserModel user,
   }) = _Loaded;
-  const factory AuthState.loading() = _Loading;
+  const factory AuthState.loading({
+    required bool isLoading,
+  }) = _Loading;
   const factory AuthState.loadingFailure(
     String? error,
   ) = _LoadingFailure;

@@ -9,4 +9,15 @@ abstract class IAuthRepository {
     String password,
     File image,
   );
+
+  loginToAccount({
+    required String email,
+    required String password,
+  });
+
+  bool checkLoginAccount();
+
+  Future<UserModel?> getUserInfo();
+
+  Future<void> signOutFromAccount();
 }

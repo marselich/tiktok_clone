@@ -239,6 +239,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Password must contain 6 or more characters`
+  String get passwordMustContain6OrMoreCharacters {
+    return Intl.message(
+      'Password must contain 6 or more characters',
+      name: 'passwordMustContain6OrMoreCharacters',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -4,6 +4,7 @@ final themeData = ThemeData(
   colorScheme: ColorScheme.fromSeed(seedColor: const Color(0x00ea4359)),
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
+    surfaceTintColor: Colors.white,
     color: Colors.white,
   ),
   bottomSheetTheme: const BottomSheetThemeData(
