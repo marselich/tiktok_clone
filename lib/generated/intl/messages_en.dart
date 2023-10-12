@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
         "followers": MessageLookupByLibrary.simpleMessage("Followers"),
         "following": MessageLookupByLibrary.simpleMessage("Following"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "likes": MessageLookupByLibrary.simpleMessage("Likes"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "passwordMismatch":
@@ -46,12 +47,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter nickname"),
         "pleaseEnterPassword":
             MessageLookupByLibrary.simpleMessage("Please enter password"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registrationWasNotSuccessful": MessageLookupByLibrary.simpleMessage(
             "registration was not successful"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat password"),
         "uncorrectEmail":
-            MessageLookupByLibrary.simpleMessage("Uncorrect email")
+            MessageLookupByLibrary.simpleMessage("Uncorrect email"),
+        "uploadVideo": MessageLookupByLibrary.simpleMessage("Upload video")
       };
 }

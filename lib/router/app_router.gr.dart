@@ -15,12 +15,6 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    AddingVideoRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AddingVideoScreen(),
-      );
-    },
     AuthRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -51,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const RegisterScreen(),
       );
     },
+    UploadVideoRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UploadVideoScreen(),
+      );
+    },
     VideoPlayerRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -58,20 +58,6 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
-}
-
-/// generated route for
-/// [AddingVideoScreen]
-class AddingVideoRoute extends PageRouteInfo<void> {
-  const AddingVideoRoute({List<PageRouteInfo>? children})
-      : super(
-          AddingVideoRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AddingVideoRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -140,6 +126,20 @@ class RegisterRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RegisterRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UploadVideoScreen]
+class UploadVideoRoute extends PageRouteInfo<void> {
+  const UploadVideoRoute({List<PageRouteInfo>? children})
+      : super(
+          UploadVideoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UploadVideoRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

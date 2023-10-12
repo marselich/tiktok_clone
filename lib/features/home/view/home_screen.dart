@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/router/app_router.dart';
 
 @RoutePage()
@@ -14,12 +16,14 @@ class HomeScreen extends StatelessWidget {
     return AutoTabsRouter(
       routes: const [
         VideoPlayerRoute(),
-        AddingVideoRoute(),
+        UploadVideoRoute(),
         ProfileRoute(),
       ],
+      transitionBuilder: (context, child, animation) => child,
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
+          backgroundColor: Colors.black,
           body: child,
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,
@@ -27,12 +31,12 @@ class HomeScreen extends StatelessWidget {
               tabsRouter.setActiveIndex(value);
             },
             items: [
-              const BottomNavigationBarItem(
-                  icon: Padding(
+              BottomNavigationBarItem(
+                  icon: const Padding(
                     padding: EdgeInsets.only(bottom: 5),
                     child: FaIcon(FontAwesomeIcons.house),
                   ),
-                  label: "Главное"),
+                  label: S.of(context).home),
               BottomNavigationBarItem(
                   icon: Padding(
                     padding: const EdgeInsets.only(top: 15),
@@ -40,12 +44,12 @@ class HomeScreen extends StatelessWidget {
                         width: 43, height: 28),
                   ),
                   label: ""),
-              const BottomNavigationBarItem(
-                  icon: Padding(
+              BottomNavigationBarItem(
+                  icon: const Padding(
                     padding: EdgeInsets.only(bottom: 5),
                     child: FaIcon(FontAwesomeIcons.solidUser),
                   ),
-                  label: "Профиль"),
+                  label: S.of(context).profile),
             ],
           ),
         );

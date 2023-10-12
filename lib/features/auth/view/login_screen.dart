@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tiktok_clone/features/auth/cubit/auth_cubit.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/ui/constants/app_constants.dart';
-import 'package:tiktok_clone/ui/utils/show_loader_dialog.dart';
+import 'package:tiktok_clone/ui/utils/dialog_utils.dart';
 import 'package:tiktok_clone/ui/utils/show_tiktok_snackbar.dart';
 
 @RoutePage()
@@ -33,8 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
               loaded: (userModel) {
                 AutoRouter.of(context).pop(userModel);
               },
-              loading: (isLoading) => isLoading
-                  ? showLoaderDialog(context)
+              loading: (isLoading) async => isLoading
+                  ? await showLoaderDialog(context)
                   : AutoRouter.of(context).pop(),
               loadingFailure: (error) =>
                   showTikTokSnackBar(context, text: error.toString()),

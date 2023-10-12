@@ -22,9 +22,9 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> signOut() async {
-    emit(const ProfileState.loading(isLoading: true));
+    // emit(const ProfileState.loading(isLoading: true));
     await _repository.signOutFromAccount();
-    emit(const ProfileState.loading(isLoading: false));
+    // emit(const ProfileState.loading(isLoading: false));
     emit(const ProfileState.loaded(isRegister: false));
   }
 }

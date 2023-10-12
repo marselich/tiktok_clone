@@ -18,5 +18,8 @@
   "passwordMismatch": "Password mismatch",
   "login": "Login",
   "registrationWasNotSuccessful": "registration was not successful",
-  "passwordMustContain6OrMoreCharacters": "Password must contain 6 or more characters"
+  "passwordMustContain6OrMoreCharacters": "Password must contain 6 or more characters",
+  "uploadVideo": "Upload video",
+  "home": "Home",
+  "profile": "Profile"
 }

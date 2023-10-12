@@ -10,7 +10,13 @@ final themeData = ThemeData(
   bottomSheetTheme: const BottomSheetThemeData(
     backgroundColor: Colors.white,
   ),
+  dialogBackgroundColor: Colors.white,
+  dialogTheme: const DialogTheme(
+    backgroundColor: Colors.white,
+    surfaceTintColor: Colors.transparent,
+  ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    elevation: 0.0,
     backgroundColor: Colors.black,
     selectedItemColor: Colors.white,
     unselectedItemColor: Colors.white38,
@@ -19,7 +25,7 @@ final themeData = ThemeData(
   ),
   splashFactory: InkRipple.splashFactory,
   highlightColor: Colors.transparent,
-  splashColor: Colors.black,
+  splashColor: Colors.transparent,
   iconTheme: const IconThemeData(
     color: Colors.white,
   ),

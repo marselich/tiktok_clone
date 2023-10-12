@@ -13,7 +13,7 @@ import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/ui/constants/app_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tiktok_clone/ui/utils/show_loader_dialog.dart';
+import 'package:tiktok_clone/ui/utils/dialog_utils.dart';
 
 @RoutePage()
 class RegisterScreen extends StatefulWidget {
@@ -47,8 +47,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
               imageLoaded: (image) =>
                   showTikTokSnackBar(context, text: "Image loaded"),
-              loading: (isLoading) => isLoading
-                  ? showLoaderDialog(context)
+              loading: (isLoading) async => isLoading
+                  ? await showLoaderDialog(context)
                   : AutoRouter.of(context).pop(),
               loadingFailure: (error) =>
                   showTikTokSnackBar(context, text: error.toString()),

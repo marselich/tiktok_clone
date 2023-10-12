@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'profile_cubit.dart';
+part of 'upload_video_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,29 +15,32 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProfileState {
+mixin _$UploadVideoState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function() loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
+    required TResult Function(File? video) videoUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
+    TResult? Function(File? video)? videoUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function()? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
+    TResult Function(File? video)? videoUploaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$ProfileState {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_LoadingFailure value) loadingFailure,
+    required TResult Function(_VideoUploaded value) videoUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$ProfileState {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
+    TResult? Function(_VideoUploaded value)? videoUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,22 +68,23 @@ mixin _$ProfileState {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_LoadingFailure value)? loadingFailure,
+    TResult Function(_VideoUploaded value)? videoUploaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(
-          ProfileState value, $Res Function(ProfileState) then) =
-      _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+abstract class $UploadVideoStateCopyWith<$Res> {
+  factory $UploadVideoStateCopyWith(
+          UploadVideoState value, $Res Function(UploadVideoState) then) =
+      _$UploadVideoStateCopyWithImpl<$Res, UploadVideoState>;
 }
 
 /// @nodoc
-class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
-    implements $ProfileStateCopyWith<$Res> {
-  _$ProfileStateCopyWithImpl(this._value, this._then);
+class _$UploadVideoStateCopyWithImpl<$Res, $Val extends UploadVideoState>
+    implements $UploadVideoStateCopyWith<$Res> {
+  _$UploadVideoStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +101,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$UploadVideoStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -109,7 +115,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ProfileState.initial()';
+    return 'UploadVideoState.initial()';
   }
 
   @override
@@ -125,9 +131,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function() loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
+    required TResult Function(File? video) videoUploaded,
   }) {
     return initial();
   }
@@ -136,9 +143,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
+    TResult? Function(File? video)? videoUploaded,
   }) {
     return initial?.call();
   }
@@ -147,9 +155,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function()? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
+    TResult Function(File? video)? videoUploaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,6 +174,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_LoadingFailure value) loadingFailure,
+    required TResult Function(_VideoUploaded value) videoUploaded,
   }) {
     return initial(this);
   }
@@ -176,6 +186,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
+    TResult? Function(_VideoUploaded value)? videoUploaded,
   }) {
     return initial?.call(this);
   }
@@ -187,6 +198,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_LoadingFailure value)? loadingFailure,
+    TResult Function(_VideoUploaded value)? videoUploaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -196,7 +208,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements ProfileState {
+abstract class _Initial implements UploadVideoState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -205,119 +217,72 @@ abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool isRegister, UserModel? userModel});
-
-  $UserModelCopyWith<$Res>? get userModel;
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$UploadVideoStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isRegister = null,
-    Object? userModel = freezed,
-  }) {
-    return _then(_$LoadedImpl(
-      isRegister: null == isRegister
-          ? _value.isRegister
-          : isRegister // ignore: cast_nullable_to_non_nullable
-              as bool,
-      userModel: freezed == userModel
-          ? _value.userModel
-          : userModel // ignore: cast_nullable_to_non_nullable
-              as UserModel?,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res>? get userModel {
-    if (_value.userModel == null) {
-      return null;
-    }
-
-    return $UserModelCopyWith<$Res>(_value.userModel!, (value) {
-      return _then(_value.copyWith(userModel: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.isRegister, this.userModel});
-
-  @override
-  final bool isRegister;
-  @override
-  final UserModel? userModel;
+  const _$LoadedImpl();
 
   @override
   String toString() {
-    return 'ProfileState.loaded(isRegister: $isRegister, userModel: $userModel)';
+    return 'UploadVideoState.loaded()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            (identical(other.isRegister, isRegister) ||
-                other.isRegister == isRegister) &&
-            (identical(other.userModel, userModel) ||
-                other.userModel == userModel));
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isRegister, userModel);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function() loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
+    required TResult Function(File? video) videoUploaded,
   }) {
-    return loaded(isRegister, userModel);
+    return loaded();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
+    TResult? Function(File? video)? videoUploaded,
   }) {
-    return loaded?.call(isRegister, userModel);
+    return loaded?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function()? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
+    TResult Function(File? video)? videoUploaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(isRegister, userModel);
+      return loaded();
     }
     return orElse();
   }
@@ -329,6 +294,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_LoadingFailure value) loadingFailure,
+    required TResult Function(_VideoUploaded value) videoUploaded,
   }) {
     return loaded(this);
   }
@@ -340,6 +306,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
+    TResult? Function(_VideoUploaded value)? videoUploaded,
   }) {
     return loaded?.call(this);
   }
@@ -351,6 +318,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_LoadingFailure value)? loadingFailure,
+    TResult Function(_VideoUploaded value)? videoUploaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -360,16 +328,8 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements ProfileState {
-  const factory _Loaded(
-      {required final bool isRegister,
-      final UserModel? userModel}) = _$LoadedImpl;
-
-  bool get isRegister;
-  UserModel? get userModel;
-  @JsonKey(ignore: true)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _Loaded implements UploadVideoState {
+  const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
@@ -383,7 +343,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$UploadVideoStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -413,7 +373,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'ProfileState.loading(isLoading: $isLoading)';
+    return 'UploadVideoState.loading(isLoading: $isLoading)';
   }
 
   @override
@@ -438,9 +398,10 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function() loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
+    required TResult Function(File? video) videoUploaded,
   }) {
     return loading(isLoading);
   }
@@ -449,9 +410,10 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
+    TResult? Function(File? video)? videoUploaded,
   }) {
     return loading?.call(isLoading);
   }
@@ -460,9 +422,10 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function()? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
+    TResult Function(File? video)? videoUploaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -478,6 +441,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_LoadingFailure value) loadingFailure,
+    required TResult Function(_VideoUploaded value) videoUploaded,
   }) {
     return loading(this);
   }
@@ -489,6 +453,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
+    TResult? Function(_VideoUploaded value)? videoUploaded,
   }) {
     return loading?.call(this);
   }
@@ -500,6 +465,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_LoadingFailure value)? loadingFailure,
+    TResult Function(_VideoUploaded value)? videoUploaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -509,7 +475,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements ProfileState {
+abstract class _Loading implements UploadVideoState {
   const factory _Loading({required final bool isLoading}) = _$LoadingImpl;
 
   bool get isLoading;
@@ -529,7 +495,7 @@ abstract class _$$LoadingFailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingFailureImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$LoadingFailureImpl>
+    extends _$UploadVideoStateCopyWithImpl<$Res, _$LoadingFailureImpl>
     implements _$$LoadingFailureImplCopyWith<$Res> {
   __$$LoadingFailureImplCopyWithImpl(
       _$LoadingFailureImpl _value, $Res Function(_$LoadingFailureImpl) _then)
@@ -559,7 +525,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
 
   @override
   String toString() {
-    return 'ProfileState.loadingFailure(error: $error)';
+    return 'UploadVideoState.loadingFailure(error: $error)';
   }
 
   @override
@@ -584,9 +550,10 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function() loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
+    required TResult Function(File? video) videoUploaded,
   }) {
     return loadingFailure(error);
   }
@@ -595,9 +562,10 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function()? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
+    TResult? Function(File? video)? videoUploaded,
   }) {
     return loadingFailure?.call(error);
   }
@@ -606,9 +574,10 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function()? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
+    TResult Function(File? video)? videoUploaded,
     required TResult orElse(),
   }) {
     if (loadingFailure != null) {
@@ -624,6 +593,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_LoadingFailure value) loadingFailure,
+    required TResult Function(_VideoUploaded value) videoUploaded,
   }) {
     return loadingFailure(this);
   }
@@ -635,6 +605,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
+    TResult? Function(_VideoUploaded value)? videoUploaded,
   }) {
     return loadingFailure?.call(this);
   }
@@ -646,6 +617,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_LoadingFailure value)? loadingFailure,
+    TResult Function(_VideoUploaded value)? videoUploaded,
     required TResult orElse(),
   }) {
     if (loadingFailure != null) {
@@ -655,11 +627,163 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   }
 }
 
-abstract class _LoadingFailure implements ProfileState {
+abstract class _LoadingFailure implements UploadVideoState {
   const factory _LoadingFailure(final String? error) = _$LoadingFailureImpl;
 
   String? get error;
   @JsonKey(ignore: true)
   _$$LoadingFailureImplCopyWith<_$LoadingFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VideoUploadedImplCopyWith<$Res> {
+  factory _$$VideoUploadedImplCopyWith(
+          _$VideoUploadedImpl value, $Res Function(_$VideoUploadedImpl) then) =
+      __$$VideoUploadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({File? video});
+}
+
+/// @nodoc
+class __$$VideoUploadedImplCopyWithImpl<$Res>
+    extends _$UploadVideoStateCopyWithImpl<$Res, _$VideoUploadedImpl>
+    implements _$$VideoUploadedImplCopyWith<$Res> {
+  __$$VideoUploadedImplCopyWithImpl(
+      _$VideoUploadedImpl _value, $Res Function(_$VideoUploadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? video = freezed,
+  }) {
+    return _then(_$VideoUploadedImpl(
+      video: freezed == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as File?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$VideoUploadedImpl implements _VideoUploaded {
+  const _$VideoUploadedImpl({this.video});
+
+  @override
+  final File? video;
+
+  @override
+  String toString() {
+    return 'UploadVideoState.videoUploaded(video: $video)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VideoUploadedImpl &&
+            const DeepCollectionEquality().equals(other.video, video));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(video));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VideoUploadedImplCopyWith<_$VideoUploadedImpl> get copyWith =>
+      __$$VideoUploadedImplCopyWithImpl<_$VideoUploadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loaded,
+    required TResult Function(bool isLoading) loading,
+    required TResult Function(String? error) loadingFailure,
+    required TResult Function(File? video) videoUploaded,
+  }) {
+    return videoUploaded(video);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loaded,
+    TResult? Function(bool isLoading)? loading,
+    TResult? Function(String? error)? loadingFailure,
+    TResult? Function(File? video)? videoUploaded,
+  }) {
+    return videoUploaded?.call(video);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loaded,
+    TResult Function(bool isLoading)? loading,
+    TResult Function(String? error)? loadingFailure,
+    TResult Function(File? video)? videoUploaded,
+    required TResult orElse(),
+  }) {
+    if (videoUploaded != null) {
+      return videoUploaded(video);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingFailure value) loadingFailure,
+    required TResult Function(_VideoUploaded value) videoUploaded,
+  }) {
+    return videoUploaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingFailure value)? loadingFailure,
+    TResult? Function(_VideoUploaded value)? videoUploaded,
+  }) {
+    return videoUploaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingFailure value)? loadingFailure,
+    TResult Function(_VideoUploaded value)? videoUploaded,
+    required TResult orElse(),
+  }) {
+    if (videoUploaded != null) {
+      return videoUploaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VideoUploaded implements UploadVideoState {
+  const factory _VideoUploaded({final File? video}) = _$VideoUploadedImpl;
+
+  File? get video;
+  @JsonKey(ignore: true)
+  _$$VideoUploadedImplCopyWith<_$VideoUploadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
