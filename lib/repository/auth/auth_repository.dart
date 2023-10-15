@@ -55,15 +55,6 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  bool checkLoginAccount() {
-    if (FirebaseAuth.instance.currentUser != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  @override
   Future<UserModel?> getUserInfo() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {

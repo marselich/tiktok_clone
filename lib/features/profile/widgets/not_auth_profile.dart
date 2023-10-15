@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/router/app_router.dart';
-import 'package:tiktok_clone/ui/widgets/auth_bottom_sheet.dart';
 
 class NotAuthProfile extends StatelessWidget {
   const NotAuthProfile({super.key});

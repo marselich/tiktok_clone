@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:tiktok_clone/features/upload_video/cubit/upload_video_cubit.dart';
 import 'package:tiktok_clone/features/upload_video/upload_video.dart';
 import 'package:tiktok_clone/features/home/home.dart';
 import 'package:tiktok_clone/features/profile/profile.dart';
@@ -18,9 +21,16 @@ class AppRouter extends _$AppRouter {
           path: "/",
           children: [
             AutoRoute(page: VideoPlayerRoute.page, path: "video-player"),
-            AutoRoute(page: UploadVideoRoute.page, path: "adding-video"),
+            AutoRoute(
+              page: UploadVideoRoute.page,
+              path: "upload-video",
+            ),
             AutoRoute(page: ProfileRoute.page, path: "profile"),
           ],
+        ),
+        AutoRoute(
+          page: UploadVideoFormRoute.page,
+          path: "/upload-form",
         ),
         AutoRoute(
           page: AuthRoute.page,

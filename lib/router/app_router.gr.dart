@@ -45,6 +45,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const RegisterScreen(),
       );
     },
+    UploadVideoFormRoute.name: (routeData) {
+      final args = routeData.argsAs<UploadVideoFormRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: UploadVideoFormScreen(
+          key: args.key,
+          cubit: args.cubit,
+          videoFile: args.videoFile,
+        ),
+      );
+    },
     UploadVideoRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -128,6 +139,49 @@ class RegisterRoute extends PageRouteInfo<void> {
   static const String name = 'RegisterRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UploadVideoFormScreen]
+class UploadVideoFormRoute extends PageRouteInfo<UploadVideoFormRouteArgs> {
+  UploadVideoFormRoute({
+    Key? key,
+    required UploadVideoCubit cubit,
+    required File videoFile,
+    List<PageRouteInfo>? children,
+  }) : super(
+          UploadVideoFormRoute.name,
+          args: UploadVideoFormRouteArgs(
+            key: key,
+            cubit: cubit,
+            videoFile: videoFile,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'UploadVideoFormRoute';
+
+  static const PageInfo<UploadVideoFormRouteArgs> page =
+      PageInfo<UploadVideoFormRouteArgs>(name);
+}
+
+class UploadVideoFormRouteArgs {
+  const UploadVideoFormRouteArgs({
+    this.key,
+    required this.cubit,
+    required this.videoFile,
+  });
+
+  final Key? key;
+
+  final UploadVideoCubit cubit;
+
+  final File videoFile;
+
+  @override
+  String toString() {
+    return 'UploadVideoFormRouteArgs{key: $key, cubit: $cubit, videoFile: $videoFile}';
+  }
 }
 
 /// generated route for

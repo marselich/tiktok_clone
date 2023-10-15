@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
+import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
 
 part 'profile_state.dart';
 part 'profile_cubit.freezed.dart';
@@ -11,10 +12,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   final IAuthRepository _repository;
 
   void checkLogin(UserModel? userModel) {
-    emit(ProfileState.loaded(
-      isRegister: _repository.checkLoginAccount(),
-      userModel: userModel,
-    ));
+    emit(ProfileState.loaded(userModel: userModel));
   }
 
   Future<UserModel?> getUserInfo() async {
@@ -25,6 +23,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     // emit(const ProfileState.loading(isLoading: true));
     await _repository.signOutFromAccount();
     // emit(const ProfileState.loading(isLoading: false));
-    emit(const ProfileState.loaded(isRegister: false));
+    emit(const ProfileState.loaded());
   }
 }

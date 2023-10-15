@@ -279,6 +279,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Artist - Song`
+  String get artistSong {
+    return Intl.message(
+      'Artist - Song',
+      name: 'artistSong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Descrption - Tags`
+  String get descrptionTags {
+    return Intl.message(
+      'Descrption - Tags',
+      name: 'descrptionTags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Now`
+  String get uploadNow {
+    return Intl.message(
+      'Upload Now',
+      name: 'uploadNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter song name`
+  String get pleaseEnterSongName {
+    return Intl.message(
+      'Please enter song name',
+      name: 'pleaseEnterSongName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter description`
+  String get pleaseEnterDescription {
+    return Intl.message(
+      'Please enter description',
+      name: 'pleaseEnterDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video uploaded`
+  String get videoUploaded {
+    return Intl.message(
+      'Video uploaded',
+      name: 'videoUploaded',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

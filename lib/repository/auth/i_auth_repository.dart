@@ -15,8 +15,6 @@ abstract class IAuthRepository {
     required String password,
   });
 
-  bool checkLoginAccount();
-
   Future<UserModel?> getUserInfo();
 
   Future<void> signOutFromAccount();

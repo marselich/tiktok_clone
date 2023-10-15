@@ -685,12 +685,11 @@ class _$VideoUploadedImpl implements _VideoUploaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VideoUploadedImpl &&
-            const DeepCollectionEquality().equals(other.video, video));
+            (identical(other.video, video) || other.video == video));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(video));
+  int get hashCode => Object.hash(runtimeType, video);
 
   @JsonKey(ignore: true)
   @override

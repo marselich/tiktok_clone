@@ -19,7 +19,7 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function(UserModel? userModel) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) =>
@@ -27,7 +27,7 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) =>
@@ -35,7 +35,7 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -125,7 +125,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function(UserModel? userModel) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -136,7 +136,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -147,7 +147,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -206,7 +206,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool isRegister, UserModel? userModel});
+  $Res call({UserModel? userModel});
 
   $UserModelCopyWith<$Res>? get userModel;
 }
@@ -222,14 +222,9 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isRegister = null,
     Object? userModel = freezed,
   }) {
     return _then(_$LoadedImpl(
-      isRegister: null == isRegister
-          ? _value.isRegister
-          : isRegister // ignore: cast_nullable_to_non_nullable
-              as bool,
       userModel: freezed == userModel
           ? _value.userModel
           : userModel // ignore: cast_nullable_to_non_nullable
@@ -253,16 +248,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.isRegister, this.userModel});
+  const _$LoadedImpl({this.userModel});
 
-  @override
-  final bool isRegister;
   @override
   final UserModel? userModel;
 
   @override
   String toString() {
-    return 'ProfileState.loaded(isRegister: $isRegister, userModel: $userModel)';
+    return 'ProfileState.loaded(userModel: $userModel)';
   }
 
   @override
@@ -270,14 +263,12 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.isRegister, isRegister) ||
-                other.isRegister == isRegister) &&
             (identical(other.userModel, userModel) ||
                 other.userModel == userModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isRegister, userModel);
+  int get hashCode => Object.hash(runtimeType, userModel);
 
   @JsonKey(ignore: true)
   @override
@@ -289,35 +280,35 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function(UserModel? userModel) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) {
-    return loaded(isRegister, userModel);
+    return loaded(userModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
-    return loaded?.call(isRegister, userModel);
+    return loaded?.call(userModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(isRegister, userModel);
+      return loaded(userModel);
     }
     return orElse();
   }
@@ -361,11 +352,8 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements ProfileState {
-  const factory _Loaded(
-      {required final bool isRegister,
-      final UserModel? userModel}) = _$LoadedImpl;
+  const factory _Loaded({final UserModel? userModel}) = _$LoadedImpl;
 
-  bool get isRegister;
   UserModel? get userModel;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -438,7 +426,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function(UserModel? userModel) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -449,7 +437,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -460,7 +448,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -584,7 +572,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isRegister, UserModel? userModel) loaded,
+    required TResult Function(UserModel? userModel) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -595,7 +583,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -606,7 +594,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isRegister, UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),

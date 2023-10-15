@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:tiktok_clone/features/profile/widgets/widgets.dart';
 import 'package:tiktok_clone/features/upload_video/cubit/upload_video_cubit.dart';
-import 'package:tiktok_clone/generated/l10n.dart';
-import 'package:tiktok_clone/ui/utils/dialog_utils.dart';
+import 'package:tiktok_clone/features/upload_video/widgets/upload_video_container.dart';
+import 'package:tiktok_clone/repository/upload_video/i_upload_video_repository.dart';
+import 'package:tiktok_clone/router/app_router.dart';
+import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
+import 'package:tiktok_clone/features/profile/widgets/not_auth_profile.dart';
 
 @RoutePage()
 class UploadVideoScreen extends StatefulWidget {
@@ -16,45 +19,25 @@ class UploadVideoScreen extends StatefulWidget {
 }
 
 class _UploadVideoScreenState extends State<UploadVideoScreen> {
-  final _cubit = UploadVideoCubit();
+  final _cubit = UploadVideoCubit(GetIt.I.get<IUploadVideoRepository>());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(42),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              const FaIcon(
-                FontAwesomeIcons.video,
-                color: Colors.white38,
-                size: 250,
-              ),
-              const SizedBox(height: 22),
-              FilledButton(
-                onPressed: () {
-                  showPickVideoOrPhotoDialog(
-                    context,
-                    onCamera: () async {
-                      await _cubit.chooseVideo(isCamera: true);
-                    },
-                    onGallery: () async {
-                      await _cubit.chooseVideo(isCamera: false);
-                    },
-                    onClose: () {
-                      AutoRouter.of(context).pop();
-                    },
-                  );
-                },
-                child: Text(S.of(context).uploadVideo),
-              ),
-            ],
-          ),
-        ),
+    return BlocProvider(
+      create: (context) => _cubit,
+      child: BlocListener<UploadVideoCubit, UploadVideoState>(
+        listener: (context2, state) {
+          state.maybeWhen(
+            videoUploaded: (video) async {
+              if (video != null) {
+                AutoRouter.of(context).push(
+                    UploadVideoFormRoute(cubit: _cubit, videoFile: video));
+              }
+            },
+            orElse: () {},
+          );
+        },
+        child: const UploadVideoContainer(),
       ),
     );
   }

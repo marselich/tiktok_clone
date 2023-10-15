@@ -22,10 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "artistSong": MessageLookupByLibrary.simpleMessage("Artist - Song"),
         "auth": MessageLookupByLibrary.simpleMessage("Auth"),
         "authInTiktok": MessageLookupByLibrary.simpleMessage("Auth in TikTok"),
         "authWithEmail":
             MessageLookupByLibrary.simpleMessage("Auth with Email"),
+        "descrptionTags":
+            MessageLookupByLibrary.simpleMessage("Descrption - Tags"),
         "dontHaveAnAccountYet":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account yet?"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Email"),
@@ -41,12 +44,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordMustContain6OrMoreCharacters":
             MessageLookupByLibrary.simpleMessage(
                 "Password must contain 6 or more characters"),
+        "pleaseEnterDescription":
+            MessageLookupByLibrary.simpleMessage("Please enter description"),
         "pleaseEnterEmail":
             MessageLookupByLibrary.simpleMessage("Please enter email"),
         "pleaseEnterNickname":
             MessageLookupByLibrary.simpleMessage("Please enter nickname"),
         "pleaseEnterPassword":
             MessageLookupByLibrary.simpleMessage("Please enter password"),
+        "pleaseEnterSongName":
+            MessageLookupByLibrary.simpleMessage("Please enter song name"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registrationWasNotSuccessful": MessageLookupByLibrary.simpleMessage(
@@ -55,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Repeat password"),
         "uncorrectEmail":
             MessageLookupByLibrary.simpleMessage("Uncorrect email"),
-        "uploadVideo": MessageLookupByLibrary.simpleMessage("Upload video")
+        "uploadNow": MessageLookupByLibrary.simpleMessage("Upload Now"),
+        "uploadVideo": MessageLookupByLibrary.simpleMessage("Upload video"),
+        "videoUploaded": MessageLookupByLibrary.simpleMessage("Video uploaded")
       };
 }

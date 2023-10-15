@@ -9,6 +9,7 @@ import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/features/profile/widgets/widgets.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/ui/utils/dialog_utils.dart';
+import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
 
 @RoutePage()
 class ProfileScreen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           bloc: _cubit,
           builder: (context, state) {
             return state.maybeWhen(
-              loaded: (isRegister, userModel) => isRegister
+              loaded: (userModel) => FirebaseUtils.checkLoginAccount()
                   ? AuthProfile(userModel: userModel)
                   : const NotAuthProfile(),
               orElse: () => const NotAuthProfile(),

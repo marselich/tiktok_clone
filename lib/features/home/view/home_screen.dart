@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/router/app_router.dart';
+import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -28,7 +29,11 @@ class HomeScreen extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,
             onTap: (value) {
-              tabsRouter.setActiveIndex(value);
+              if (value == 1 && !FirebaseUtils.checkLoginAccount()) {
+                tabsRouter.setActiveIndex(2);
+              } else {
+                tabsRouter.setActiveIndex(value);
+              }
             },
             items: [
               BottomNavigationBarItem(

@@ -21,5 +21,11 @@
   "passwordMustContain6OrMoreCharacters": "Password must contain 6 or more characters",
   "uploadVideo": "Upload video",
   "home": "Home",
-  "profile": "Profile"
+  "profile": "Profile",
+  "artistSong": "Artist - Song",
+  "descrptionTags": "Descrption - Tags",
+  "uploadNow": "Upload Now",
+  "pleaseEnterSongName": "Please enter song name",
+  "pleaseEnterDescription": "Please enter description",
+  "videoUploaded": "Video uploaded"
 }
