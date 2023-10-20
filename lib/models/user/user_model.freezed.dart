@@ -21,9 +21,17 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   String get id => throw _privateConstructorUsedError;
-  String get nickname => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
+  String get bio => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  int get totalFollowing => throw _privateConstructorUsedError;
+  int get totalFollowers => throw _privateConstructorUsedError;
+  int get totalLikes => throw _privateConstructorUsedError;
+  List<dynamic> get videoUrlList => throw _privateConstructorUsedError;
+  List<dynamic> get favoriteVideoUrlList => throw _privateConstructorUsedError;
+  String get youtubeLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +44,19 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String id, String nickname, String email, String image});
+  $Res call(
+      {String id,
+      String name,
+      String userName,
+      String bio,
+      String email,
+      String image,
+      int totalFollowing,
+      int totalFollowers,
+      int totalLikes,
+      List<dynamic> videoUrlList,
+      List<dynamic> favoriteVideoUrlList,
+      String youtubeLink});
 }
 
 /// @nodoc
@@ -53,18 +73,34 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @override
   $Res call({
     Object? id = null,
-    Object? nickname = null,
+    Object? name = null,
+    Object? userName = null,
+    Object? bio = null,
     Object? email = null,
     Object? image = null,
+    Object? totalFollowing = null,
+    Object? totalFollowers = null,
+    Object? totalLikes = null,
+    Object? videoUrlList = null,
+    Object? favoriteVideoUrlList = null,
+    Object? youtubeLink = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      nickname: null == nickname
-          ? _value.nickname
-          : nickname // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      bio: null == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -73,6 +109,30 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      totalFollowing: null == totalFollowing
+          ? _value.totalFollowing
+          : totalFollowing // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalFollowers: null == totalFollowers
+          ? _value.totalFollowers
+          : totalFollowers // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalLikes: null == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      videoUrlList: null == videoUrlList
+          ? _value.videoUrlList
+          : videoUrlList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      favoriteVideoUrlList: null == favoriteVideoUrlList
+          ? _value.favoriteVideoUrlList
+          : favoriteVideoUrlList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      youtubeLink: null == youtubeLink
+          ? _value.youtubeLink
+          : youtubeLink // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -86,7 +146,19 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String nickname, String email, String image});
+  $Res call(
+      {String id,
+      String name,
+      String userName,
+      String bio,
+      String email,
+      String image,
+      int totalFollowing,
+      int totalFollowers,
+      int totalLikes,
+      List<dynamic> videoUrlList,
+      List<dynamic> favoriteVideoUrlList,
+      String youtubeLink});
 }
 
 /// @nodoc
@@ -101,18 +173,34 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? nickname = null,
+    Object? name = null,
+    Object? userName = null,
+    Object? bio = null,
     Object? email = null,
     Object? image = null,
+    Object? totalFollowing = null,
+    Object? totalFollowers = null,
+    Object? totalLikes = null,
+    Object? videoUrlList = null,
+    Object? favoriteVideoUrlList = null,
+    Object? youtubeLink = null,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      nickname: null == nickname
-          ? _value.nickname
-          : nickname // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      bio: null == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -122,6 +210,30 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      totalFollowing: null == totalFollowing
+          ? _value.totalFollowing
+          : totalFollowing // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalFollowers: null == totalFollowers
+          ? _value.totalFollowers
+          : totalFollowers // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalLikes: null == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      videoUrlList: null == videoUrlList
+          ? _value._videoUrlList
+          : videoUrlList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      favoriteVideoUrlList: null == favoriteVideoUrlList
+          ? _value._favoriteVideoUrlList
+          : favoriteVideoUrlList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      youtubeLink: null == youtubeLink
+          ? _value.youtubeLink
+          : youtubeLink // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -130,8 +242,21 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl extends _UserModel {
   _$UserModelImpl(
-      {this.id = "", this.nickname = "", this.email = "", this.image = ""})
-      : super._();
+      {this.id = "",
+      this.name = "",
+      this.userName = "",
+      this.bio = "",
+      this.email = "",
+      this.image = "",
+      this.totalFollowing = 0,
+      this.totalFollowers = 0,
+      this.totalLikes = 0,
+      final List<dynamic> videoUrlList = const [],
+      final List<dynamic> favoriteVideoUrlList = const [],
+      this.youtubeLink = ""})
+      : _videoUrlList = videoUrlList,
+        _favoriteVideoUrlList = favoriteVideoUrlList,
+        super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -141,17 +266,54 @@ class _$UserModelImpl extends _UserModel {
   final String id;
   @override
   @JsonKey()
-  final String nickname;
+  final String name;
+  @override
+  @JsonKey()
+  final String userName;
+  @override
+  @JsonKey()
+  final String bio;
   @override
   @JsonKey()
   final String email;
   @override
   @JsonKey()
   final String image;
+  @override
+  @JsonKey()
+  final int totalFollowing;
+  @override
+  @JsonKey()
+  final int totalFollowers;
+  @override
+  @JsonKey()
+  final int totalLikes;
+  final List<dynamic> _videoUrlList;
+  @override
+  @JsonKey()
+  List<dynamic> get videoUrlList {
+    if (_videoUrlList is EqualUnmodifiableListView) return _videoUrlList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_videoUrlList);
+  }
+
+  final List<dynamic> _favoriteVideoUrlList;
+  @override
+  @JsonKey()
+  List<dynamic> get favoriteVideoUrlList {
+    if (_favoriteVideoUrlList is EqualUnmodifiableListView)
+      return _favoriteVideoUrlList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteVideoUrlList);
+  }
+
+  @override
+  @JsonKey()
+  final String youtubeLink;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, nickname: $nickname, email: $email, image: $image)';
+    return 'UserModel(id: $id, name: $name, userName: $userName, bio: $bio, email: $email, image: $image, totalFollowing: $totalFollowing, totalFollowers: $totalFollowers, totalLikes: $totalLikes, videoUrlList: $videoUrlList, favoriteVideoUrlList: $favoriteVideoUrlList, youtubeLink: $youtubeLink)';
   }
 
   @override
@@ -160,15 +322,42 @@ class _$UserModelImpl extends _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.nickname, nickname) ||
-                other.nickname == nickname) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.totalFollowing, totalFollowing) ||
+                other.totalFollowing == totalFollowing) &&
+            (identical(other.totalFollowers, totalFollowers) ||
+                other.totalFollowers == totalFollowers) &&
+            (identical(other.totalLikes, totalLikes) ||
+                other.totalLikes == totalLikes) &&
+            const DeepCollectionEquality()
+                .equals(other._videoUrlList, _videoUrlList) &&
+            const DeepCollectionEquality()
+                .equals(other._favoriteVideoUrlList, _favoriteVideoUrlList) &&
+            (identical(other.youtubeLink, youtubeLink) ||
+                other.youtubeLink == youtubeLink));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, nickname, email, image);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      userName,
+      bio,
+      email,
+      image,
+      totalFollowing,
+      totalFollowers,
+      totalLikes,
+      const DeepCollectionEquality().hash(_videoUrlList),
+      const DeepCollectionEquality().hash(_favoriteVideoUrlList),
+      youtubeLink);
 
   @JsonKey(ignore: true)
   @override
@@ -187,9 +376,17 @@ class _$UserModelImpl extends _UserModel {
 abstract class _UserModel extends UserModel {
   factory _UserModel(
       {final String id,
-      final String nickname,
+      final String name,
+      final String userName,
+      final String bio,
       final String email,
-      final String image}) = _$UserModelImpl;
+      final String image,
+      final int totalFollowing,
+      final int totalFollowers,
+      final int totalLikes,
+      final List<dynamic> videoUrlList,
+      final List<dynamic> favoriteVideoUrlList,
+      final String youtubeLink}) = _$UserModelImpl;
   _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -198,11 +395,27 @@ abstract class _UserModel extends UserModel {
   @override
   String get id;
   @override
-  String get nickname;
+  String get name;
+  @override
+  String get userName;
+  @override
+  String get bio;
   @override
   String get email;
   @override
   String get image;
+  @override
+  int get totalFollowing;
+  @override
+  int get totalFollowers;
+  @override
+  int get totalLikes;
+  @override
+  List<dynamic> get videoUrlList;
+  @override
+  List<dynamic> get favoriteVideoUrlList;
+  @override
+  String get youtubeLink;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

@@ -1,16 +1,13 @@
 import 'dart:io';
 
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:tiktok_clone/features/auth/cubit/auth_cubit.dart';
+import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/ui/utils/get_image_file_from_assets.dart';
 import 'package:tiktok_clone/ui/utils/show_tiktok_snackbar.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
-import 'package:tiktok_clone/models/user/user_model.dart';
-import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/ui/constants/app_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tiktok_clone/ui/utils/dialog_utils.dart';
@@ -24,7 +21,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  // final cubit = AuthCubit(GetIt.I.get<IAuthRepository>());
+  final _cubit = AuthCubit(GetIt.I.get<IAuthRepository>());
 
   File? _image;
   String _email = "";
@@ -35,8 +32,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    AuthCubit cubit = BlocProvider.of(context);
-    final theme = Theme.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: BlocConsumer<AuthCubit, AuthState>(
@@ -47,15 +42,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
               imageLoaded: (image) =>
                   showTikTokSnackBar(context, text: "Image loaded"),
-              loading: (isLoading) async => isLoading
-                  ? await showLoaderDialog(context)
+              loading: (isLoading) => isLoading
+                  ? showLoaderDialog(context)
                   : AutoRouter.of(context).pop(),
               loadingFailure: (error) =>
                   showTikTokSnackBar(context, text: error.toString()),
-              orElse: () => showLoaderDialog(context),
+              orElse: () {},
             );
           },
-          bloc: cubit,
+          bloc: _cubit,
           builder: (context, state) {
             return Form(
               key: _formKey,
@@ -67,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     GestureDetector(
                       onTap: () async {
-                        await cubit.chooseImageFromGallery();
+                        await _cubit.chooseImageFromGallery();
                       },
                       child: CircleAvatar(
                         radius: 80,
@@ -158,7 +153,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             _image ??= await getImageFileFromAssets(
                                 "image/default_avatar.jpg");
                             if (_formKey.currentState!.validate()) {
-                              cubit.createAccount(
+                              _cubit.createAccount(
                                   _nickname, _email, _password, _image!);
                             }
                           },

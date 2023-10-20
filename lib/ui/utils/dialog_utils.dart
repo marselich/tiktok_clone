@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/ui/widgets/tiktok_text_button.dart';
 
-Future<void> showLoaderDialog(BuildContext context) async {
+void showLoaderDialog(BuildContext context) {
   AlertDialog alert = const AlertDialog(
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -10,7 +10,7 @@ Future<void> showLoaderDialog(BuildContext context) async {
       child: CircularProgressIndicator(),
     ),
   );
-  await showDialog(
+  showDialog(
     barrierDismissible: false,
     barrierColor: Colors.black12,
     context: context,

@@ -46,7 +46,7 @@ class _AuthProfileState extends State<AuthProfile>
         ],
         title: Center(
             child: Text(
-          widget.userModel!.nickname,
+          widget.userModel!.name,
           style: theme.textTheme.titleMedium,
         )),
       ),

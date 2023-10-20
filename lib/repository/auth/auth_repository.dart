@@ -10,12 +10,12 @@ import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 class AuthRepository implements IAuthRepository {
   @override
   Future<UserModel> createAccount(
-    String nickname,
+    String userName,
     String email,
     String password,
     File image,
   ) async {
-    UserCredential credential =
+    final credential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email,
       password: password,
@@ -25,9 +25,17 @@ class AuthRepository implements IAuthRepository {
 
     final userModel = UserModel(
       id: credential.user!.uid,
-      nickname: nickname,
+      userName: userName,
       email: email,
       image: imageDownloadUrl,
+      bio: "",
+      name: userName,
+      totalFollowers: 0,
+      totalFollowing: 0,
+      totalLikes: 0,
+      videoUrlList: List.empty(),
+      favoriteVideoUrlList: List.empty(),
+      youtubeLink: "",
     );
 
     await FirebaseFirestore.instance

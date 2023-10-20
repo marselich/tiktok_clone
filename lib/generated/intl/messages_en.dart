@@ -31,8 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Descrption - Tags"),
         "dontHaveAnAccountYet":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account yet?"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Email"),
-        "enterNickname": MessageLookupByLibrary.simpleMessage("Enter nickname"),
+        "enterNickname": MessageLookupByLibrary.simpleMessage("Enter username"),
         "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
         "followers": MessageLookupByLibrary.simpleMessage("Followers"),
         "following": MessageLookupByLibrary.simpleMessage("Following"),
@@ -49,7 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseEnterEmail":
             MessageLookupByLibrary.simpleMessage("Please enter email"),
         "pleaseEnterNickname":
-            MessageLookupByLibrary.simpleMessage("Please enter nickname"),
+            MessageLookupByLibrary.simpleMessage("Please enter username"),
         "pleaseEnterPassword":
             MessageLookupByLibrary.simpleMessage("Please enter password"),
         "pleaseEnterSongName":
@@ -60,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "registration was not successful"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat password"),
+        "tapToAddBio": MessageLookupByLibrary.simpleMessage("Tap to add bio"),
         "uncorrectEmail":
             MessageLookupByLibrary.simpleMessage("Uncorrect email"),
         "uploadNow": MessageLookupByLibrary.simpleMessage("Upload Now"),

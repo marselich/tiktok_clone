@@ -160,20 +160,20 @@ class S {
     );
   }
 
-  /// `Enter nickname`
+  /// `Enter username`
   String get enterNickname {
     return Intl.message(
-      'Enter nickname',
+      'Enter username',
       name: 'enterNickname',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter nickname`
+  /// `Please enter username`
   String get pleaseEnterNickname {
     return Intl.message(
-      'Please enter nickname',
+      'Please enter username',
       name: 'pleaseEnterNickname',
       desc: '',
       args: [],
@@ -335,6 +335,26 @@ class S {
     return Intl.message(
       'Video uploaded',
       name: 'videoUploaded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to add bio`
+  String get tapToAddBio {
+    return Intl.message(
+      'Tap to add bio',
+      name: 'tapToAddBio',
       desc: '',
       args: [],
     );

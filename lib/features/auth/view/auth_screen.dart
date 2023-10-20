@@ -16,8 +16,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  final _cubit = AuthCubit(GetIt.I.get<IAuthRepository>());
-
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter.tabBar(
@@ -42,10 +40,7 @@ class _AuthScreenState extends State<AuthScreen> {
               },
             ),
           ),
-          body: BlocProvider(
-            create: (context) => _cubit,
-            child: child,
-          ),
+          body: child,
         );
       },
     );

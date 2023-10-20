@@ -10,8 +10,8 @@
   "enterEmail": "Enter Email",
   "pleaseEnterEmail": "Please enter email",
   "uncorrectEmail": "Uncorrect email",
-  "enterNickname": "Enter nickname",
-  "pleaseEnterNickname": "Please enter nickname",
+  "enterNickname": "Enter username",
+  "pleaseEnterNickname": "Please enter username",
   "enterPassword": "Enter password",
   "repeatPassword": "Repeat password",
   "pleaseEnterPassword": "Please enter password",
@@ -27,5 +27,7 @@
   "uploadNow": "Upload Now",
   "pleaseEnterSongName": "Please enter song name",
   "pleaseEnterDescription": "Please enter description",
-  "videoUploaded": "Video uploaded"
+  "videoUploaded": "Video uploaded",
+  "editProfile": "Edit profile",
+  "tapToAddBio": "Tap to add bio"
 }

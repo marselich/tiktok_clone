@@ -2,8 +2,10 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:tiktok_clone/features/auth/cubit/auth_cubit.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
+import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/ui/constants/app_constants.dart';
 import 'package:tiktok_clone/ui/utils/dialog_utils.dart';
 import 'package:tiktok_clone/ui/utils/show_tiktok_snackbar.dart';
@@ -17,6 +19,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _cubit = AuthCubit(GetIt.I.get<IAuthRepository>());
+
   String email = "";
   String password = "";
 
@@ -24,21 +28,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    AuthCubit cubit = BlocProvider.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: BlocConsumer<AuthCubit, AuthState>(
+          bloc: _cubit,
           listener: (context, state) {
             state.maybeWhen(
               loaded: (userModel) {
                 AutoRouter.of(context).pop(userModel);
               },
-              loading: (isLoading) async => isLoading
-                  ? await showLoaderDialog(context)
+              loading: (isLoading) => isLoading
+                  ? showLoaderDialog(context)
                   : AutoRouter.of(context).pop(),
               loadingFailure: (error) =>
                   showTikTokSnackBar(context, text: error.toString()),
-              orElse: () => showLoaderDialog(context),
+              orElse: () {},
             );
           },
           builder: (context, state) {
@@ -86,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: FilledButton(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              await cubit.loginToAccount(email, password);
+                              await _cubit.loginToAccount(email, password);
                             }
                           },
                           child: Text(S.of(context).login),
