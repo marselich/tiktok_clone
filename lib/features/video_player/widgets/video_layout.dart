@@ -5,6 +5,7 @@ import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/features/video_player/widgets/tiktok_video_controls.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -53,15 +54,10 @@ class _VideoLayoutState extends State<VideoLayout> {
 
     _playerController.initialize();
     _playerController.play();
-    _playerController.setVolume(2);
     _playerController.setLooping(true);
     initialized = true;
 
     _flickManager = FlickManager(videoPlayerController: _playerController);
-    // _flickManager.flickDisplayManager
-    //     ?.handleShowPlayerControls(showWithTimeout: true);
-    // _flickManager.flickDisplayManager?.handleShowVolumeLevel();
-    _flickManager.flickDisplayManager?.hidePlayerControls();
   }
 
   @override
@@ -141,12 +137,16 @@ class _VideoLayoutState extends State<VideoLayout> {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          FlickVideoPlayer(
-            flickManager: _flickManager,
-            flickVideoWithControls: FlickVideoWithControls(
-              willVideoPlayerControllerChange: true,
-              controls: FlickPortraitControls(
-                progressBarSettings: FlickProgressBarSettings(),
+          VisibilityDetector(
+            key: ,
+            onVisibilityChanged: (info) {
+              
+            },
+            child: FlickVideoPlayer(
+              flickManager: _flickManager,
+              flickVideoWithControls: const FlickVideoWithControls(
+                controls: TikTokVideoControls(),
+                videoFit: BoxFit.contain,
               ),
             ),
           ),
@@ -194,9 +194,10 @@ class _VideoLayoutState extends State<VideoLayout> {
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 12, bottom: 20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "@${widget.userName}",

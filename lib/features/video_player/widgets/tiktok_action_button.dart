@@ -20,7 +20,24 @@ class TiktokActionButton extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          FaIcon(iconData, size: 36, color: Colors.white),
+          Stack(
+            children: [
+              Positioned.fill(
+                top: 0,
+                left: 0,
+                child: FaIcon(
+                  iconData,
+                  size: 38,
+                  color: Colors.black12,
+                ),
+              ),
+              FaIcon(
+                iconData,
+                size: 36,
+                color: Colors.white,
+              ),
+            ],
+          ),
           const SizedBox(height: 5),
           Text(text, style: theme.textTheme.labelLarge),
         ],

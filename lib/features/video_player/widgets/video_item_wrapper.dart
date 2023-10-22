@@ -7,6 +7,7 @@ class VideoItemWrapper extends StatelessWidget {
     required this.currentPageIndex,
     required this.isPaused,
     this.videoEnded,
+    required this.child,
   });
 
   final int pageIndex;
