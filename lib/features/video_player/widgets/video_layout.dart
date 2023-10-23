@@ -4,8 +4,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/features/video_player/cubit/video_player_cubit.dart';
 import 'package:tiktok_clone/features/video_player/widgets/tiktok_video_controls.dart';
+import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -14,123 +17,62 @@ import 'tiktok_action_button.dart';
 class VideoLayout extends StatefulWidget {
   const VideoLayout({
     super.key,
-    required this.userName,
-    required this.userProfileImage,
-    required this.totalComments,
-    required this.totalShares,
-    required this.totalLikes,
-    required this.artistSongName,
-    required this.descriptionTags,
-    required this.videoUrl,
-    required this.publishedDateTime,
+    required this.pageIndex,
+    required this.currentPageIndex,
+    required this.isPaused,
+    required this.videoModel,
   });
 
-  final String userName;
-  final String userProfileImage;
-  final int totalComments;
-  final int totalShares;
-  final int totalLikes;
-  final String artistSongName;
-  final String descriptionTags;
-  final String videoUrl;
-  final int publishedDateTime;
+  final int pageIndex;
+  final int currentPageIndex;
+  final bool isPaused;
+  final VideoModel videoModel;
 
   @override
   State<VideoLayout> createState() => _VideoLayoutState();
 }
 
 class _VideoLayoutState extends State<VideoLayout> {
-  late VideoPlayerController _playerController;
   late FlickManager _flickManager;
-
-  bool initialized = false;
 
   @override
   void initState() {
     super.initState();
 
-    _playerController =
-        VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl));
-
-    _playerController.initialize();
-    _playerController.play();
-    _playerController.setLooping(true);
-    initialized = true;
-
-    _flickManager = FlickManager(videoPlayerController: _playerController);
+    _flickManager = FlickManager(
+      videoPlayerController: VideoPlayerController.networkUrl(
+        Uri.parse(widget.videoModel.videoUrl),
+      ),
+      autoPlay: true,
+      autoInitialize: true,
+      onVideoEnd: () {
+        _flickManager.flickControlManager!.replay();
+      },
+    );
+    _flickManager.flickControlManager!.play();
   }
 
   @override
   void dispose() {
-    // if (initialized && _playerController != null) {
-    // _playerController.removeListener(_videoListener);
-    _playerController.dispose();
-    // _playerController = null;
+    _flickManager.dispose();
     super.dispose();
   }
 
-  // Widget _renderLandscapeVideo() {
-  //   if (!initialized) return Container();
-  //   if (_playerController == null) return Container();
-  //   return Center(
-  //     child: AspectRatio(
-  //       child: VisibilityDetector(
-  //           child: VideoPlayer(_playerController!),
-  //           onVisibilityChanged: _handleVisibilityDetector,
-  //           key: Key('key_${widget.currentPageIndex}')),
-  //       aspectRatio: _playerController?.value.aspectRatio ?? 0,
-  //     ),
-  //   );
-  // }
-
-  // Widget _renderPortraitVideo(BuildContext context) {
-  //   var tmp = MediaQuery.of(context).size;
-  //   if (!initialized) return Container();
-  //   if (_playerController == null) return Container();
-
-  //   var screenH = max(tmp.height, tmp.width);
-  //   var screenW = min(tmp.height, tmp.width);
-  //   tmp = _playerController!.value.size;
-
-  //   var previewH = max(tmp.height, tmp.width);
-  //   var previewW = min(tmp.height, tmp.width);
-  //   var screenRatio = screenH / screenW;
-  //   var previewRatio = previewH / previewW;
-
-  //   return Center(
-  //     child: OverflowBox(
-  //       child: VisibilityDetector(
-  //           onVisibilityChanged: _handleVisibilityDetector,
-  //           key: Key('key_${widget.currentPageIndex}'),
-  //           child: VideoPlayer(_playerController!)),
-  //       maxHeight: screenRatio > previewRatio
-  //           ? screenH
-  //           : screenW / previewW * previewH,
-  //       maxWidth: screenRatio > previewRatio
-  //           ? screenH / previewH * previewW
-  //           : screenW,
-  //     ),
-  //   );
-  // }
-
-  // void _handleVisibilityDetector(VisibilityInfo info) {
-  //   if (info.visibleFraction == 0) {
-  //     /// The screen is disappeared
-  //     if (initialized &&
-  //         widget.pageIndex == widget.currentPageIndex &&
-  //         !widget.isPaused) {
-  //       if (_playerController != null) {
-  //         _playerController?.pause().then((value) {});
-  //       }
-  //     }
-  //   } else {
-  //     /// The screen is appeared
-  //     _playerController?.play().then((value) {});
-  //   }
-  // }
+  Future<void> _handleVisibilityDetector(VisibilityInfo info) async {
+    if (info.visibleFraction == 0) {
+      /// The screen is disappeared
+      if (widget.pageIndex == widget.currentPageIndex && !widget.isPaused) {
+        await _flickManager.flickControlManager!.pause();
+      }
+    } else {
+      /// The screen is appeared
+      await _flickManager.flickControlManager!.play();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final VideoPlayerCubit cubit = BlocProvider.of(context);
     final theme = Theme.of(context);
     return SizedBox(
       height: MediaQuery.of(context).size.height,
@@ -138,10 +80,9 @@ class _VideoLayoutState extends State<VideoLayout> {
         alignment: Alignment.center,
         children: [
           VisibilityDetector(
-            key: ,
-            onVisibilityChanged: (info) {
-              
-            },
+            key: Key("key_${widget.currentPageIndex}"),
+            onVisibilityChanged: (info) async =>
+                await _handleVisibilityDetector(info),
             child: FlickVideoPlayer(
               flickManager: _flickManager,
               flickVideoWithControls: const FlickVideoWithControls(
@@ -160,9 +101,10 @@ class _VideoLayoutState extends State<VideoLayout> {
                 children: [
                   CircleAvatar(
                     radius: 27,
+                    backgroundColor: Colors.white,
                     child: ClipOval(
                       child: CachedNetworkImage(
-                        imageUrl: widget.userProfileImage,
+                        imageUrl: widget.videoModel.userProfileImage,
                         width: 50,
                         height: 50,
                         fit: BoxFit.cover,
@@ -172,19 +114,19 @@ class _VideoLayoutState extends State<VideoLayout> {
                   const SizedBox(height: 20),
                   TiktokActionButton(
                     iconData: FontAwesomeIcons.solidHeart,
-                    text: widget.totalLikes.toString(),
+                    text: widget.videoModel.totalLikes.toString(),
                     onTap: () {},
                   ),
                   const SizedBox(height: 20),
                   TiktokActionButton(
                     iconData: FontAwesomeIcons.commentDots,
-                    text: widget.totalComments.toString(),
+                    text: widget.videoModel.totalComments.toString(),
                     onTap: () {},
                   ),
                   const SizedBox(height: 20),
                   TiktokActionButton(
                     iconData: FontAwesomeIcons.share,
-                    text: widget.totalShares.toString(),
+                    text: widget.videoModel.totalShares.toString(),
                     onTap: () {},
                   ),
                 ],
@@ -200,12 +142,12 @@ class _VideoLayoutState extends State<VideoLayout> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "@${widget.userName}",
+                    "@${widget.videoModel.userName}",
                     style: theme.textTheme.bodyLarge
                         ?.copyWith(color: Colors.white),
                   ),
                   Text(
-                    widget.descriptionTags,
+                    widget.videoModel.descriptionTags,
                     style: theme.textTheme.bodyLarge
                         ?.copyWith(color: Colors.white),
                   ),
@@ -220,7 +162,7 @@ class _VideoLayoutState extends State<VideoLayout> {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          widget.descriptionTags,
+                          widget.videoModel.artistSongName,
                           style: theme.textTheme.bodyLarge?.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.normal,

@@ -26,6 +26,7 @@ class TikTokVideoControls extends StatelessWidget {
                 child: FlickPlayToggle(
                   pauseChild: getPauseAndPlayWidget(),
                   playChild: getPauseAndPlayWidget(),
+                  replayChild: getPauseAndPlayWidget(),
                   size: 30,
                   padding: const EdgeInsets.only(bottom: 16),
                 ),

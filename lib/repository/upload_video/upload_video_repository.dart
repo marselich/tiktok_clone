@@ -34,7 +34,7 @@ class UploadVideoRepository implements IUploadVideoRepository {
       descriptionTags: descriptionTags,
       videoId: videoId,
       videoUrl: videoDownloadUrl,
-      userName: userData["nickname"],
+      userName: userData["userName"],
       userId: userData["id"],
       thumbnailUrl: thumbnailDownloadUrl,
       totalComments: 0,

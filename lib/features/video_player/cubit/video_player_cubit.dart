@@ -2,29 +2,44 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
+import 'package:tiktok_clone/repository/home/i_home_repository.dart';
 
 part 'video_player_state.dart';
 part 'video_player_cubit.freezed.dart';
 
 class VideoPlayerCubit extends Cubit<VideoPlayerState> {
-  VideoPlayerCubit() : super(const VideoPlayerState.initial());
+  VideoPlayerCubit(this._repository) : super(const VideoPlayerState.initial());
+
+  final IHomeRepository _repository;
+
+  Future<void> getVideoList() async {
+    try {
+      final videoList = await _repository.getVideoListFromFirestore();
+
+      emit(VideoPlayerState.loaded(videoModelList: videoList));
+    } on Exception catch (e) {
+      emit(VideoPlayerState.loadingFailure(e.toString()));
+    }
+  }
 
   void pageViewScrollListener(PageController pageController) {
-    final pageScrolledState = state as _PageScrolled;
-    if (pageScrolledState.isOnPageTurning &&
-        pageController.page == pageController.page!.roundToDouble()) {
-      emit(VideoPlayerState.pageScrolled(
-        currentPage: pageController.page!.toInt(),
-        isOnPageTurning: false,
-      ));
-    } else if (!pageScrolledState.isOnPageTurning &&
-        pageScrolledState.currentPage.toDouble() != pageController.page) {
-      if ((pageScrolledState.currentPage.toDouble() - pageController.page!)
-              .abs() >
-          0.7) {
-        emit(const VideoPlayerState.pageScrolled(
-          isOnPageTurning: true,
+    if (state is _PageScrolled) {
+      final pageScrolledState = state as _PageScrolled;
+      if (pageScrolledState.isOnPageTurning &&
+          pageController.page == pageController.page!.roundToDouble()) {
+        emit(VideoPlayerState.pageScrolled(
+          currentPage: pageController.page!.toInt(),
+          isOnPageTurning: false,
         ));
+      } else if (!pageScrolledState.isOnPageTurning &&
+          pageScrolledState.currentPage.toDouble() != pageController.page) {
+        if ((pageScrolledState.currentPage.toDouble() - pageController.page!)
+                .abs() >
+            0.7) {
+          emit(const VideoPlayerState.pageScrolled(
+            isOnPageTurning: true,
+          ));
+        }
       }
     }
   }

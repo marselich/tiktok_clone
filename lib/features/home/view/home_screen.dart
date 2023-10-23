@@ -20,6 +20,8 @@ class HomeScreen extends StatelessWidget {
         UploadVideoRoute(),
         ProfileRoute(),
       ],
+      lazyLoad: true,
+      inheritNavigatorObservers: true,
       transitionBuilder: (context, child, animation) => child,
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);

@@ -4,7 +4,7 @@ part of 'video_player_cubit.dart';
 class VideoPlayerState with _$VideoPlayerState {
   const factory VideoPlayerState.initial() = _Initial;
   const factory VideoPlayerState.loaded({
-    required VideoModel model,
+    required List<VideoModel> videoModelList,
   }) = _Loaded;
   const factory VideoPlayerState.loading({
     required bool isLoading,

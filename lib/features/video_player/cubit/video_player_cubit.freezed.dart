@@ -19,7 +19,7 @@ mixin _$VideoPlayerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(VideoModel model) loaded,
+    required TResult Function(List<VideoModel> videoModelList) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
     required TResult Function(int currentPage, bool isOnPageTurning)
@@ -29,7 +29,7 @@ mixin _$VideoPlayerState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(VideoModel model)? loaded,
+    TResult? Function(List<VideoModel> videoModelList)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
     TResult? Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -38,7 +38,7 @@ mixin _$VideoPlayerState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(VideoModel model)? loaded,
+    TResult Function(List<VideoModel> videoModelList)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     TResult Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -132,7 +132,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(VideoModel model) loaded,
+    required TResult Function(List<VideoModel> videoModelList) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
     required TResult Function(int currentPage, bool isOnPageTurning)
@@ -145,7 +145,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(VideoModel model)? loaded,
+    TResult? Function(List<VideoModel> videoModelList)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
     TResult? Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -157,7 +157,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(VideoModel model)? loaded,
+    TResult Function(List<VideoModel> videoModelList)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     TResult Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -220,7 +220,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({VideoModel model});
+  $Res call({List<VideoModel> videoModelList});
 }
 
 /// @nodoc
@@ -234,13 +234,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? model = freezed,
+    Object? videoModelList = null,
   }) {
     return _then(_$LoadedImpl(
-      model: freezed == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as VideoModel,
+      videoModelList: null == videoModelList
+          ? _value._videoModelList
+          : videoModelList // ignore: cast_nullable_to_non_nullable
+              as List<VideoModel>,
     ));
   }
 }
@@ -248,14 +248,20 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.model});
+  const _$LoadedImpl({required final List<VideoModel> videoModelList})
+      : _videoModelList = videoModelList;
 
+  final List<VideoModel> _videoModelList;
   @override
-  final VideoModel model;
+  List<VideoModel> get videoModelList {
+    if (_videoModelList is EqualUnmodifiableListView) return _videoModelList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_videoModelList);
+  }
 
   @override
   String toString() {
-    return 'VideoPlayerState.loaded(model: $model)';
+    return 'VideoPlayerState.loaded(videoModelList: $videoModelList)';
   }
 
   @override
@@ -263,12 +269,13 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other.model, model));
+            const DeepCollectionEquality()
+                .equals(other._videoModelList, _videoModelList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(model));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_videoModelList));
 
   @JsonKey(ignore: true)
   @override
@@ -280,39 +287,39 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(VideoModel model) loaded,
+    required TResult Function(List<VideoModel> videoModelList) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
     required TResult Function(int currentPage, bool isOnPageTurning)
         pageScrolled,
   }) {
-    return loaded(model);
+    return loaded(videoModelList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(VideoModel model)? loaded,
+    TResult? Function(List<VideoModel> videoModelList)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
     TResult? Function(int currentPage, bool isOnPageTurning)? pageScrolled,
   }) {
-    return loaded?.call(model);
+    return loaded?.call(videoModelList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(VideoModel model)? loaded,
+    TResult Function(List<VideoModel> videoModelList)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     TResult Function(int currentPage, bool isOnPageTurning)? pageScrolled,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(model);
+      return loaded(videoModelList);
     }
     return orElse();
   }
@@ -359,9 +366,10 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements VideoPlayerState {
-  const factory _Loaded({required final VideoModel model}) = _$LoadedImpl;
+  const factory _Loaded({required final List<VideoModel> videoModelList}) =
+      _$LoadedImpl;
 
-  VideoModel get model;
+  List<VideoModel> get videoModelList;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -433,7 +441,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(VideoModel model) loaded,
+    required TResult Function(List<VideoModel> videoModelList) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
     required TResult Function(int currentPage, bool isOnPageTurning)
@@ -446,7 +454,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(VideoModel model)? loaded,
+    TResult? Function(List<VideoModel> videoModelList)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
     TResult? Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -458,7 +466,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(VideoModel model)? loaded,
+    TResult Function(List<VideoModel> videoModelList)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     TResult Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -586,7 +594,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(VideoModel model) loaded,
+    required TResult Function(List<VideoModel> videoModelList) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
     required TResult Function(int currentPage, bool isOnPageTurning)
@@ -599,7 +607,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(VideoModel model)? loaded,
+    TResult? Function(List<VideoModel> videoModelList)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
     TResult? Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -611,7 +619,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(VideoModel model)? loaded,
+    TResult Function(List<VideoModel> videoModelList)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     TResult Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -751,7 +759,7 @@ class _$PageScrolledImpl implements _PageScrolled {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(VideoModel model) loaded,
+    required TResult Function(List<VideoModel> videoModelList) loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
     required TResult Function(int currentPage, bool isOnPageTurning)
@@ -764,7 +772,7 @@ class _$PageScrolledImpl implements _PageScrolled {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(VideoModel model)? loaded,
+    TResult? Function(List<VideoModel> videoModelList)? loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
     TResult? Function(int currentPage, bool isOnPageTurning)? pageScrolled,
@@ -776,7 +784,7 @@ class _$PageScrolledImpl implements _PageScrolled {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(VideoModel model)? loaded,
+    TResult Function(List<VideoModel> videoModelList)? loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     TResult Function(int currentPage, bool isOnPageTurning)? pageScrolled,
