@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/features/video_player/cubit/video_player_cubit.dart';
@@ -17,15 +14,9 @@ import 'tiktok_action_button.dart';
 class VideoLayout extends StatefulWidget {
   const VideoLayout({
     super.key,
-    required this.pageIndex,
-    required this.currentPageIndex,
-    required this.isPaused,
     required this.videoModel,
   });
 
-  final int pageIndex;
-  final int currentPageIndex;
-  final bool isPaused;
   final VideoModel videoModel;
 
   @override
@@ -43,27 +34,27 @@ class _VideoLayoutState extends State<VideoLayout> {
       videoPlayerController: VideoPlayerController.networkUrl(
         Uri.parse(widget.videoModel.videoUrl),
       ),
-      autoPlay: true,
+      autoPlay: false,
       autoInitialize: true,
       onVideoEnd: () {
         _flickManager.flickControlManager!.replay();
       },
     );
-    _flickManager.flickControlManager!.play();
   }
 
   @override
   void dispose() {
-    _flickManager.dispose();
+    _flickManager.flickControlManager!.pause().then((value) {
+      _flickManager.dispose();
+    });
     super.dispose();
   }
 
   Future<void> _handleVisibilityDetector(VisibilityInfo info) async {
     if (info.visibleFraction == 0) {
       /// The screen is disappeared
-      if (widget.pageIndex == widget.currentPageIndex && !widget.isPaused) {
-        await _flickManager.flickControlManager!.pause();
-      }
+      await _flickManager.flickControlManager!.pause();
+      // }
     } else {
       /// The screen is appeared
       await _flickManager.flickControlManager!.play();
@@ -72,7 +63,6 @@ class _VideoLayoutState extends State<VideoLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final VideoPlayerCubit cubit = BlocProvider.of(context);
     final theme = Theme.of(context);
     return SizedBox(
       height: MediaQuery.of(context).size.height,
@@ -80,7 +70,7 @@ class _VideoLayoutState extends State<VideoLayout> {
         alignment: Alignment.center,
         children: [
           VisibilityDetector(
-            key: Key("key_${widget.currentPageIndex}"),
+            key: widget.key!,
             onVisibilityChanged: (info) async =>
                 await _handleVisibilityDetector(info),
             child: FlickVideoPlayer(
@@ -136,7 +126,7 @@ class _VideoLayoutState extends State<VideoLayout> {
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 12, bottom: 20),
+              padding: const EdgeInsets.only(left: 12, bottom: 30),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tiktok_clone/features/video_player/cubit/video_player_cubit.dart';
 import 'package:tiktok_clone/repository/home/i_home_repository.dart';
@@ -20,18 +21,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   late PageController _pageController;
 
-  int _currentPage = 0;
-  bool _isOnPageTurning = false;
-
   @override
   void initState() {
     super.initState();
-
     _pageController = PageController(initialPage: 0, keepPage: true);
-
-    _pageController.addListener(
-      () => _cubit.pageViewScrollListener(_pageController),
-    );
   }
 
   @override
@@ -46,7 +39,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
@@ -69,38 +61,41 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       ),
       body: BlocProvider(
         create: (context) => _cubit,
-        child: BlocConsumer<VideoPlayerCubit, VideoPlayerState>(
+        child: BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
           bloc: _cubit,
-          listener: (context, state) {
-            state.maybeWhen(
-              pageScrolled: (currentPage, isOnPageTurning) {
-                _currentPage = currentPage;
-                _isOnPageTurning = isOnPageTurning;
-              },
-              orElse: () {},
-            );
-          },
           builder: (context, state) {
             return state.maybeWhen(
               loaded: (videoModelList) {
                 return RefreshIndicator(
                   onRefresh: _onRefresh,
                   child: PageView.builder(
+                    allowImplicitScrolling: true,
                     scrollDirection: Axis.vertical,
                     controller: _pageController,
                     itemBuilder: (context, index) {
                       return VideoLayout(
+                        key: Key(videoModelList[index].videoId),
                         videoModel: videoModelList[index],
-                        isPaused: _isOnPageTurning,
-                        pageIndex: index,
-                        currentPageIndex: _currentPage,
                       );
                     },
                     itemCount: videoModelList.length,
                   ),
                 );
               },
-              orElse: () => Container(),
+              loading: (isLoading) {
+                return const Center(child: CircularProgressIndicator());
+              },
+              orElse: () => const Center(
+                child: Column(
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.faceSadTear,
+                      size: 50,
+                    ),
+                    Text("No Videos"),
+                  ],
+                ),
+              ),
             );
           },
         ),

@@ -12,6 +12,6 @@ class HomeRepository extends IHomeRepository {
         .map((doc) => VideoModel.fromDocumentSnapshot(doc))
         .toList();
 
-    return videoModelList;
+    return videoModelList.reversed.toList();
   }
 }
