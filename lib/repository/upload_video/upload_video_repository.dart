@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/upload_video/i_upload_video_repository.dart';
+import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoRepository implements IUploadVideoRepository {
@@ -48,6 +50,22 @@ class UploadVideoRepository implements IUploadVideoRepository {
         .collection("videos")
         .doc(videoId)
         .set(videoModel.toJson());
+
+    await _updateVideoIdListInUserModel(documentSnapshot, videoId);
+  }
+
+  Future<void> _updateVideoIdListInUserModel(
+    DocumentSnapshot documentSnapshot,
+    String videoId,
+  ) async {
+    UserModel? userModel = UserModel.fromSnap(documentSnapshot);
+    List newVideosIdList = userModel.videosIdList.toList();
+    newVideosIdList.add(videoId);
+
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .update(userModel.copyWith(videosIdList: newVideosIdList).toJson());
   }
 
   Future<String> _uploadCompressedVideoFileToFirebaseStorage(

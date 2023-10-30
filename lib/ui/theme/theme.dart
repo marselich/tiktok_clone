@@ -53,23 +53,11 @@ final themeData = ThemeData(
       color: Colors.white,
       fontSize: 13,
       fontWeight: FontWeight.w600,
-      shadows: [
-        Shadow(
-          color: Colors.black,
-          blurRadius: 0.8,
-        )
-      ],
     ),
     bodyLarge: TextStyle(
       color: Colors.black,
       fontSize: 16,
       fontWeight: FontWeight.w600,
-      shadows: [
-        Shadow(
-          color: Colors.black,
-          blurRadius: 0.8,
-        )
-      ],
     ),
   ),
 );

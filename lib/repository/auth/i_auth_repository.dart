@@ -7,7 +7,7 @@ abstract class IAuthRepository {
     String userName,
     String email,
     String password,
-    File image,
+    File? image,
   );
 
   loginToAccount({

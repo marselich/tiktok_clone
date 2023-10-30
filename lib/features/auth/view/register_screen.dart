@@ -150,11 +150,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         width: double.infinity,
                         child: FilledButton(
                           onPressed: () async {
-                            _image ??= await getImageFileFromAssets(
-                                "image/default_avatar.jpg");
+                            // _image ??= await getImageFileFromAssets(
+                            //     "image/default_avatar.jpg");
                             if (_formKey.currentState!.validate()) {
                               _cubit.createAccount(
-                                  _nickname, _email, _password, _image!);
+                                  _nickname, _email, _password, _image);
                             }
                           },
                           child: Text(S.of(context).register),

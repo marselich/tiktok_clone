@@ -18,8 +18,8 @@ class UserModel with _$UserModel {
     @Default(0) int totalFollowing,
     @Default(0) int totalFollowers,
     @Default(0) int totalLikes,
-    @Default([]) List videoUrlList,
-    @Default([]) List favoriteVideoUrlList,
+    @Default([]) List videosIdList,
+    @Default([]) List favoriteVideosIdList,
     @Default("") String youtubeLink,
   }) = _UserModel;
 
@@ -37,8 +37,8 @@ class UserModel with _$UserModel {
       totalFollowing: dataSnapshot["totalFollowing"],
       totalFollowers: dataSnapshot["totalFollowers"],
       totalLikes: dataSnapshot["totalLikes"],
-      videoUrlList: dataSnapshot["videoUrlList"],
-      favoriteVideoUrlList: dataSnapshot["favoriteVideoUrlList"],
+      videosIdList: dataSnapshot["videosIdList"],
+      favoriteVideosIdList: dataSnapshot["favoriteVideosIdList"],
       youtubeLink: dataSnapshot["youtubeLink"],
     );
   }

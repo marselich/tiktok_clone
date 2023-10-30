@@ -13,15 +13,17 @@ class AuthRepository implements IAuthRepository {
     String userName,
     String email,
     String password,
-    File image,
+    File? image,
   ) async {
     final credential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
-
-    String imageDownloadUrl = await _uploadImageToStorage(image);
+    String imageDownloadUrl = "";
+    if (image != null) {
+      imageDownloadUrl = await _uploadImageToStorage(image);
+    }
 
     final userModel = UserModel(
       id: credential.user!.uid,
@@ -33,8 +35,8 @@ class AuthRepository implements IAuthRepository {
       totalFollowers: 0,
       totalFollowing: 0,
       totalLikes: 0,
-      videoUrlList: List.empty(),
-      favoriteVideoUrlList: List.empty(),
+      videosIdList: List.empty(),
+      favoriteVideosIdList: List.empty(),
       youtubeLink: "",
     );
 

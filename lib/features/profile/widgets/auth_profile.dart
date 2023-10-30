@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,28 +35,49 @@ class _AuthProfileState extends State<AuthProfile>
     ProfileCubit cubit = BlocProvider.of(context);
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.userPlus)),
-        actions: [
-          IconButton(
-              onPressed: () {
-                cubit.signOut();
-              },
-              icon: const FaIcon(FontAwesomeIcons.ellipsis)),
-        ],
-        title: Center(
-            child: Text(
-          widget.userModel!.name,
-          style: theme.textTheme.titleMedium,
-        )),
-      ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //       onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.userPlus)),
+      //   actions: [
+      //     IconButton(
+      //         onPressed: () {
+      //           cubit.signOut();
+      //         },
+      //         icon: const FaIcon(FontAwesomeIcons.ellipsis)),
+      //   ],
+      //   title: Center(
+      //       child: Text(
+      //     widget.userModel!.name,
+      //     style: theme.textTheme.titleMedium,
+      //   )),
+      // ),
       body: CustomScrollView(
         slivers: [
+          SliverAppBar(
+            leading: IconButton(
+              onPressed: () {},
+              icon: const FaIcon(FontAwesomeIcons.userPlus),
+            ),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    cubit.signOut();
+                  },
+                  icon: const FaIcon(FontAwesomeIcons.ellipsis)),
+            ],
+            title: Center(
+                child: Text(
+              widget.userModel!.name,
+              style: theme.textTheme.titleMedium,
+            )),
+          ),
           SliverToBoxAdapter(
             child: ProfileInfo(userModel: widget.userModel),
           ),
           SliverAppBar(
+            snap: true,
+            pinned: true,
+            floating: true,
             bottom: TabBar(
               tabs: const [
                 Tab(icon: FaIcon(FontAwesomeIcons.heart)),
@@ -69,7 +91,12 @@ class _AuthProfileState extends State<AuthProfile>
               controller: tabController,
               children: [
                 Container(
-                  child: const Text("s"),
+                  child: GridView.count(
+                    crossAxisCount: 4,
+                    children: widget.userModel!.videosIdList.map((e) {
+                      return CachedNetworkImage(imageUrl: e);
+                    }).toList(),
+                  ),
                 ),
                 Container(
                   child: const Text("s"),

@@ -66,8 +66,9 @@ class _UploadVideoFormScreenState extends State<UploadVideoFormScreen> {
               AutoRouter.of(context).popUntilRoot();
               showTikTokSnackBar(context, text: S.of(context).videoUploaded);
             },
-            loading: (isLoading) =>
-                isLoading ? showLoaderDialog(context) : Container(),
+            loading: (isLoading) => isLoading
+                ? showLoaderDialog(context)
+                : AutoRouter.of(context).pop(),
             loadingFailure: (error) =>
                 showTikTokSnackBar(context, text: error.toString()),
             orElse: () {},

@@ -11,8 +11,14 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this._repository) : super(const ProfileState.initial());
   final IAuthRepository _repository;
 
-  void checkLogin(UserModel? userModel) {
-    emit(ProfileState.loaded(userModel: userModel));
+  Future<void> checkLogin() async {
+    try {
+      emit(const ProfileState.loading(isLoading: true));
+      final userModel = await _repository.getUserInfo();
+      emit(ProfileState.loaded(userModel: userModel));
+    } on Exception catch (e) {
+      emit(ProfileState.loadingFailure(e.toString()));
+    }
   }
 
   Future<UserModel?> getUserInfo() async {
@@ -20,9 +26,8 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> signOut() async {
-    // emit(const ProfileState.loading(isLoading: true));
+    emit(const ProfileState.loading(isLoading: true));
     await _repository.signOutFromAccount();
-    // emit(const ProfileState.loading(isLoading: false));
     emit(const ProfileState.loaded());
   }
 }

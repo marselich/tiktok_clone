@@ -39,7 +39,7 @@ class AuthCubit extends Cubit<AuthState> {
     String nickname,
     String email,
     String password,
-    File image,
+    File? image,
   ) async {
     try {
       emit(const AuthState.loading(isLoading: true));

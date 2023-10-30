@@ -23,12 +23,19 @@ class ProfileInfo extends StatelessWidget {
           CircleAvatar(
             radius: 50,
             child: ClipOval(
-              child: CachedNetworkImage(
-                imageUrl: userModel!.image.toString(),
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
+              child: userModel!.image == ""
+                  ? Image.asset(
+                      "assets/image/default_avatar.jpg",
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: userModel!.image.toString(),
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
             ),
           ),
           const SizedBox(height: 10),

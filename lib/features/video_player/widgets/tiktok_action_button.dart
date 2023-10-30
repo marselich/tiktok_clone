@@ -39,7 +39,15 @@ class TiktokActionButton extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 5),
-          Text(text, style: theme.textTheme.labelLarge),
+          Text(text,
+              style: theme.textTheme.labelLarge?.copyWith(
+                shadows: [
+                  const Shadow(
+                    color: Colors.black,
+                    blurRadius: 0.8,
+                  )
+                ],
+              )),
         ],
       ),
     );
