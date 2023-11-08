@@ -39,6 +39,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
@@ -68,34 +69,42 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
               loaded: (videoModelList) {
                 return RefreshIndicator(
                   onRefresh: _onRefresh,
-                  child: PageView.builder(
-                    allowImplicitScrolling: true,
-                    scrollDirection: Axis.vertical,
-                    controller: _pageController,
-                    itemBuilder: (context, index) {
-                      return VideoLayout(
-                        key: Key(videoModelList[index].videoId),
-                        videoModel: videoModelList[index],
-                      );
-                    },
-                    itemCount: videoModelList.length,
-                  ),
+                  child: videoModelList.isNotEmpty
+                      ? PageView.builder(
+                          allowImplicitScrolling: true,
+                          scrollDirection: Axis.vertical,
+                          controller: _pageController,
+                          itemBuilder: (context, index) {
+                            return VideoLayout(
+                              key: Key(videoModelList[index].videoId),
+                              videoModel: videoModelList[index],
+                            );
+                          },
+                          itemCount: videoModelList.length,
+                        )
+                      : Center(
+                          child: Column(
+                            children: [
+                              const FaIcon(
+                                FontAwesomeIcons.faceSadTear,
+                                size: 100,
+                              ),
+                              const SizedBox(height: 20),
+                              Text(
+                                "No Videos",
+                                style: theme.textTheme.bodyLarge?.copyWith(
+                                  color: theme.primaryColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                 );
               },
               loading: (isLoading) {
                 return const Center(child: CircularProgressIndicator());
               },
-              orElse: () => const Center(
-                child: Column(
-                  children: [
-                    FaIcon(
-                      FontAwesomeIcons.faceSadTear,
-                      size: 50,
-                    ),
-                    Text("No Videos"),
-                  ],
-                ),
-              ),
+              orElse: () => Container(),
             );
           },
         ),

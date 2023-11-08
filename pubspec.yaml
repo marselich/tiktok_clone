@@ -27,6 +27,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  uuid: ^4.0.0
   cupertino_icons: ^1.0.6
   path_provider: ^2.1.1
   auto_route: ^7.8.4

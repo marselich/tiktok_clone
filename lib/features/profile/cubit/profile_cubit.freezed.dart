@@ -19,7 +19,9 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel) loaded,
+    required TResult Function(
+            UserModel? userModel, List<VideoModel>? videoModelList)
+        loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) =>
@@ -27,7 +29,8 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) =>
@@ -35,7 +38,8 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -125,7 +129,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel) loaded,
+    required TResult Function(
+            UserModel? userModel, List<VideoModel>? videoModelList)
+        loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -136,7 +142,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -147,7 +154,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -206,7 +214,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserModel? userModel});
+  $Res call({UserModel? userModel, List<VideoModel>? videoModelList});
 
   $UserModelCopyWith<$Res>? get userModel;
 }
@@ -223,12 +231,17 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userModel = freezed,
+    Object? videoModelList = freezed,
   }) {
     return _then(_$LoadedImpl(
       userModel: freezed == userModel
           ? _value.userModel
           : userModel // ignore: cast_nullable_to_non_nullable
               as UserModel?,
+      videoModelList: freezed == videoModelList
+          ? _value._videoModelList
+          : videoModelList // ignore: cast_nullable_to_non_nullable
+              as List<VideoModel>?,
     ));
   }
 
@@ -248,14 +261,24 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({this.userModel});
+  const _$LoadedImpl({this.userModel, final List<VideoModel>? videoModelList})
+      : _videoModelList = videoModelList;
 
   @override
   final UserModel? userModel;
+  final List<VideoModel>? _videoModelList;
+  @override
+  List<VideoModel>? get videoModelList {
+    final value = _videoModelList;
+    if (value == null) return null;
+    if (_videoModelList is EqualUnmodifiableListView) return _videoModelList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ProfileState.loaded(userModel: $userModel)';
+    return 'ProfileState.loaded(userModel: $userModel, videoModelList: $videoModelList)';
   }
 
   @override
@@ -264,11 +287,14 @@ class _$LoadedImpl implements _Loaded {
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
             (identical(other.userModel, userModel) ||
-                other.userModel == userModel));
+                other.userModel == userModel) &&
+            const DeepCollectionEquality()
+                .equals(other._videoModelList, _videoModelList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userModel);
+  int get hashCode => Object.hash(runtimeType, userModel,
+      const DeepCollectionEquality().hash(_videoModelList));
 
   @JsonKey(ignore: true)
   @override
@@ -280,35 +306,39 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel) loaded,
+    required TResult Function(
+            UserModel? userModel, List<VideoModel>? videoModelList)
+        loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) {
-    return loaded(userModel);
+    return loaded(userModel, videoModelList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
-    return loaded?.call(userModel);
+    return loaded?.call(userModel, videoModelList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(userModel);
+      return loaded(userModel, videoModelList);
     }
     return orElse();
   }
@@ -352,9 +382,12 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements ProfileState {
-  const factory _Loaded({final UserModel? userModel}) = _$LoadedImpl;
+  const factory _Loaded(
+      {final UserModel? userModel,
+      final List<VideoModel>? videoModelList}) = _$LoadedImpl;
 
   UserModel? get userModel;
+  List<VideoModel>? get videoModelList;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -426,7 +459,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel) loaded,
+    required TResult Function(
+            UserModel? userModel, List<VideoModel>? videoModelList)
+        loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -437,7 +472,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -448,7 +484,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -572,7 +609,9 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel) loaded,
+    required TResult Function(
+            UserModel? userModel, List<VideoModel>? videoModelList)
+        loaded,
     required TResult Function(bool isLoading) loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -583,7 +622,8 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel)? loaded,
+    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult? Function(bool isLoading)? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -594,7 +634,8 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel)? loaded,
+    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList)?
+        loaded,
     TResult Function(bool isLoading)? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),

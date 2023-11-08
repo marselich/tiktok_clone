@@ -7,6 +7,7 @@ import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/upload_video/i_upload_video_repository.dart';
 import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
+import 'package:uuid/uuid.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoRepository implements IUploadVideoRepository {
@@ -23,7 +24,7 @@ class UploadVideoRepository implements IUploadVideoRepository {
 
     final userData = documentSnapshot.data() as Map<String, dynamic>;
 
-    String videoId = DateTime.now().millisecondsSinceEpoch.toString();
+    String videoId = const Uuid().v4();
 
     final videoDownloadUrl = await _uploadCompressedVideoFileToFirebaseStorage(
         videoId, videoFilePath);
