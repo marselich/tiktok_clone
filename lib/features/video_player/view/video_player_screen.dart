@@ -5,8 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tiktok_clone/features/video_player/cubit/video_player_cubit.dart';
 import 'package:tiktok_clone/repository/home/i_home_repository.dart';
-
-import '../widgets/widgets.dart';
+import 'package:tiktok_clone/ui/features/video_player/video_layout.dart';
 
 @RoutePage()
 class VideoPlayerScreen extends StatefulWidget {

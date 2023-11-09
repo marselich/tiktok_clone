@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sliver_fill_remaining_box_adapter/sliver_fill_remaining_box_adapter.dart';
 import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/features/profile/widgets/profile_info.dart';
 import 'package:tiktok_clone/features/profile/widgets/profile_videos.dart';
@@ -23,16 +24,13 @@ class AuthProfile extends StatefulWidget {
   State<AuthProfile> createState() => _AuthProfileState();
 }
 
-class _AuthProfileState extends State<AuthProfile>
-    with TickerProviderStateMixin {
-  late TabController tabController;
-  late ScrollController scrollController;
+class _AuthProfileState extends State<AuthProfile> {
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 2, vsync: this);
-    scrollController = ScrollController();
+    _scrollController = ScrollController();
   }
 
   @override
@@ -41,7 +39,7 @@ class _AuthProfileState extends State<AuthProfile>
     final theme = Theme.of(context);
     return Scaffold(
       body: CustomScrollView(
-        controller: scrollController,
+        controller: _scrollController,
         slivers: [
           SliverAppBar(
             leading: IconButton(
@@ -67,48 +65,9 @@ class _AuthProfileState extends State<AuthProfile>
           // SliverToBoxAdapter(
           //   child: ProfileVideos(videoModelList: widget.videoModelList),
           // ),
-          SliverAppBar(
-            snap: true,
-            pinned: true,
-            floating: true,
-            bottom: TabBar(
-              tabs: const [
-                Tab(icon: FaIcon(FontAwesomeIcons.heart)),
-                Tab(icon: FaIcon(FontAwesomeIcons.heart)),
-              ],
-              controller: tabController,
-            ),
-          ),
-          SliverFillRemaining(
-            child: TabBarView(
-              controller: tabController,
-              children: [
-                Container(
-                  child: GridView.builder(
-                    controller: scrollController,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 0,
-                      mainAxisSpacing: 0,
-                    ),
-                    itemCount: widget.videoModelList?.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return GestureDetector(
-                        onTap: () {},
-                        child: CachedNetworkImage(
-                          imageUrl: widget.videoModelList![index].thumbnailUrl,
-                          fit: BoxFit.cover,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                Container(
-                  child: const Text("s"),
-                ),
-              ],
-            ),
+          ProfileVideos(
+            scrollController: _scrollController,
+            videoModelList: widget.videoModelList,
           ),
         ],
       ),

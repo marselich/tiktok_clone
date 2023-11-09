@@ -39,6 +39,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfileScreen(),
       );
     },
+    ProfileVideoPlayerRoute.name: (routeData) {
+      final args = routeData.argsAs<ProfileVideoPlayerRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProfileVideoPlayerScreen(
+          key: args.key,
+          videoModelList: args.videoModelList,
+          currentVideoIndex: args.currentVideoIndex,
+        ),
+      );
+    },
     RegisterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -125,6 +136,50 @@ class ProfileRoute extends PageRouteInfo<void> {
   static const String name = 'ProfileRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileVideoPlayerScreen]
+class ProfileVideoPlayerRoute
+    extends PageRouteInfo<ProfileVideoPlayerRouteArgs> {
+  ProfileVideoPlayerRoute({
+    Key? key,
+    required List<VideoModel> videoModelList,
+    required int currentVideoIndex,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProfileVideoPlayerRoute.name,
+          args: ProfileVideoPlayerRouteArgs(
+            key: key,
+            videoModelList: videoModelList,
+            currentVideoIndex: currentVideoIndex,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileVideoPlayerRoute';
+
+  static const PageInfo<ProfileVideoPlayerRouteArgs> page =
+      PageInfo<ProfileVideoPlayerRouteArgs>(name);
+}
+
+class ProfileVideoPlayerRouteArgs {
+  const ProfileVideoPlayerRouteArgs({
+    this.key,
+    required this.videoModelList,
+    required this.currentVideoIndex,
+  });
+
+  final Key? key;
+
+  final List<VideoModel> videoModelList;
+
+  final int currentVideoIndex;
+
+  @override
+  String toString() {
+    return 'ProfileVideoPlayerRouteArgs{key: $key, videoModelList: $videoModelList, currentVideoIndex: $currentVideoIndex}';
+  }
 }
 
 /// generated route for

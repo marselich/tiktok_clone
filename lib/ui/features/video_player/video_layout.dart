@@ -1,7 +1,7 @@
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/features/video_player/widgets/tiktok_video_controls.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
+import 'package:tiktok_clone/ui/features/video_player/tiktok_video_controls.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 

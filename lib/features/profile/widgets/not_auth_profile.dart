@@ -51,7 +51,7 @@ class NotAuthProfile extends StatelessWidget {
                     final userModel =
                         await AutoRouter.of(context).push(const AuthRoute());
                     if (userModel != null) {
-                      await cubit.checkLogin();
+                      await cubit.loadingProfile();
                     }
                   },
                   child: const Text("Sign Up"),
