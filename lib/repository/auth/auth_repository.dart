@@ -65,18 +65,30 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<UserModel?> getUserInfo() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) {
-      return null;
+  Future<UserModel?> getUserInfo(String? userId) async {
+    User? user;
+    if (userId == null) {
+      user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        return null;
+      }
     }
     final snapshot = await FirebaseFirestore.instance
         .collection("users")
-        .doc(user.uid)
+        .doc(userId ?? user!.uid)
         .get();
 
     UserModel? userModel = UserModel.fromSnap(snapshot);
     return userModel;
+  }
+
+  @override
+  String? getCurrentUserUid() {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      return null;
+    }
+    return user.uid;
   }
 
   @override

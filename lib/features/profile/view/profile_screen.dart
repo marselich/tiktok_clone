@@ -8,11 +8,14 @@ import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/features/profile/widgets/widgets.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/repository/profile/i_profile_repository.dart';
-import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
+import 'package:tiktok_clone/ui/features/profile/auth_profile.dart';
+import 'package:tiktok_clone/ui/widgets/loading_container.dart';
 
 @RoutePage()
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, this.userId});
+
+  final String? userId;
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -26,8 +29,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void didChangeDependencies() async {
-    await _cubit.loadingProfile();
     super.didChangeDependencies();
+    if (widget.userId == null) {
+      final tabsRouter = AutoTabsRouter.of(context);
+      tabsRouter
+          .addListener(() => _cubit.loadingProfile(userId: widget.userId));
+    }
+    await _cubit.loadingProfile(userId: widget.userId);
+  }
+
+  bool _checkIsCurrentUser() {
+    if (widget.userId == null) {
+      return true;
+    } else if (_cubit.getCurrentUserUid() == widget.userId) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -42,12 +60,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   //FirebaseUtils.checkLoginAccount()
                   userModel != null
                       ? AuthProfile(
+                          isCurrentUser: _checkIsCurrentUser(),
                           userModel: userModel,
                           videoModelList: videoModelList,
                         )
                       : const NotAuthProfile(),
-              loading: (isLoading) =>
-                  const Center(child: CircularProgressIndicator()),
+              loading: (isLoading) => const LoadingContainer(),
               orElse: () => Container(),
             );
           },

@@ -14,7 +14,7 @@ class ProfileRepository extends IProfileRepository {
       return VideoModel.fromDocumentSnapshot(videoSnapshot);
     }).toList();
 
-    return await Future.wait(videoModelList);
+    return await Future.wait(videoModelList.reversed);
   }
 
   @override

@@ -15,9 +15,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [
-        VideoPlayerRoute(),
-        UploadVideoRoute(),
+      routes: [
+        const VideoPlayerRoute(),
+        const UploadVideoRoute(),
         ProfileRoute(),
       ],
       lazyLoad: true,
@@ -33,6 +33,9 @@ class HomeScreen extends StatelessWidget {
             onTap: (value) {
               if (value == 1 && !FirebaseUtils.checkLoginAccount()) {
                 tabsRouter.setActiveIndex(2);
+              } else if (value == 2) {
+                tabsRouter.notifyListeners();
+                tabsRouter.setActiveIndex(value);
               } else {
                 tabsRouter.setActiveIndex(value);
               }

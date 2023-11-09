@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/router/app_router.dart';
-import 'package:tiktok_clone/ui/features/video_player/video_layout.dart';
 
 class ProfileVideos extends StatefulWidget {
   const ProfileVideos(
@@ -57,7 +56,7 @@ class _ProfileVideosState extends State<ProfileVideos>
                 child: GridView.builder(
                   controller: widget.scrollController,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
+                    crossAxisCount: 3,
                     crossAxisSpacing: 0,
                     mainAxisSpacing: 0,
                     childAspectRatio: 1 / 2,

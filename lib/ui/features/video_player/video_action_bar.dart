@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/router/app_router.dart';
 
 import 'tiktok_action_button.dart';
 
@@ -11,8 +13,10 @@ class VideoActionBar extends StatelessWidget {
     required this.totalLikes,
     required this.totalComments,
     required this.totalShares,
+    required this.userId,
   });
 
+  final String userId;
   final String userProfileImage;
   final int totalLikes;
   final int totalComments;
@@ -28,23 +32,28 @@ class VideoActionBar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CircleAvatar(
-              radius: 27,
-              backgroundColor: Colors.white,
-              child: ClipOval(
-                child: userProfileImage == ""
-                    ? Image.asset(
-                        "assets/image/default_avatar.jpg",
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      )
-                    : CachedNetworkImage(
-                        imageUrl: userProfileImage,
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
+            InkWell(
+              onTap: () {
+                AutoRouter.of(context).push(ProfileRoute(userId: userId));
+              },
+              child: CircleAvatar(
+                radius: 27,
+                backgroundColor: Colors.white,
+                child: ClipOval(
+                  child: userProfileImage == ""
+                      ? Image.asset(
+                          "assets/image/default_avatar.jpg",
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        )
+                      : CachedNetworkImage(
+                          imageUrl: userProfileImage,
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                ),
               ),
             ),
             const SizedBox(height: 20),

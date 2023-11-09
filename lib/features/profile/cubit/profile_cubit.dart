@@ -15,10 +15,10 @@ class ProfileCubit extends Cubit<ProfileState> {
   final IAuthRepository _authRepository;
   final IProfileRepository _profileRepository;
 
-  Future<void> loadingProfile() async {
+  Future<void> loadingProfile({String? userId}) async {
     try {
       emit(const ProfileState.loading(isLoading: true));
-      final userModel = await _authRepository.getUserInfo();
+      final userModel = await _authRepository.getUserInfo(userId);
 
       List<String>? videoIdList = userModel?.videosIdList.cast<String>();
 
@@ -38,19 +38,23 @@ class ProfileCubit extends Cubit<ProfileState> {
     // await getVideoModelList();
   }
 
-  Future<void> checkLogin() async {
-    try {
-      emit(const ProfileState.loading(isLoading: true));
-      final userModel = await _authRepository.getUserInfo();
-      emit(ProfileState.loaded(userModel: userModel));
-    } on Exception catch (e) {
-      emit(ProfileState.loadingFailure(e.toString()));
-    }
+  String? getCurrentUserUid() {
+    return _authRepository.getCurrentUserUid();
   }
 
-  Future<UserModel?> getUserInfo() async {
-    return await _authRepository.getUserInfo();
-  }
+  // Future<void> checkLogin() async {
+  //   try {
+  //     emit(const ProfileState.loading(isLoading: true));
+  //     final userModel = await _authRepository.getUserInfo();
+  //     emit(ProfileState.loaded(userModel: userModel));
+  //   } on Exception catch (e) {
+  //     emit(ProfileState.loadingFailure(e.toString()));
+  //   }
+  // }
+
+  // Future<UserModel?> getUserInfo() async {
+  //   return await _authRepository.getUserInfo();
+  // }
 
   Future<void> getVideoModelList(UserModel userModel) async {
     try {

@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
+import 'package:tiktok_clone/router/app_router.dart';
+import 'package:tiktok_clone/ui/features/profile/auth_profile.dart';
 import 'package:tiktok_clone/ui/features/video_player/tiktok_video_controls.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -60,33 +63,43 @@ class _VideoLayoutState extends State<VideoLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        VisibilityDetector(
-          key: widget.key!,
-          onVisibilityChanged: (info) async =>
-              await _handleVisibilityDetector(info),
-          child: FlickVideoPlayer(
-            flickManager: _flickManager,
-            flickVideoWithControls: const FlickVideoWithControls(
-              controls: TikTokVideoControls(),
-              videoFit: BoxFit.contain,
+    return GestureDetector(
+      onHorizontalDragEnd: (details) {
+        if (details.primaryVelocity == null) return;
+        if (details.primaryVelocity! < 0) {
+          AutoRouter.of(context)
+              .push(ProfileRoute(userId: widget.videoModel.userId));
+        }
+      },
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          VisibilityDetector(
+            key: widget.key!,
+            onVisibilityChanged: (info) async =>
+                await _handleVisibilityDetector(info),
+            child: FlickVideoPlayer(
+              flickManager: _flickManager,
+              flickVideoWithControls: const FlickVideoWithControls(
+                controls: TikTokVideoControls(),
+                videoFit: BoxFit.contain,
+              ),
             ),
           ),
-        ),
-        VideoActionBar(
-          userProfileImage: widget.videoModel.userProfileImage,
-          totalLikes: widget.videoModel.totalLikes,
-          totalComments: widget.videoModel.totalComments,
-          totalShares: widget.videoModel.totalShares,
-        ),
-        VideoInfoBar(
-          userName: widget.videoModel.userName,
-          descriptionTags: widget.videoModel.descriptionTags,
-          artistSongName: widget.videoModel.artistSongName,
-        ),
-      ],
+          VideoActionBar(
+            userId: widget.videoModel.userId,
+            userProfileImage: widget.videoModel.userProfileImage,
+            totalLikes: widget.videoModel.totalLikes,
+            totalComments: widget.videoModel.totalComments,
+            totalShares: widget.videoModel.totalShares,
+          ),
+          VideoInfoBar(
+            userName: widget.videoModel.userName,
+            descriptionTags: widget.videoModel.descriptionTags,
+            artistSongName: widget.videoModel.artistSongName,
+          ),
+        ],
+      ),
     );
   }
 }

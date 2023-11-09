@@ -1,17 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/features/profile/widgets/statistic_column.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/ui/ui.dart';
-import 'package:tiktok_clone/ui/widgets/tiktok_text_button.dart';
+
+import 'statistic_column.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({
     super.key,
     this.userModel,
+    required this.isCurrentUser,
   });
 
+  final bool isCurrentUser;
   final UserModel? userModel;
 
   @override
@@ -65,12 +67,20 @@ class ProfileInfo extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 15),
-          TikTokOutlinedButton(
-            onPressed: () {},
-            text: S.of(context).editProfile,
-          ),
+          isCurrentUser
+              ? TikTokOutlinedButton(
+                  onPressed: () {},
+                  text: S.of(context).editProfile,
+                )
+              : SizedBox(
+                  width: 200,
+                  child: FilledButton(
+                    onPressed: () {},
+                    child: Text(S.of(context).follow),
+                  ),
+                ),
           const SizedBox(height: 20),
-          userModel!.bio != ""
+          userModel!.bio != "" || !isCurrentUser
               ? Text(userModel!.bio)
               : TextButton(
                   onPressed: () {},

@@ -1,22 +1,22 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sliver_fill_remaining_box_adapter/sliver_fill_remaining_box_adapter.dart';
 import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
-import 'package:tiktok_clone/features/profile/widgets/profile_info.dart';
-import 'package:tiktok_clone/features/profile/widgets/profile_videos.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
-import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
+
+import 'profile_info.dart';
+import 'profile_videos.dart';
 
 class AuthProfile extends StatefulWidget {
   const AuthProfile({
     super.key,
+    required this.isCurrentUser,
     this.userModel,
     this.videoModelList,
   });
 
+  final bool isCurrentUser;
   final UserModel? userModel;
   final List<VideoModel>? videoModelList;
 
@@ -42,10 +42,6 @@ class _AuthProfileState extends State<AuthProfile> {
         controller: _scrollController,
         slivers: [
           SliverAppBar(
-            leading: IconButton(
-              onPressed: () {},
-              icon: const FaIcon(FontAwesomeIcons.userPlus),
-            ),
             actions: [
               IconButton(
                   onPressed: () {
@@ -60,7 +56,10 @@ class _AuthProfileState extends State<AuthProfile> {
             )),
           ),
           SliverToBoxAdapter(
-            child: ProfileInfo(userModel: widget.userModel),
+            child: ProfileInfo(
+              isCurrentUser: widget.isCurrentUser,
+              userModel: widget.userModel,
+            ),
           ),
           // SliverToBoxAdapter(
           //   child: ProfileVideos(videoModelList: widget.videoModelList),

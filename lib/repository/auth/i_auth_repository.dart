@@ -15,7 +15,8 @@ abstract class IAuthRepository {
     required String password,
   });
 
-  Future<UserModel?> getUserInfo();
+  Future<UserModel?> getUserInfo(String? userId);
+  String? getCurrentUserUid();
 
   Future<void> signOutFromAccount();
 }

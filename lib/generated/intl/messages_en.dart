@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Email"),
         "enterNickname": MessageLookupByLibrary.simpleMessage("Enter username"),
         "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
+        "follow": MessageLookupByLibrary.simpleMessage("Follow"),
         "followers": MessageLookupByLibrary.simpleMessage("Followers"),
         "following": MessageLookupByLibrary.simpleMessage("Following"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),

@@ -34,9 +34,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<ProfileRouteArgs>(
+          orElse: () => const ProfileRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProfileScreen(),
+        child: ProfileScreen(
+          key: args.key,
+          userId: args.userId,
+        ),
       );
     },
     ProfileVideoPlayerRoute.name: (routeData) {
@@ -126,16 +131,40 @@ class LoginRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ProfileScreen]
-class ProfileRoute extends PageRouteInfo<void> {
-  const ProfileRoute({List<PageRouteInfo>? children})
-      : super(
+class ProfileRoute extends PageRouteInfo<ProfileRouteArgs> {
+  ProfileRoute({
+    Key? key,
+    String? userId,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProfileRoute.name,
+          args: ProfileRouteArgs(
+            key: key,
+            userId: userId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ProfileRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ProfileRouteArgs> page =
+      PageInfo<ProfileRouteArgs>(name);
+}
+
+class ProfileRouteArgs {
+  const ProfileRouteArgs({
+    this.key,
+    this.userId,
+  });
+
+  final Key? key;
+
+  final String? userId;
+
+  @override
+  String toString() {
+    return 'ProfileRouteArgs{key: $key, userId: $userId}';
+  }
 }
 
 /// generated route for

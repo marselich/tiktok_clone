@@ -44,5 +44,10 @@ class AppRouter extends _$AppRouter {
           page: ProfileVideoPlayerRoute.page,
           path: "/profile-video-player",
         ),
+        CustomRoute(
+          page: ProfileRoute.page,
+          path: "/user-profile",
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        ),
       ];
 }

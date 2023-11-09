@@ -29,5 +29,6 @@
   "pleaseEnterDescription": "Please enter description",
   "videoUploaded": "Video uploaded",
   "editProfile": "Edit profile",
-  "tapToAddBio": "Tap to add bio"
+  "tapToAddBio": "Tap to add bio",
+  "follow": "Follow"
 }
