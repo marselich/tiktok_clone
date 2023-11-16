@@ -5,12 +5,15 @@ import 'package:tiktok_clone/repository/home/i_home_repository.dart';
 class HomeRepository implements IHomeRepository {
   @override
   Future<List<VideoModel>> getVideoListFromFirestore() async {
-    final querySnapshots =
-        await FirebaseFirestore.instance.collection("videos").get();
+    final querySnapshots = await FirebaseFirestore.instance
+        .collection("videos")
+        .orderBy("publishedDateTime", descending: true)
+        .get();
+
     final videoModelList = querySnapshots.docs
         .map((doc) => VideoModel.fromDocumentSnapshot(doc))
         .toList();
 
-    return videoModelList.reversed.toList();
+    return videoModelList;
   }
 }

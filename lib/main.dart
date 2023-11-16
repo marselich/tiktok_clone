@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:tiktok_clone/DI/tiktok_get_it.dart';
 import 'package:tiktok_clone/firebase_options.dart';
 import 'package:tiktok_clone/tiktok_app.dart';
+import 'package:tiktok_clone/ui/utils/shared_preferences_utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

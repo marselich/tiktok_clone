@@ -34,9 +34,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       final tabsRouter = AutoTabsRouter.of(context);
       tabsRouter
           .addListener(() => _cubit.loadingProfile(userId: widget.userId));
-    } else {
-      await _cubit.loadingProfile(userId: widget.userId);
     }
+    await _cubit.loadingProfile(userId: widget.userId);
   }
 
   bool _checkIsCurrentUser() {

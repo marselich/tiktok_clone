@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tiktok_clone/features/auth/cubit/auth_cubit.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
+import 'package:tiktok_clone/ui/utils/shared_preferences_utils.dart';
 import 'package:tiktok_clone/ui/utils/show_tiktok_snackbar.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/ui/constants/app_constants.dart';
@@ -36,8 +37,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (BuildContext context, AuthState state) {
             state.maybeWhen(
-              loaded: (userModel) {
+              loaded: (userModel) async {
                 AutoRouter.of(context).pop(userModel);
+                await SharedPreferencesUtils.saveUserId(userModel.id);
               },
               imageLoaded: (image) =>
                   showTikTokSnackBar(context, text: "Image loaded"),

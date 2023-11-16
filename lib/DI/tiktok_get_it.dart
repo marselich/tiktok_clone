@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/repository/auth/auth_repository.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
@@ -30,8 +31,12 @@ class TiktokGetIt {
       () => VideoPlayerRepository(),
     );
 
-    GetIt.I.registerSingletonAsync<UserModel>(() async {
-      return await FirebaseUtils.getCurrentUserModel() ?? UserModel();
+    // GetIt.I.registerSingletonAsync<UserModel>(() async {
+    //   return await FirebaseUtils.getCurrentUserModel() ?? UserModel();
+    // });
+
+    GetIt.I.registerSingletonAsync<SharedPreferences>(() async {
+      return await SharedPreferences.getInstance();
     });
 
     await GetIt.I.allReady();

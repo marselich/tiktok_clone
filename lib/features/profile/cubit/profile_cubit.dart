@@ -4,6 +4,7 @@ import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/repository/profile/i_profile_repository.dart';
+import 'package:tiktok_clone/ui/utils/shared_preferences_utils.dart';
 
 part 'profile_state.dart';
 part 'profile_cubit.freezed.dart';
@@ -41,20 +42,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     return _authRepository.getCurrentUserUid();
   }
 
-  // Future<void> checkLogin() async {
-  //   try {
-  //     emit(const ProfileState.loading(isLoading: true));
-  //     final userModel = await _authRepository.getUserInfo();
-  //     emit(ProfileState.loaded(userModel: userModel));
-  //   } on Exception catch (e) {
-  //     emit(ProfileState.loadingFailure(e.toString()));
-  //   }
-  // }
-
-  // Future<UserModel?> getUserInfo() async {
-  //   return await _authRepository.getUserInfo();
-  // }
-
   Future<void> getVideoModelList(UserModel userModel) async {
     try {
       List<String>? videoIdList = userModel.videosIdList.cast<String>();
@@ -74,6 +61,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> signOut() async {
     emit(const ProfileState.loading(isLoading: true));
+    await SharedPreferencesUtils.clearSharedPref();
     await _authRepository.signOutFromAccount();
     emit(const ProfileState.loaded());
   }

@@ -54,7 +54,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
               child: const Text("Following"),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: _onRefresh,
               child: const Text("For You"),
             ),
           ],

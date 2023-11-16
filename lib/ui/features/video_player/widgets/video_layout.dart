@@ -3,7 +3,6 @@ import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
 import 'package:tiktok_clone/router/app_router.dart';
@@ -29,7 +28,6 @@ class VideoLayout extends StatefulWidget {
 
 class _VideoLayoutState extends State<VideoLayout> {
   late FlickManager _flickManager;
-  late UserModel currentUser;
   late VideoPlayerCubit _cubit;
 
   @override
@@ -38,7 +36,6 @@ class _VideoLayoutState extends State<VideoLayout> {
     _cubit = VideoPlayerCubit(GetIt.I.get<IVideoPlayerRepository>());
     _cubit.init(widget.videoModel);
 
-    currentUser = GetIt.I.get<UserModel>();
     _flickManager = FlickManager(
       videoPlayerController: VideoPlayerController.networkUrl(
         Uri.parse(widget.videoModel.videoUrl),
