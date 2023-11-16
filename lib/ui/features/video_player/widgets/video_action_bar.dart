@@ -14,6 +14,8 @@ class VideoActionBar extends StatelessWidget {
     required this.totalComments,
     required this.totalShares,
     required this.userId,
+    required this.onLikeTap,
+    required this.isLikeTapped,
   });
 
   final String userId;
@@ -21,6 +23,8 @@ class VideoActionBar extends StatelessWidget {
   final int totalLikes;
   final int totalComments;
   final int totalShares;
+  final VoidCallback onLikeTap;
+  final bool isLikeTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -60,19 +64,22 @@ class VideoActionBar extends StatelessWidget {
             TiktokActionButton(
               iconData: FontAwesomeIcons.solidHeart,
               text: totalLikes.toString(),
-              onTap: () {},
+              onTap: onLikeTap,
+              isTapped: isLikeTapped,
             ),
             const SizedBox(height: 20),
             TiktokActionButton(
               iconData: FontAwesomeIcons.commentDots,
               text: totalComments.toString(),
               onTap: () {},
+              isTapped: false,
             ),
             const SizedBox(height: 20),
             TiktokActionButton(
               iconData: FontAwesomeIcons.share,
               text: totalShares.toString(),
               onTap: () {},
+              isTapped: false,
             ),
           ],
         ),

@@ -6,12 +6,14 @@ class TiktokActionButton extends StatelessWidget {
     super.key,
     required this.iconData,
     required this.text,
-    this.onTap,
+    required this.onTap,
+    required this.isTapped,
   });
 
   final IconData iconData;
   final String text;
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
+  final bool isTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +33,17 @@ class TiktokActionButton extends StatelessWidget {
                   color: Colors.black12,
                 ),
               ),
-              FaIcon(
-                iconData,
-                size: 36,
-                color: Colors.white,
-              ),
+              isTapped
+                  ? FaIcon(
+                      iconData,
+                      size: 36,
+                      color: theme.primaryColor,
+                    )
+                  : FaIcon(
+                      iconData,
+                      size: 36,
+                      color: Colors.white,
+                    ),
             ],
           ),
           const SizedBox(height: 5),

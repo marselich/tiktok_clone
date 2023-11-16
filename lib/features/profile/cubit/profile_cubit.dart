@@ -1,10 +1,9 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/repository/profile/i_profile_repository.dart';
-import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
 
 part 'profile_state.dart';
 part 'profile_cubit.freezed.dart';

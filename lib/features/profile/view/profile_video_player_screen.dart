@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
-import 'package:tiktok_clone/ui/features/video_player/video_layout.dart';
+import 'package:tiktok_clone/ui/features/video_player/widgets/video_layout.dart';
 
 @RoutePage()
 class ProfileVideoPlayerScreen extends StatefulWidget {
@@ -32,6 +32,16 @@ class _ProfileVideoPlayerScreenState extends State<ProfileVideoPlayerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+      ),
       body: PageView.builder(
         allowImplicitScrolling: true,
         scrollDirection: Axis.vertical,

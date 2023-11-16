@@ -78,10 +78,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UploadVideoScreen(),
       );
     },
-    VideoPlayerRoute.name: (routeData) {
+    VideoListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const VideoPlayerScreen(),
+        child: const VideoListScreen(),
       );
     },
   };
@@ -283,15 +283,15 @@ class UploadVideoRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [VideoPlayerScreen]
-class VideoPlayerRoute extends PageRouteInfo<void> {
-  const VideoPlayerRoute({List<PageRouteInfo>? children})
+/// [VideoListScreen]
+class VideoListRoute extends PageRouteInfo<void> {
+  const VideoListRoute({List<PageRouteInfo>? children})
       : super(
-          VideoPlayerRoute.name,
+          VideoListRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'VideoPlayerRoute';
+  static const String name = 'VideoListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

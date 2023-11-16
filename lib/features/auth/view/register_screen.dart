@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tiktok_clone/features/auth/cubit/auth_cubit.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
-import 'package:tiktok_clone/ui/utils/get_image_file_from_assets.dart';
 import 'package:tiktok_clone/ui/utils/show_tiktok_snackbar.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/ui/constants/app_constants.dart';

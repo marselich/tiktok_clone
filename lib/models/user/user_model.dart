@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tiktok_clone/models/video/video_model.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';

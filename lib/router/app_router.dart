@@ -6,7 +6,7 @@ import 'package:tiktok_clone/features/upload_video/cubit/upload_video_cubit.dart
 import 'package:tiktok_clone/features/upload_video/upload_video.dart';
 import 'package:tiktok_clone/features/home/home.dart';
 import 'package:tiktok_clone/features/profile/profile.dart';
-import 'package:tiktok_clone/features/video_player/video_player.dart';
+import 'package:tiktok_clone/features/video_list/view/view.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/features/auth/auth.dart';
 
@@ -20,7 +20,7 @@ class AppRouter extends _$AppRouter {
           page: HomeRoute.page,
           path: "/",
           children: [
-            AutoRoute(page: VideoPlayerRoute.page, path: "video-player"),
+            AutoRoute(page: VideoListRoute.page, path: "video-list"),
             AutoRoute(
               page: UploadVideoRoute.page,
               path: "upload-video",

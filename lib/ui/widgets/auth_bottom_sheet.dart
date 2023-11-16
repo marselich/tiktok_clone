@@ -26,7 +26,7 @@ class AuthBottomSheet extends StatelessWidget {
             ),
             TikTokOutlinedButton(
               onPressed: () {
-                AutoRouter.of(context).push(AuthRoute());
+                AutoRouter.of(context).push(const AuthRoute());
               },
               text: S.of(context).authWithEmail,
               icon: FontAwesomeIcons.user,

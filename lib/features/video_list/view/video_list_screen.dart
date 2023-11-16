@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tiktok_clone/features/video_player/cubit/video_player_cubit.dart';
+import 'package:tiktok_clone/features/video_list/cubit/video_list_cubit.dart';
 import 'package:tiktok_clone/repository/home/i_home_repository.dart';
-import 'package:tiktok_clone/ui/features/video_player/video_layout.dart';
+import 'package:tiktok_clone/ui/features/video_player/widgets/video_layout.dart';
 import 'package:tiktok_clone/ui/widgets/loading_container.dart';
 
 @RoutePage()
-class VideoPlayerScreen extends StatefulWidget {
-  const VideoPlayerScreen({super.key});
+class VideoListScreen extends StatefulWidget {
+  const VideoListScreen({super.key});
 
   @override
-  State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
+  State<VideoListScreen> createState() => _VideoListScreenState();
 }
 
-class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  final _cubit = VideoPlayerCubit(GetIt.I.get<IHomeRepository>());
+class _VideoListScreenState extends State<VideoListScreen> {
+  final _cubit = VideoListCubit(GetIt.I.get<IHomeRepository>());
 
   late PageController _pageController;
 
@@ -62,7 +62,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       ),
       body: BlocProvider(
         create: (context) => _cubit,
-        child: BlocBuilder<VideoPlayerCubit, VideoPlayerState>(
+        child: BlocBuilder<VideoListCubit, VideoListState>(
           bloc: _cubit,
           builder: (context, state) {
             return state.maybeWhen(

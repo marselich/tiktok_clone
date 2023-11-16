@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/router/app_router.dart';
@@ -16,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: [
-        const VideoPlayerRoute(),
+        const VideoListRoute(),
         const UploadVideoRoute(),
         ProfileRoute(),
       ],
@@ -34,6 +33,7 @@ class HomeScreen extends StatelessWidget {
               if (value == 1 && !FirebaseUtils.checkLoginAccount()) {
                 tabsRouter.setActiveIndex(2);
               } else if (value == 2) {
+                // ignore: invalid_use_of_visible_for_testing_member
                 tabsRouter.notifyListeners();
                 tabsRouter.setActiveIndex(value);
               } else {
