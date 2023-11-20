@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'profile_cubit.dart';
+part of 'auth_profile_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,17 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProfileState {
+mixin _$AuthProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(UserModel? userModel,
             List<VideoModel>? videoModelList, bool? isFollowing)
         loaded,
-    required TResult Function(UserModel? userModel, bool? isFollowing)
-        widgetLoaded,
     required TResult Function() loading,
-    required TResult Function() widgetLoading,
     required TResult Function(String? error) loadingFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,9 +32,7 @@ mixin _$ProfileState {
     TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult? Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult? Function()? loading,
-    TResult? Function()? widgetLoading,
     TResult? Function(String? error)? loadingFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -47,9 +42,7 @@ mixin _$ProfileState {
     TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult Function()? loading,
-    TResult Function()? widgetLoading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
   }) =>
@@ -58,9 +51,7 @@ mixin _$ProfileState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_WidgetLoaded value) widgetLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_WidgetLoading value) widgetLoading,
     required TResult Function(_LoadingFailure value) loadingFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,9 +59,7 @@ mixin _$ProfileState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_WidgetLoaded value)? widgetLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_WidgetLoading value)? widgetLoading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -78,9 +67,7 @@ mixin _$ProfileState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_WidgetLoaded value)? widgetLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_WidgetLoading value)? widgetLoading,
     TResult Function(_LoadingFailure value)? loadingFailure,
     required TResult orElse(),
   }) =>
@@ -88,16 +75,16 @@ mixin _$ProfileState {
 }
 
 /// @nodoc
-abstract class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(
-          ProfileState value, $Res Function(ProfileState) then) =
-      _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+abstract class $AuthProfileStateCopyWith<$Res> {
+  factory $AuthProfileStateCopyWith(
+          AuthProfileState value, $Res Function(AuthProfileState) then) =
+      _$AuthProfileStateCopyWithImpl<$Res, AuthProfileState>;
 }
 
 /// @nodoc
-class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
-    implements $ProfileStateCopyWith<$Res> {
-  _$ProfileStateCopyWithImpl(this._value, this._then);
+class _$AuthProfileStateCopyWithImpl<$Res, $Val extends AuthProfileState>
+    implements $AuthProfileStateCopyWith<$Res> {
+  _$AuthProfileStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -114,7 +101,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$AuthProfileStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -128,7 +115,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ProfileState.initial()';
+    return 'AuthProfileState.initial()';
   }
 
   @override
@@ -147,10 +134,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(UserModel? userModel,
             List<VideoModel>? videoModelList, bool? isFollowing)
         loaded,
-    required TResult Function(UserModel? userModel, bool? isFollowing)
-        widgetLoaded,
     required TResult Function() loading,
-    required TResult Function() widgetLoading,
     required TResult Function(String? error) loadingFailure,
   }) {
     return initial();
@@ -163,9 +147,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult? Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult? Function()? loading,
-    TResult? Function()? widgetLoading,
     TResult? Function(String? error)? loadingFailure,
   }) {
     return initial?.call();
@@ -178,9 +160,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult Function()? loading,
-    TResult Function()? widgetLoading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
   }) {
@@ -195,9 +175,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_WidgetLoaded value) widgetLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_WidgetLoading value) widgetLoading,
     required TResult Function(_LoadingFailure value) loadingFailure,
   }) {
     return initial(this);
@@ -208,9 +186,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_WidgetLoaded value)? widgetLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_WidgetLoading value)? widgetLoading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
   }) {
     return initial?.call(this);
@@ -221,9 +197,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_WidgetLoaded value)? widgetLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_WidgetLoading value)? widgetLoading,
     TResult Function(_LoadingFailure value)? loadingFailure,
     required TResult orElse(),
   }) {
@@ -234,7 +208,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements ProfileState {
+abstract class _Initial implements AuthProfileState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -248,13 +222,11 @@ abstract class _$$LoadedImplCopyWith<$Res> {
       {UserModel? userModel,
       List<VideoModel>? videoModelList,
       bool? isFollowing});
-
-  $UserModelCopyWith<$Res>? get userModel;
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$AuthProfileStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -281,18 +253,6 @@ class __$$LoadedImplCopyWithImpl<$Res>
           : isFollowing // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res>? get userModel {
-    if (_value.userModel == null) {
-      return null;
-    }
-
-    return $UserModelCopyWith<$Res>(_value.userModel!, (value) {
-      return _then(_value.copyWith(userModel: value));
-    });
   }
 }
 
@@ -322,7 +282,7 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   String toString() {
-    return 'ProfileState.loaded(userModel: $userModel, videoModelList: $videoModelList, isFollowing: $isFollowing)';
+    return 'AuthProfileState.loaded(userModel: $userModel, videoModelList: $videoModelList, isFollowing: $isFollowing)';
   }
 
   @override
@@ -330,8 +290,7 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.userModel, userModel) ||
-                other.userModel == userModel) &&
+            const DeepCollectionEquality().equals(other.userModel, userModel) &&
             const DeepCollectionEquality()
                 .equals(other._videoModelList, _videoModelList) &&
             (identical(other.isFollowing, isFollowing) ||
@@ -339,8 +298,11 @@ class _$LoadedImpl implements _Loaded {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userModel,
-      const DeepCollectionEquality().hash(_videoModelList), isFollowing);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(userModel),
+      const DeepCollectionEquality().hash(_videoModelList),
+      isFollowing);
 
   @JsonKey(ignore: true)
   @override
@@ -355,10 +317,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(UserModel? userModel,
             List<VideoModel>? videoModelList, bool? isFollowing)
         loaded,
-    required TResult Function(UserModel? userModel, bool? isFollowing)
-        widgetLoaded,
     required TResult Function() loading,
-    required TResult Function() widgetLoading,
     required TResult Function(String? error) loadingFailure,
   }) {
     return loaded(userModel, videoModelList, isFollowing);
@@ -371,9 +330,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult? Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult? Function()? loading,
-    TResult? Function()? widgetLoading,
     TResult? Function(String? error)? loadingFailure,
   }) {
     return loaded?.call(userModel, videoModelList, isFollowing);
@@ -386,9 +343,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult Function()? loading,
-    TResult Function()? widgetLoading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
   }) {
@@ -403,9 +358,7 @@ class _$LoadedImpl implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_WidgetLoaded value) widgetLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_WidgetLoading value) widgetLoading,
     required TResult Function(_LoadingFailure value) loadingFailure,
   }) {
     return loaded(this);
@@ -416,9 +369,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_WidgetLoaded value)? widgetLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_WidgetLoading value)? widgetLoading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
   }) {
     return loaded?.call(this);
@@ -429,9 +380,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_WidgetLoaded value)? widgetLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_WidgetLoading value)? widgetLoading,
     TResult Function(_LoadingFailure value)? loadingFailure,
     required TResult orElse(),
   }) {
@@ -442,7 +391,7 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements ProfileState {
+abstract class _Loaded implements AuthProfileState {
   const factory _Loaded(
       {final UserModel? userModel,
       final List<VideoModel>? videoModelList,
@@ -457,197 +406,6 @@ abstract class _Loaded implements ProfileState {
 }
 
 /// @nodoc
-abstract class _$$WidgetLoadedImplCopyWith<$Res> {
-  factory _$$WidgetLoadedImplCopyWith(
-          _$WidgetLoadedImpl value, $Res Function(_$WidgetLoadedImpl) then) =
-      __$$WidgetLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({UserModel? userModel, bool? isFollowing});
-
-  $UserModelCopyWith<$Res>? get userModel;
-}
-
-/// @nodoc
-class __$$WidgetLoadedImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$WidgetLoadedImpl>
-    implements _$$WidgetLoadedImplCopyWith<$Res> {
-  __$$WidgetLoadedImplCopyWithImpl(
-      _$WidgetLoadedImpl _value, $Res Function(_$WidgetLoadedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userModel = freezed,
-    Object? isFollowing = freezed,
-  }) {
-    return _then(_$WidgetLoadedImpl(
-      userModel: freezed == userModel
-          ? _value.userModel
-          : userModel // ignore: cast_nullable_to_non_nullable
-              as UserModel?,
-      isFollowing: freezed == isFollowing
-          ? _value.isFollowing
-          : isFollowing // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res>? get userModel {
-    if (_value.userModel == null) {
-      return null;
-    }
-
-    return $UserModelCopyWith<$Res>(_value.userModel!, (value) {
-      return _then(_value.copyWith(userModel: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$WidgetLoadedImpl implements _WidgetLoaded {
-  const _$WidgetLoadedImpl({this.userModel, this.isFollowing});
-
-  @override
-  final UserModel? userModel;
-  @override
-  final bool? isFollowing;
-
-  @override
-  String toString() {
-    return 'ProfileState.widgetLoaded(userModel: $userModel, isFollowing: $isFollowing)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WidgetLoadedImpl &&
-            (identical(other.userModel, userModel) ||
-                other.userModel == userModel) &&
-            (identical(other.isFollowing, isFollowing) ||
-                other.isFollowing == isFollowing));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, userModel, isFollowing);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$WidgetLoadedImplCopyWith<_$WidgetLoadedImpl> get copyWith =>
-      __$$WidgetLoadedImplCopyWithImpl<_$WidgetLoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(UserModel? userModel,
-            List<VideoModel>? videoModelList, bool? isFollowing)
-        loaded,
-    required TResult Function(UserModel? userModel, bool? isFollowing)
-        widgetLoaded,
-    required TResult Function() loading,
-    required TResult Function() widgetLoading,
-    required TResult Function(String? error) loadingFailure,
-  }) {
-    return widgetLoaded(userModel, isFollowing);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
-    TResult? Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
-    TResult? Function()? loading,
-    TResult? Function()? widgetLoading,
-    TResult? Function(String? error)? loadingFailure,
-  }) {
-    return widgetLoaded?.call(userModel, isFollowing);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
-    TResult Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
-    TResult Function()? loading,
-    TResult Function()? widgetLoading,
-    TResult Function(String? error)? loadingFailure,
-    required TResult orElse(),
-  }) {
-    if (widgetLoaded != null) {
-      return widgetLoaded(userModel, isFollowing);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_WidgetLoaded value) widgetLoaded,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_WidgetLoading value) widgetLoading,
-    required TResult Function(_LoadingFailure value) loadingFailure,
-  }) {
-    return widgetLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_WidgetLoaded value)? widgetLoaded,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_WidgetLoading value)? widgetLoading,
-    TResult? Function(_LoadingFailure value)? loadingFailure,
-  }) {
-    return widgetLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_WidgetLoaded value)? widgetLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WidgetLoading value)? widgetLoading,
-    TResult Function(_LoadingFailure value)? loadingFailure,
-    required TResult orElse(),
-  }) {
-    if (widgetLoaded != null) {
-      return widgetLoaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WidgetLoaded implements ProfileState {
-  const factory _WidgetLoaded(
-      {final UserModel? userModel,
-      final bool? isFollowing}) = _$WidgetLoadedImpl;
-
-  UserModel? get userModel;
-  bool? get isFollowing;
-  @JsonKey(ignore: true)
-  _$$WidgetLoadedImplCopyWith<_$WidgetLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
@@ -656,7 +414,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$AuthProfileStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -670,7 +428,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'ProfileState.loading()';
+    return 'AuthProfileState.loading()';
   }
 
   @override
@@ -689,10 +447,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(UserModel? userModel,
             List<VideoModel>? videoModelList, bool? isFollowing)
         loaded,
-    required TResult Function(UserModel? userModel, bool? isFollowing)
-        widgetLoaded,
     required TResult Function() loading,
-    required TResult Function() widgetLoading,
     required TResult Function(String? error) loadingFailure,
   }) {
     return loading();
@@ -705,9 +460,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult? Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult? Function()? loading,
-    TResult? Function()? widgetLoading,
     TResult? Function(String? error)? loadingFailure,
   }) {
     return loading?.call();
@@ -720,9 +473,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult Function()? loading,
-    TResult Function()? widgetLoading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
   }) {
@@ -737,9 +488,7 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_WidgetLoaded value) widgetLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_WidgetLoading value) widgetLoading,
     required TResult Function(_LoadingFailure value) loadingFailure,
   }) {
     return loading(this);
@@ -750,9 +499,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_WidgetLoaded value)? widgetLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_WidgetLoading value)? widgetLoading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
   }) {
     return loading?.call(this);
@@ -763,9 +510,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_WidgetLoaded value)? widgetLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_WidgetLoading value)? widgetLoading,
     TResult Function(_LoadingFailure value)? loadingFailure,
     required TResult orElse(),
   }) {
@@ -776,141 +521,8 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements ProfileState {
+abstract class _Loading implements AuthProfileState {
   const factory _Loading() = _$LoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$WidgetLoadingImplCopyWith<$Res> {
-  factory _$$WidgetLoadingImplCopyWith(
-          _$WidgetLoadingImpl value, $Res Function(_$WidgetLoadingImpl) then) =
-      __$$WidgetLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$WidgetLoadingImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$WidgetLoadingImpl>
-    implements _$$WidgetLoadingImplCopyWith<$Res> {
-  __$$WidgetLoadingImplCopyWithImpl(
-      _$WidgetLoadingImpl _value, $Res Function(_$WidgetLoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$WidgetLoadingImpl implements _WidgetLoading {
-  const _$WidgetLoadingImpl();
-
-  @override
-  String toString() {
-    return 'ProfileState.widgetLoading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WidgetLoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(UserModel? userModel,
-            List<VideoModel>? videoModelList, bool? isFollowing)
-        loaded,
-    required TResult Function(UserModel? userModel, bool? isFollowing)
-        widgetLoaded,
-    required TResult Function() loading,
-    required TResult Function() widgetLoading,
-    required TResult Function(String? error) loadingFailure,
-  }) {
-    return widgetLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
-    TResult? Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
-    TResult? Function()? loading,
-    TResult? Function()? widgetLoading,
-    TResult? Function(String? error)? loadingFailure,
-  }) {
-    return widgetLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
-    TResult Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
-    TResult Function()? loading,
-    TResult Function()? widgetLoading,
-    TResult Function(String? error)? loadingFailure,
-    required TResult orElse(),
-  }) {
-    if (widgetLoading != null) {
-      return widgetLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_WidgetLoaded value) widgetLoaded,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_WidgetLoading value) widgetLoading,
-    required TResult Function(_LoadingFailure value) loadingFailure,
-  }) {
-    return widgetLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_WidgetLoaded value)? widgetLoaded,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_WidgetLoading value)? widgetLoading,
-    TResult? Function(_LoadingFailure value)? loadingFailure,
-  }) {
-    return widgetLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_WidgetLoaded value)? widgetLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WidgetLoading value)? widgetLoading,
-    TResult Function(_LoadingFailure value)? loadingFailure,
-    required TResult orElse(),
-  }) {
-    if (widgetLoading != null) {
-      return widgetLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WidgetLoading implements ProfileState {
-  const factory _WidgetLoading() = _$WidgetLoadingImpl;
 }
 
 /// @nodoc
@@ -924,7 +536,7 @@ abstract class _$$LoadingFailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingFailureImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$LoadingFailureImpl>
+    extends _$AuthProfileStateCopyWithImpl<$Res, _$LoadingFailureImpl>
     implements _$$LoadingFailureImplCopyWith<$Res> {
   __$$LoadingFailureImplCopyWithImpl(
       _$LoadingFailureImpl _value, $Res Function(_$LoadingFailureImpl) _then)
@@ -954,7 +566,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
 
   @override
   String toString() {
-    return 'ProfileState.loadingFailure(error: $error)';
+    return 'AuthProfileState.loadingFailure(error: $error)';
   }
 
   @override
@@ -982,10 +594,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
     required TResult Function(UserModel? userModel,
             List<VideoModel>? videoModelList, bool? isFollowing)
         loaded,
-    required TResult Function(UserModel? userModel, bool? isFollowing)
-        widgetLoaded,
     required TResult Function() loading,
-    required TResult Function() widgetLoading,
     required TResult Function(String? error) loadingFailure,
   }) {
     return loadingFailure(error);
@@ -998,9 +607,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
     TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult? Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult? Function()? loading,
-    TResult? Function()? widgetLoading,
     TResult? Function(String? error)? loadingFailure,
   }) {
     return loadingFailure?.call(error);
@@ -1013,9 +620,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
     TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
             bool? isFollowing)?
         loaded,
-    TResult Function(UserModel? userModel, bool? isFollowing)? widgetLoaded,
     TResult Function()? loading,
-    TResult Function()? widgetLoading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
   }) {
@@ -1030,9 +635,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_WidgetLoaded value) widgetLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_WidgetLoading value) widgetLoading,
     required TResult Function(_LoadingFailure value) loadingFailure,
   }) {
     return loadingFailure(this);
@@ -1043,9 +646,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_WidgetLoaded value)? widgetLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_WidgetLoading value)? widgetLoading,
     TResult? Function(_LoadingFailure value)? loadingFailure,
   }) {
     return loadingFailure?.call(this);
@@ -1056,9 +657,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_WidgetLoaded value)? widgetLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_WidgetLoading value)? widgetLoading,
     TResult Function(_LoadingFailure value)? loadingFailure,
     required TResult orElse(),
   }) {
@@ -1069,7 +668,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   }
 }
 
-abstract class _LoadingFailure implements ProfileState {
+abstract class _LoadingFailure implements AuthProfileState {
   const factory _LoadingFailure(final String? error) = _$LoadingFailureImpl;
 
   String? get error;

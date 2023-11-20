@@ -20,6 +20,8 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       videosIdList: json['videosIdList'] as List<dynamic>? ?? const [],
       favoriteVideosIdList:
           json['favoriteVideosIdList'] as List<dynamic>? ?? const [],
+      folowersList: json['folowersList'] as List<dynamic>? ?? const [],
+      folowingList: json['folowingList'] as List<dynamic>? ?? const [],
       youtubeLink: json['youtubeLink'] as String? ?? "",
     );
 
@@ -36,5 +38,7 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'totalLikes': instance.totalLikes,
       'videosIdList': instance.videosIdList,
       'favoriteVideosIdList': instance.favoriteVideosIdList,
+      'folowersList': instance.folowersList,
+      'folowingList': instance.folowingList,
       'youtubeLink': instance.youtubeLink,
     };

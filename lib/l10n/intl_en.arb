@@ -30,5 +30,6 @@
   "videoUploaded": "Video uploaded",
   "editProfile": "Edit profile",
   "tapToAddBio": "Tap to add bio",
-  "follow": "Follow"
+  "follow": "Follow",
+  "unfollow": "Unfollow"
 }

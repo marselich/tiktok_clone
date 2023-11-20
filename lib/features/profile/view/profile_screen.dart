@@ -8,7 +8,7 @@ import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/features/profile/widgets/widgets.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/repository/profile/i_profile_repository.dart';
-import 'package:tiktok_clone/ui/features/profile/auth_profile.dart';
+import 'package:tiktok_clone/ui/features/auth_profile/widgets/auth_profile.dart';
 import 'package:tiktok_clone/ui/widgets/loading_container.dart';
 
 @RoutePage()
@@ -53,19 +53,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return BlocProvider(
         create: (context) => _cubit,
         child: BlocBuilder<ProfileCubit, ProfileState>(
-          bloc: _cubit,
           builder: (context, state) {
             return state.maybeWhen(
-              loaded: (userModel, videoModelList) =>
+              loaded: (userModel, videoModelList, isFollowing) =>
                   //FirebaseUtils.checkLoginAccount()
                   userModel != null
                       ? AuthProfile(
                           isCurrentUser: _checkIsCurrentUser(),
                           userModel: userModel,
                           videoModelList: videoModelList,
+                          isFollowing: isFollowing!,
                         )
                       : const NotAuthProfile(),
-              loading: (isLoading) => const LoadingContainer(),
+              loading: () => const LoadingContainer(),
               orElse: () => Container(),
             );
           },

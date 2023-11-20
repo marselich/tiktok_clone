@@ -17,18 +17,19 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> loadingProfile({String? userId}) async {
     try {
-      emit(const ProfileState.loading(isLoading: true));
+      emit(const ProfileState.loading());
       final userModel = await _authRepository.getUserInfo(userId);
 
-      List<String>? videoIdList = userModel?.videosIdList.cast<String>();
+      final isFollowing = userModel != null
+          ? userModel.folowersList.contains(SharedPreferencesUtils.getUserId())
+          : false;
 
-      final videoModelList = await _profileRepository.getVideoModelList(
-        videoIdList ?? [],
-      );
+      final videoModelList = await _getVideoModelList(userModel);
 
       emit(ProfileState.loaded(
         userModel: userModel,
         videoModelList: videoModelList,
+        isFollowing: isFollowing,
       ));
     } on Exception catch (e) {
       emit(ProfileState.loadingFailure(e.toString()));
@@ -42,25 +43,16 @@ class ProfileCubit extends Cubit<ProfileState> {
     return _authRepository.getCurrentUserUid();
   }
 
-  Future<void> getVideoModelList(UserModel userModel) async {
-    try {
-      List<String>? videoIdList = userModel.videosIdList.cast<String>();
+  Future<List<VideoModel>> _getVideoModelList(UserModel? userModel) async {
+    List<String>? videoIdList = userModel?.videosIdList.cast<String>();
 
-      final videoModelList = await _profileRepository.getVideoModelList(
-        videoIdList,
-      );
-
-      emit(ProfileState.loaded(
-        userModel: userModel,
-        videoModelList: videoModelList,
-      ));
-    } on Exception catch (e) {
-      emit(ProfileState.loadingFailure(e.toString()));
-    }
+    return await _profileRepository.getVideoModelList(
+      videoIdList ?? [],
+    );
   }
 
   Future<void> signOut() async {
-    emit(const ProfileState.loading(isLoading: true));
+    emit(const ProfileState.loading());
     await SharedPreferencesUtils.clearSharedPref();
     await _authRepository.signOutFromAccount();
     emit(const ProfileState.loaded());

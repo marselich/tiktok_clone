@@ -65,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tapToAddBio": MessageLookupByLibrary.simpleMessage("Tap to add bio"),
         "uncorrectEmail":
             MessageLookupByLibrary.simpleMessage("Uncorrect email"),
+        "unfollow": MessageLookupByLibrary.simpleMessage("Unfollow"),
         "uploadNow": MessageLookupByLibrary.simpleMessage("Upload Now"),
         "uploadVideo": MessageLookupByLibrary.simpleMessage("Upload video"),
         "videoUploaded": MessageLookupByLibrary.simpleMessage("Video uploaded")

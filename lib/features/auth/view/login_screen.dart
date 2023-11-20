@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tiktok_clone/features/auth/cubit/auth_cubit.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';

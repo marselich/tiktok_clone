@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TikTokOutlinedButton extends StatelessWidget {
-  const TikTokOutlinedButton(
-      {super.key, required this.onPressed, required this.text, this.icon});
+  const TikTokOutlinedButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    this.icon,
+  });
 
   final VoidCallback onPressed;
   final String text;
