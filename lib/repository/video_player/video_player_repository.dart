@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:tiktok_clone/models/comment/comment_model.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
 import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
 import 'package:tiktok_clone/ui/utils/shared_preferences_utils.dart';
+import 'package:uuid/uuid.dart';
 
 class VideoPlayerRepository implements IVideoPlayerRepository {
   @override
@@ -90,5 +92,36 @@ class VideoPlayerRepository implements IVideoPlayerRepository {
             .toJson(),
       );
     }
+  }
+
+  @override
+  Future<void> addCommentToFirestore(
+      VideoModel videoModel, String message) async {
+    final userModel = await FirebaseUtils.getCurrentUserModel();
+    if (userModel == null) {
+      return;
+    }
+
+    final videoDoc =
+        FirebaseFirestore.instance.collection("videos").doc(videoModel.videoId);
+
+    final collectionComments = videoDoc.collection("comments");
+
+    String commentId = const Uuid().v4();
+
+    final comment = CommentModel(
+      id: commentId,
+      userId: userModel.id,
+      name: userModel.name,
+      imageUrl: userModel.image,
+      message: message,
+      totalLikes: 0,
+      publishedDateTime: DateTime.now().millisecondsSinceEpoch,
+    );
+
+    await collectionComments.add(comment.toJson());
+    await videoDoc.update(videoModel
+        .copyWith(totalComments: videoModel.totalComments + 1)
+        .toJson());
   }
 }

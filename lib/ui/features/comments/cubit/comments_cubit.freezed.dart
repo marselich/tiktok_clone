@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_profile_cubit.dart';
+part of 'comments_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,13 +15,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$AuthProfileState {
+mixin _$CommentsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel,
-            List<VideoModel>? videoModelList, bool? isFollowing)
-        loaded,
+    required TResult Function(List<CommentModel> commentList) loaded,
     required TResult Function() loading,
     required TResult Function(String? error) loadingFailure,
   }) =>
@@ -29,9 +27,7 @@ mixin _$AuthProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult? Function(List<CommentModel> commentList)? loaded,
     TResult? Function()? loading,
     TResult? Function(String? error)? loadingFailure,
   }) =>
@@ -39,9 +35,7 @@ mixin _$AuthProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult Function(List<CommentModel> commentList)? loaded,
     TResult Function()? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -75,16 +69,16 @@ mixin _$AuthProfileState {
 }
 
 /// @nodoc
-abstract class $AuthProfileStateCopyWith<$Res> {
-  factory $AuthProfileStateCopyWith(
-          AuthProfileState value, $Res Function(AuthProfileState) then) =
-      _$AuthProfileStateCopyWithImpl<$Res, AuthProfileState>;
+abstract class $CommentsStateCopyWith<$Res> {
+  factory $CommentsStateCopyWith(
+          CommentsState value, $Res Function(CommentsState) then) =
+      _$CommentsStateCopyWithImpl<$Res, CommentsState>;
 }
 
 /// @nodoc
-class _$AuthProfileStateCopyWithImpl<$Res, $Val extends AuthProfileState>
-    implements $AuthProfileStateCopyWith<$Res> {
-  _$AuthProfileStateCopyWithImpl(this._value, this._then);
+class _$CommentsStateCopyWithImpl<$Res, $Val extends CommentsState>
+    implements $CommentsStateCopyWith<$Res> {
+  _$CommentsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -101,7 +95,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$AuthProfileStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$CommentsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -115,7 +109,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'AuthProfileState.initial()';
+    return 'CommentsState.initial()';
   }
 
   @override
@@ -131,9 +125,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel,
-            List<VideoModel>? videoModelList, bool? isFollowing)
-        loaded,
+    required TResult Function(List<CommentModel> commentList) loaded,
     required TResult Function() loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -144,9 +136,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult? Function(List<CommentModel> commentList)? loaded,
     TResult? Function()? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -157,9 +147,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult Function(List<CommentModel> commentList)? loaded,
     TResult Function()? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -208,7 +196,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements AuthProfileState {
+abstract class _Initial implements CommentsState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -218,17 +206,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {UserModel? userModel,
-      List<VideoModel>? videoModelList,
-      bool? isFollowing});
-
-  $UserModelCopyWith<$Res>? get userModel;
+  $Res call({List<CommentModel> commentList});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$AuthProfileStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$CommentsStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -237,66 +220,34 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userModel = freezed,
-    Object? videoModelList = freezed,
-    Object? isFollowing = freezed,
+    Object? commentList = null,
   }) {
     return _then(_$LoadedImpl(
-      userModel: freezed == userModel
-          ? _value.userModel
-          : userModel // ignore: cast_nullable_to_non_nullable
-              as UserModel?,
-      videoModelList: freezed == videoModelList
-          ? _value._videoModelList
-          : videoModelList // ignore: cast_nullable_to_non_nullable
-              as List<VideoModel>?,
-      isFollowing: freezed == isFollowing
-          ? _value.isFollowing
-          : isFollowing // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      commentList: null == commentList
+          ? _value._commentList
+          : commentList // ignore: cast_nullable_to_non_nullable
+              as List<CommentModel>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res>? get userModel {
-    if (_value.userModel == null) {
-      return null;
-    }
-
-    return $UserModelCopyWith<$Res>(_value.userModel!, (value) {
-      return _then(_value.copyWith(userModel: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(
-      {this.userModel,
-      final List<VideoModel>? videoModelList,
-      this.isFollowing})
-      : _videoModelList = videoModelList;
+  const _$LoadedImpl({required final List<CommentModel> commentList})
+      : _commentList = commentList;
 
+  final List<CommentModel> _commentList;
   @override
-  final UserModel? userModel;
-  final List<VideoModel>? _videoModelList;
-  @override
-  List<VideoModel>? get videoModelList {
-    final value = _videoModelList;
-    if (value == null) return null;
-    if (_videoModelList is EqualUnmodifiableListView) return _videoModelList;
+  List<CommentModel> get commentList {
+    if (_commentList is EqualUnmodifiableListView) return _commentList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_commentList);
   }
 
   @override
-  final bool? isFollowing;
-
-  @override
   String toString() {
-    return 'AuthProfileState.loaded(userModel: $userModel, videoModelList: $videoModelList, isFollowing: $isFollowing)';
+    return 'CommentsState.loaded(commentList: $commentList)';
   }
 
   @override
@@ -304,17 +255,13 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.userModel, userModel) ||
-                other.userModel == userModel) &&
             const DeepCollectionEquality()
-                .equals(other._videoModelList, _videoModelList) &&
-            (identical(other.isFollowing, isFollowing) ||
-                other.isFollowing == isFollowing));
+                .equals(other._commentList, _commentList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userModel,
-      const DeepCollectionEquality().hash(_videoModelList), isFollowing);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_commentList));
 
   @JsonKey(ignore: true)
   @override
@@ -326,41 +273,35 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel,
-            List<VideoModel>? videoModelList, bool? isFollowing)
-        loaded,
+    required TResult Function(List<CommentModel> commentList) loaded,
     required TResult Function() loading,
     required TResult Function(String? error) loadingFailure,
   }) {
-    return loaded(userModel, videoModelList, isFollowing);
+    return loaded(commentList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult? Function(List<CommentModel> commentList)? loaded,
     TResult? Function()? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
-    return loaded?.call(userModel, videoModelList, isFollowing);
+    return loaded?.call(commentList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult Function(List<CommentModel> commentList)? loaded,
     TResult Function()? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(userModel, videoModelList, isFollowing);
+      return loaded(commentList);
     }
     return orElse();
   }
@@ -403,15 +344,11 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements AuthProfileState {
-  const factory _Loaded(
-      {final UserModel? userModel,
-      final List<VideoModel>? videoModelList,
-      final bool? isFollowing}) = _$LoadedImpl;
+abstract class _Loaded implements CommentsState {
+  const factory _Loaded({required final List<CommentModel> commentList}) =
+      _$LoadedImpl;
 
-  UserModel? get userModel;
-  List<VideoModel>? get videoModelList;
-  bool? get isFollowing;
+  List<CommentModel> get commentList;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -426,7 +363,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$AuthProfileStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$CommentsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -440,7 +377,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'AuthProfileState.loading()';
+    return 'CommentsState.loading()';
   }
 
   @override
@@ -456,9 +393,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel,
-            List<VideoModel>? videoModelList, bool? isFollowing)
-        loaded,
+    required TResult Function(List<CommentModel> commentList) loaded,
     required TResult Function() loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -469,9 +404,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult? Function(List<CommentModel> commentList)? loaded,
     TResult? Function()? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -482,9 +415,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult Function(List<CommentModel> commentList)? loaded,
     TResult Function()? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -533,7 +464,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AuthProfileState {
+abstract class _Loading implements CommentsState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -548,7 +479,7 @@ abstract class _$$LoadingFailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingFailureImplCopyWithImpl<$Res>
-    extends _$AuthProfileStateCopyWithImpl<$Res, _$LoadingFailureImpl>
+    extends _$CommentsStateCopyWithImpl<$Res, _$LoadingFailureImpl>
     implements _$$LoadingFailureImplCopyWith<$Res> {
   __$$LoadingFailureImplCopyWithImpl(
       _$LoadingFailureImpl _value, $Res Function(_$LoadingFailureImpl) _then)
@@ -578,7 +509,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
 
   @override
   String toString() {
-    return 'AuthProfileState.loadingFailure(error: $error)';
+    return 'CommentsState.loadingFailure(error: $error)';
   }
 
   @override
@@ -603,9 +534,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserModel? userModel,
-            List<VideoModel>? videoModelList, bool? isFollowing)
-        loaded,
+    required TResult Function(List<CommentModel> commentList) loaded,
     required TResult Function() loading,
     required TResult Function(String? error) loadingFailure,
   }) {
@@ -616,9 +545,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult? Function(List<CommentModel> commentList)? loaded,
     TResult? Function()? loading,
     TResult? Function(String? error)? loadingFailure,
   }) {
@@ -629,9 +556,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserModel? userModel, List<VideoModel>? videoModelList,
-            bool? isFollowing)?
-        loaded,
+    TResult Function(List<CommentModel> commentList)? loaded,
     TResult Function()? loading,
     TResult Function(String? error)? loadingFailure,
     required TResult orElse(),
@@ -680,7 +605,7 @@ class _$LoadingFailureImpl implements _LoadingFailure {
   }
 }
 
-abstract class _LoadingFailure implements AuthProfileState {
+abstract class _LoadingFailure implements CommentsState {
   const factory _LoadingFailure(final String? error) = _$LoadingFailureImpl;
 
   String? get error;

@@ -55,91 +55,94 @@ class _UploadVideoFormScreenState extends State<UploadVideoFormScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: BlocListener<UploadVideoCubit, UploadVideoState>(
-        bloc: widget.cubit,
-        listener: (context, state) {
-          state.maybeWhen(
-            loaded: () {
-              AutoRouter.of(context).popUntilRoot();
-              showTikTokSnackBar(context, text: S.of(context).videoUploaded);
-            },
-            loading: (isLoading) => isLoading
-                ? showLoaderDialog(context)
-                : AutoRouter.of(context).pop(),
-            loadingFailure: (error) =>
-                showTikTokSnackBar(context, text: error.toString()),
-            orElse: () {},
-          );
-        },
-        child: SingleChildScrollView(
-          child: Column(
-            //alignment: Alignment.bottomCenter,
-            children: [
-              FlickVideoPlayer(flickManager: flickManager),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextFormField(
-                          onChanged: (value) => artistSongName = value,
-                          style: const TextStyle(
-                            color: Colors.white,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: BlocListener<UploadVideoCubit, UploadVideoState>(
+          bloc: widget.cubit,
+          listener: (context, state) {
+            state.maybeWhen(
+              loaded: () {
+                AutoRouter.of(context).popUntilRoot();
+                showTikTokSnackBar(context, text: S.of(context).videoUploaded);
+              },
+              loading: (isLoading) => isLoading
+                  ? showLoaderDialog(context)
+                  : AutoRouter.of(context).pop(),
+              loadingFailure: (error) =>
+                  showTikTokSnackBar(context, text: error.toString()),
+              orElse: () {},
+            );
+          },
+          child: SingleChildScrollView(
+            physics: const ClampingScrollPhysics(),
+            child: Column(
+              //alignment: Alignment.bottomCenter,
+              children: [
+                FlickVideoPlayer(flickManager: flickManager),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          TextFormField(
+                            onChanged: (value) => artistSongName = value,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                              labelText: S.of(context).artistSong,
+                              icon: const FaIcon(FontAwesomeIcons.music),
+                              iconColor: theme.primaryColor,
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return S.of(context).pleaseEnterSongName;
+                              }
+                              return null;
+                            },
                           ),
-                          decoration: InputDecoration(
-                            labelText: S.of(context).artistSong,
-                            icon: const FaIcon(FontAwesomeIcons.music),
-                            iconColor: theme.primaryColor,
+                          TextFormField(
+                            onChanged: (value) => descriptionTags = value,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                              labelText: S.of(context).descrptionTags,
+                              icon: const FaIcon(FontAwesomeIcons.tags),
+                              iconColor: theme.primaryColor,
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return S.of(context).pleaseEnterDescription;
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return S.of(context).pleaseEnterSongName;
-                            }
-                            return null;
-                          },
-                        ),
-                        TextFormField(
-                          onChanged: (value) => descriptionTags = value,
-                          style: const TextStyle(
-                            color: Colors.white,
+                          const SizedBox(height: 24),
+                          FilledButton(
+                            child: Text(S.of(context).uploadNow),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                widget.cubit.uploadVideoInformation(
+                                  artistSongName: artistSongName,
+                                  descriptionTags: descriptionTags,
+                                  videoFilePath: widget.videoFile.path,
+                                );
+                              }
+                            },
                           ),
-                          decoration: InputDecoration(
-                            labelText: S.of(context).descrptionTags,
-                            icon: const FaIcon(FontAwesomeIcons.tags),
-                            iconColor: theme.primaryColor,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return S.of(context).pleaseEnterDescription;
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 24),
-                        FilledButton(
-                          child: Text(S.of(context).uploadNow),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              widget.cubit.uploadVideoInformation(
-                                artistSongName: artistSongName,
-                                descriptionTags: descriptionTags,
-                                videoFilePath: widget.videoFile.path,
-                              );
-                            }
-                          },
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/repository/auth/auth_repository.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/repository/home/home_repository.dart';
@@ -11,7 +10,6 @@ import 'package:tiktok_clone/repository/upload_video/i_upload_video_repository.d
 import 'package:tiktok_clone/repository/upload_video/upload_video_repository.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
 import 'package:tiktok_clone/repository/video_player/video_player_repository.dart';
-import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
 
 class TiktokGetIt {
   static Future<void> init() async {

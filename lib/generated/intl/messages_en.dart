@@ -20,13 +20,17 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(commentsCount) => "${commentsCount} comments";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addComment": MessageLookupByLibrary.simpleMessage("Add comment..."),
         "artistSong": MessageLookupByLibrary.simpleMessage("Artist - Song"),
         "auth": MessageLookupByLibrary.simpleMessage("Auth"),
         "authInTiktok": MessageLookupByLibrary.simpleMessage("Auth in TikTok"),
         "authWithEmail":
             MessageLookupByLibrary.simpleMessage("Auth with Email"),
+        "comments": m0,
         "descrptionTags":
             MessageLookupByLibrary.simpleMessage("Descrption - Tags"),
         "dontHaveAnAccountYet":
@@ -41,6 +45,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "likes": MessageLookupByLibrary.simpleMessage("Likes"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "noCommentsYet":
+            MessageLookupByLibrary.simpleMessage("No comments yet"),
+        "noVideos": MessageLookupByLibrary.simpleMessage("No Videos"),
         "passwordMismatch":
             MessageLookupByLibrary.simpleMessage("Password mismatch"),
         "passwordMustContain6OrMoreCharacters":
@@ -68,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "unfollow": MessageLookupByLibrary.simpleMessage("Unfollow"),
         "uploadNow": MessageLookupByLibrary.simpleMessage("Upload Now"),
         "uploadVideo": MessageLookupByLibrary.simpleMessage("Upload video"),
+        "valueCantBeEmpty":
+            MessageLookupByLibrary.simpleMessage("Value Can\'t Be Empty"),
         "videoUploaded": MessageLookupByLibrary.simpleMessage("Video uploaded")
       };
 }

@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
           backgroundColor: Colors.black,
+          resizeToAvoidBottomInset: false,
           body: child,
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
               if (value == 1 && !FirebaseUtils.checkLoginAccount()) {
                 tabsRouter.setActiveIndex(2);
               } else if (value == 2) {
-                // ignore: invalid_use_of_visible_for_testing_member
+                // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
                 tabsRouter.notifyListeners();
                 tabsRouter.setActiveIndex(value);
               } else {

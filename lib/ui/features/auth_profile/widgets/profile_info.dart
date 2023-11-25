@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/ui/features/auth_profile/cubit/auth_profile_cubit.dart';
 import 'package:tiktok_clone/ui/ui.dart';
 import 'package:tiktok_clone/ui/widgets/loading_container.dart';
+import 'package:tiktok_clone/ui/widgets/user_circle_avatar.dart';
 
 import 'statistic_column.dart';
 
@@ -31,23 +31,10 @@ class ProfileInfo extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          CircleAvatar(
+          UserCircleAvatar(
+            image: userModel!.image,
+            size: 100,
             radius: 50,
-            child: ClipOval(
-              child: userModel!.image == ""
-                  ? Image.asset(
-                      "assets/image/default_avatar.jpg",
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    )
-                  : CachedNetworkImage(
-                      imageUrl: userModel!.image.toString(),
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-            ),
           ),
           const SizedBox(height: 10),
           Text(

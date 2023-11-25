@@ -7,4 +7,5 @@ abstract class IVideoPlayerRepository {
     required bool isVideoLiked,
   });
   bool isVideoLiked(UserModel userModel, String videoId);
+  Future<void> addCommentToFirestore(VideoModel videoModel, String message);
 }

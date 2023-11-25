@@ -379,6 +379,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Add comment...`
+  String get addComment {
+    return Intl.message(
+      'Add comment...',
+      name: 'addComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{commentsCount} comments`
+  String comments(Object commentsCount) {
+    return Intl.message(
+      '$commentsCount comments',
+      name: 'comments',
+      desc: '',
+      args: [commentsCount],
+    );
+  }
+
+  /// `No Videos`
+  String get noVideos {
+    return Intl.message(
+      'No Videos',
+      name: 'noVideos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No comments yet`
+  String get noCommentsYet {
+    return Intl.message(
+      'No comments yet',
+      name: 'noCommentsYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Value Can't Be Empty`
+  String get valueCantBeEmpty {
+    return Intl.message(
+      'Value Can\'t Be Empty',
+      name: 'valueCantBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

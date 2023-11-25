@@ -1,12 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tiktok_clone/features/video_list/cubit/video_list_cubit.dart';
+import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/repository/home/i_home_repository.dart';
 import 'package:tiktok_clone/ui/features/video_player/widgets/video_layout.dart';
 import 'package:tiktok_clone/ui/widgets/loading_container.dart';
+import 'package:tiktok_clone/ui/widgets/no_content_container.dart';
 
 @RoutePage()
 class VideoListScreen extends StatefulWidget {
@@ -43,9 +46,11 @@ class _VideoListScreenState extends State<VideoListScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.transparent,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -82,22 +87,8 @@ class _VideoListScreenState extends State<VideoListScreen> {
                           },
                           itemCount: videoModelList.length,
                         )
-                      : Center(
-                          child: Column(
-                            children: [
-                              const FaIcon(
-                                FontAwesomeIcons.faceSadTear,
-                                size: 100,
-                              ),
-                              const SizedBox(height: 20),
-                              Text(
-                                "No Videos",
-                                style: theme.textTheme.bodyLarge?.copyWith(
-                                  color: theme.primaryColor,
-                                ),
-                              ),
-                            ],
-                          ),
+                      : NoContentContainer(
+                          noContentText: S.of(context).noVideos,
                         ),
                 );
               },

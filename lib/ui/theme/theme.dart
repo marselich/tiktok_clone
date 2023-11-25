@@ -9,6 +9,8 @@ final themeData = ThemeData(
   ),
   bottomSheetTheme: const BottomSheetThemeData(
     backgroundColor: Colors.white,
+    modalBackgroundColor: Color.fromARGB(255, 245, 245, 244),
+    surfaceTintColor: Colors.transparent,
   ),
   dialogBackgroundColor: Colors.white,
   dialogTheme: const DialogTheme(
@@ -48,16 +50,24 @@ final themeData = ThemeData(
       ),
     ),
   ),
-  textTheme: const TextTheme(
-    labelLarge: TextStyle(
+  textTheme: TextTheme(
+    labelLarge: const TextStyle(
       color: Colors.white,
       fontSize: 13,
       fontWeight: FontWeight.w600,
     ),
-    bodyLarge: TextStyle(
+    bodyLarge: const TextStyle(
       color: Colors.black,
       fontSize: 16,
       fontWeight: FontWeight.w600,
+    ),
+    titleSmall: TextStyle(
+      color: Colors.black.withOpacity(0.3),
+      fontWeight: FontWeight.w600,
+    ),
+    titleMedium: const TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w500,
     ),
   ),
 );

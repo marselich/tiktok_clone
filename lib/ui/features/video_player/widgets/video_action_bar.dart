@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/router/app_router.dart';
+import 'package:tiktok_clone/ui/widgets/user_circle_avatar.dart';
 
 import 'tiktok_action_button.dart';
 
@@ -16,6 +17,7 @@ class VideoActionBar extends StatelessWidget {
     required this.userId,
     required this.onLikeTap,
     required this.isLikeTapped,
+    required this.onCommentTap,
   });
 
   final String userId;
@@ -25,6 +27,7 @@ class VideoActionBar extends StatelessWidget {
   final int totalShares;
   final VoidCallback onLikeTap;
   final bool isLikeTapped;
+  final VoidCallback onCommentTap;
 
   @override
   Widget build(BuildContext context) {
@@ -40,24 +43,11 @@ class VideoActionBar extends StatelessWidget {
               onTap: () {
                 AutoRouter.of(context).push(ProfileRoute(userId: userId));
               },
-              child: CircleAvatar(
+              child: UserCircleAvatar(
+                image: userProfileImage,
                 radius: 27,
+                size: 50,
                 backgroundColor: Colors.white,
-                child: ClipOval(
-                  child: userProfileImage == ""
-                      ? Image.asset(
-                          "assets/image/default_avatar.jpg",
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        )
-                      : CachedNetworkImage(
-                          imageUrl: userProfileImage,
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                ),
               ),
             ),
             const SizedBox(height: 20),
@@ -71,7 +61,7 @@ class VideoActionBar extends StatelessWidget {
             TiktokActionButton(
               iconData: FontAwesomeIcons.commentDots,
               text: totalComments.toString(),
-              onTap: () {},
+              onTap: onCommentTap,
               isTapped: false,
             ),
             const SizedBox(height: 20),

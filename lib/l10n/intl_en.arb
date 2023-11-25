@@ -31,5 +31,10 @@
   "editProfile": "Edit profile",
   "tapToAddBio": "Tap to add bio",
   "follow": "Follow",
-  "unfollow": "Unfollow"
+  "unfollow": "Unfollow",
+  "addComment": "Add comment...",
+  "comments": "{commentsCount} comments",
+  "noVideos": "No Videos",
+  "noCommentsYet": "No comments yet",
+  "valueCantBeEmpty": "Value Can't Be Empty"
 }
