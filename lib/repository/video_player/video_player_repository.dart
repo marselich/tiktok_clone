@@ -3,8 +3,8 @@ import 'package:tiktok_clone/models/comment/comment_model.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
-import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
-import 'package:tiktok_clone/ui/utils/shared_preferences_utils.dart';
+import 'package:tiktok_clone/core/utils/firebase_utils.dart';
+import 'package:tiktok_clone/core/utils/shared_preferences_utils.dart';
 import 'package:uuid/uuid.dart';
 
 class VideoPlayerRepository implements IVideoPlayerRepository {
@@ -120,8 +120,7 @@ class VideoPlayerRepository implements IVideoPlayerRepository {
     );
 
     await collectionComments.add(comment.toJson());
-    await videoDoc.update(videoModel
-        .copyWith(totalComments: videoModel.totalComments + 1)
-        .toJson());
+    await videoDoc.update(
+        videoModel.copyWith(totalComments: videoModel.totalComments).toJson());
   }
 }

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
-import 'package:tiktok_clone/ui/features/video_player/widgets/video_layout.dart';
+import 'package:tiktok_clone/core/features/video_player/widgets/video_layout.dart';
 
 @RoutePage()
 class ProfileVideoPlayerScreen extends StatefulWidget {

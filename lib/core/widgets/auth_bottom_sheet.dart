@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/core/widgets/tiktok_outlined_button.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/router/app_router.dart';
-import 'package:tiktok_clone/ui/widgets/tiktok_outlined_button.dart';
 
 class AuthBottomSheet extends StatelessWidget {
   const AuthBottomSheet({super.key});

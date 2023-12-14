@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tiktok_clone/core/utils/date_time_utils.dart';
+import 'package:tiktok_clone/core/widgets/loading_container.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/home/i_home_repository.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
-import 'package:tiktok_clone/ui/features/comments/cubit/comments_cubit.dart';
-import 'package:tiktok_clone/ui/features/comments/widgets/comment_tile.dart';
-import 'package:tiktok_clone/ui/features/video_player/cubit/video_player_cubit.dart';
-import 'package:tiktok_clone/ui/utils/date_time_utils.dart';
-import 'package:tiktok_clone/ui/widgets/loading_container.dart';
-import 'package:tiktok_clone/ui/widgets/no_content_container.dart';
+
+import '../../../widgets/no_content_container.dart';
+import '../../video_player/cubit/video_player_cubit.dart';
+import '../cubit/comments_cubit.dart';
+import 'comment_tile.dart';
 
 class CommentsLayout extends StatefulWidget {
   const CommentsLayout(
-      {super.key, required this.videoModel, required this.onSendComment});
+      {super.key, required this.videoModel, required this.videoPlayerCubit});
 
   final VideoModel videoModel;
-  final VoidCallback onSendComment;
+  final VideoPlayerCubit videoPlayerCubit;
 
   @override
   State<CommentsLayout> createState() => _CommentsLayoutState();
@@ -27,21 +28,21 @@ class CommentsLayout extends StatefulWidget {
 class _CommentsLayoutState extends State<CommentsLayout> {
   final _formKey = GlobalKey<FormState>();
   final _textController = TextEditingController();
-  final CommentsCubit _cubit = CommentsCubit(
-    GetIt.I.get<IVideoPlayerRepository>(),
-    GetIt.I.get<IHomeRepository>(),
-  );
+  late final CommentsCubit _cubit;
 
   @override
   void initState() {
+    _cubit = CommentsCubit(
+      GetIt.I.get<IVideoPlayerRepository>(),
+      GetIt.I.get<IHomeRepository>(),
+      widget.videoPlayerCubit,
+    );
     _cubit.loadCommentList(widget.videoModel.videoId);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final videoPlayerCubit = BlocProvider.of<VideoPlayerCubit>(context);
-
     final theme = Theme.of(context);
     return Column(
       children: [
@@ -122,11 +123,7 @@ class _CommentsLayoutState extends State<CommentsLayout> {
                   trailing: IconButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        // widget.onSendComment();
-                        await videoPlayerCubit.changeCommentsCountInVideo(
-                            widget.videoModel, true);
                         await _cubit.addComment(
-                          widget.videoModel,
                           _textController.text,
                         );
                         _textController.text = "";

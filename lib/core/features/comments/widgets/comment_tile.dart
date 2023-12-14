@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_clone/ui/widgets/user_circle_avatar.dart';
+
+import '../../../widgets/user_circle_avatar.dart';
 
 class CommentTile extends StatelessWidget {
   const CommentTile({

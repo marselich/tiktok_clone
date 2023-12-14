@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/core/utils/firebase_utils.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/router/app_router.dart';
-import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {

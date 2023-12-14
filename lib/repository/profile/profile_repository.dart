@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/profile/i_profile_repository.dart';
-import 'package:tiktok_clone/ui/utils/shared_preferences_utils.dart';
+import 'package:tiktok_clone/core/utils/shared_preferences_utils.dart';
 
 class ProfileRepository extends IProfileRepository {
   @override

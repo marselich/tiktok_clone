@@ -3,14 +3,14 @@ import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tiktok_clone/core/features/video_player/cubit/video_player_cubit.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
 import 'package:tiktok_clone/router/app_router.dart';
-import 'package:tiktok_clone/ui/features/comments/widgets/comments_layout.dart';
-import 'package:tiktok_clone/ui/features/video_player/cubit/video_player_cubit.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+import '../../comments/widgets/comments_layout.dart';
 import 'tiktok_video_controls.dart';
 import 'video_action_bar.dart';
 import 'video_info_bar.dart';
@@ -117,15 +117,9 @@ class _VideoLayoutState extends State<VideoLayout> {
                         constraints: BoxConstraints(
                           maxHeight: MediaQuery.of(context).size.height / 1.3,
                         ),
-                        builder: (context) => BlocProvider(
-                          create: (context) => _cubit,
-                          child: CommentsLayout(
-                            videoModel: videoModel,
-                            onSendComment: () async {
-                              await _cubit.changeCommentsCountInVideo(
-                                  videoModel, isLiked);
-                            },
-                          ),
+                        builder: (context) => CommentsLayout(
+                          videoModel: videoModel,
+                          videoPlayerCubit: _cubit,
                         ),
                       );
                     },

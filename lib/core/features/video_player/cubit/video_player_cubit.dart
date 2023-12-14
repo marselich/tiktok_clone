@@ -1,10 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
-import 'package:tiktok_clone/repository/home/i_home_repository.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
-import 'package:tiktok_clone/ui/utils/firebase_utils.dart';
+
+import '../../../utils/firebase_utils.dart';
 
 part 'video_player_state.dart';
 part 'video_player_cubit.freezed.dart';
@@ -49,18 +51,23 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
     }
   }
 
-  Future<void> changeCommentsCountInVideo(
-      VideoModel videoModel, bool isLiked) async {
+  Future<_Loaded?> changeCommentsCountInVideo() async {
     try {
-      final newVideoModel = videoModel.copyWith(
-        totalComments: videoModel.totalComments + 1,
-      );
+      if (state is _Loaded) {
+        final newState = state as _Loaded;
 
-      emit(VideoPlayerState.loaded(
-          videoModel: newVideoModel, videoIsLiked: isLiked));
+        final newVideoModel = newState.videoModel.copyWith(
+          totalComments: newState.videoModel.totalComments + 1,
+        );
+
+        emit(VideoPlayerState.loaded(
+            videoModel: newVideoModel, videoIsLiked: newState.videoIsLiked));
+        return newState;
+      }
       // await _videoPlayerRepository.addTotalCommentsToFirestore(newVideoModel);
     } catch (e) {
       emit(VideoPlayerState.loadingFailure(e.toString()));
     }
+    return null;
   }
 }

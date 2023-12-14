@@ -8,8 +8,8 @@ import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/features/profile/widgets/widgets.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
 import 'package:tiktok_clone/repository/profile/i_profile_repository.dart';
-import 'package:tiktok_clone/ui/features/auth_profile/widgets/auth_profile.dart';
-import 'package:tiktok_clone/ui/widgets/loading_container.dart';
+import 'package:tiktok_clone/core/features/auth_profile/widgets/auth_profile.dart';
+import 'package:tiktok_clone/core/widgets/loading_container.dart';
 
 @RoutePage()
 class ProfileScreen extends StatefulWidget {

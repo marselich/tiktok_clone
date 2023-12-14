@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/features/upload_video/cubit/upload_video_cubit.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
-import 'package:tiktok_clone/ui/utils/dialog_utils.dart';
+import 'package:tiktok_clone/core/utils/dialog_utils.dart';
 
 class UploadVideoContainer extends StatelessWidget {
   const UploadVideoContainer({

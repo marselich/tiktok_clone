@@ -7,9 +7,9 @@ import 'package:get_it/get_it.dart';
 import 'package:tiktok_clone/features/video_list/cubit/video_list_cubit.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/repository/home/i_home_repository.dart';
-import 'package:tiktok_clone/ui/features/video_player/widgets/video_layout.dart';
-import 'package:tiktok_clone/ui/widgets/loading_container.dart';
-import 'package:tiktok_clone/ui/widgets/no_content_container.dart';
+import 'package:tiktok_clone/core/features/video_player/widgets/video_layout.dart';
+import 'package:tiktok_clone/core/widgets/loading_container.dart';
+import 'package:tiktok_clone/core/widgets/no_content_container.dart';
 
 @RoutePage()
 class VideoListScreen extends StatefulWidget {

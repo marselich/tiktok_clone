@@ -6,8 +6,8 @@ import 'package:tiktok_clone/features/profile/cubit/profile_cubit.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/profile/i_profile_repository.dart';
-import 'package:tiktok_clone/ui/features/auth_profile/cubit/auth_profile_cubit.dart';
 
+import '../cubit/auth_profile_cubit.dart';
 import 'profile_info.dart';
 import 'profile_videos.dart';
 

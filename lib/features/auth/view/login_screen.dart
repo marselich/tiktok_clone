@@ -2,13 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tiktok_clone/core/app_constants.dart';
+import 'package:tiktok_clone/core/utils/dialog_utils.dart';
+import 'package:tiktok_clone/core/utils/shared_preferences_utils.dart';
+import 'package:tiktok_clone/core/utils/show_tiktok_snackbar.dart';
 import 'package:tiktok_clone/features/auth/cubit/auth_cubit.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/repository/auth/i_auth_repository.dart';
-import 'package:tiktok_clone/ui/constants/app_constants.dart';
-import 'package:tiktok_clone/ui/utils/dialog_utils.dart';
-import 'package:tiktok_clone/ui/utils/shared_preferences_utils.dart';
-import 'package:tiktok_clone/ui/utils/show_tiktok_snackbar.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulWidget {

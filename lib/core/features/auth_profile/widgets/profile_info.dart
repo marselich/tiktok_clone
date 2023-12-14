@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tiktok_clone/core/widgets/tiktok_outlined_button.dart';
 import 'package:tiktok_clone/generated/l10n.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
-import 'package:tiktok_clone/ui/features/auth_profile/cubit/auth_profile_cubit.dart';
-import 'package:tiktok_clone/ui/ui.dart';
-import 'package:tiktok_clone/ui/widgets/loading_container.dart';
-import 'package:tiktok_clone/ui/widgets/user_circle_avatar.dart';
 
+import '../../../widgets/loading_container.dart';
+import '../../../widgets/user_circle_avatar.dart';
+import '../cubit/auth_profile_cubit.dart';
 import 'statistic_column.dart';
 
 class ProfileInfo extends StatelessWidget {

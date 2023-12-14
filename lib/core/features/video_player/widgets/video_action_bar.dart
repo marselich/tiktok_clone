@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/core/widgets/user_circle_avatar.dart';
 import 'package:tiktok_clone/router/app_router.dart';
-import 'package:tiktok_clone/ui/widgets/user_circle_avatar.dart';
 
 import 'tiktok_action_button.dart';
 

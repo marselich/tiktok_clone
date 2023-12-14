@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_clone/ui/widgets/tiktok_text_button.dart';
+import 'package:tiktok_clone/core/widgets/tiktok_text_button.dart';
 
 void showLoaderDialog(BuildContext context) {
   AlertDialog alert = const AlertDialog(

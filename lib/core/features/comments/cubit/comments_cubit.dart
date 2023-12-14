@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tiktok_clone/core/features/video_player/cubit/video_player_cubit.dart';
 import 'package:tiktok_clone/models/comment/comment_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/home/i_home_repository.dart';
@@ -9,11 +10,13 @@ part 'comments_state.dart';
 part 'comments_cubit.freezed.dart';
 
 class CommentsCubit extends Cubit<CommentsState> {
-  CommentsCubit(this._videoPlayerRepository, this._homeRepository)
+  CommentsCubit(
+      this._videoPlayerRepository, this._homeRepository, this._videoPlayerCubit)
       : super(const CommentsState.initial());
 
   final IVideoPlayerRepository _videoPlayerRepository;
   final IHomeRepository _homeRepository;
+  final VideoPlayerCubit _videoPlayerCubit;
 
   Future<void> loadCommentList(String videoId) async {
     try {
@@ -26,10 +29,16 @@ class CommentsCubit extends Cubit<CommentsState> {
     }
   }
 
-  Future<void> addComment(VideoModel videoModel, String message) async {
+  Future<void> addComment(String message) async {
     try {
-      await _videoPlayerRepository.addCommentToFirestore(videoModel, message);
-      await loadCommentList(videoModel.videoId);
+      final videoPlayerState =
+          await _videoPlayerCubit.changeCommentsCountInVideo();
+      if (videoPlayerState == null) {
+        return;
+      }
+      await _videoPlayerRepository.addCommentToFirestore(
+          videoPlayerState.videoModel, message);
+      await loadCommentList(videoPlayerState.videoModel.videoId);
     } on Exception catch (e) {
       emit(CommentsState.loadingFailure(e.toString()));
     }
