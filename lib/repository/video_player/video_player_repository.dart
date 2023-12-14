@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tiktok_clone/models/comment/comment_model.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
@@ -122,5 +124,31 @@ class VideoPlayerRepository implements IVideoPlayerRepository {
     await collectionComments.add(comment.toJson());
     await videoDoc.update(
         videoModel.copyWith(totalComments: videoModel.totalComments).toJson());
+  }
+
+  @override
+  Future<XFile?> getVideoXFileFromFirebase(String videoId, String name) async {
+    final videoPath = await FirebaseStorage.instance
+        .ref()
+        .child("All Videos")
+        .child(videoId)
+        .getData();
+
+    if (videoPath == null) {
+      return null;
+    }
+    final xFile = XFile.fromData(videoPath, name: name, mimeType: "video/mp4");
+
+    return xFile;
+  }
+
+  @override
+  Future<void> changeTotalShareCount(VideoModel videoModel) async {
+    final videoDoc =
+        FirebaseFirestore.instance.collection("videos").doc(videoModel.videoId);
+
+    await videoDoc.update(
+      videoModel.toJson(),
+    );
   }
 }

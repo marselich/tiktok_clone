@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tiktok_clone/models/user/user_model.dart';
 import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
@@ -69,5 +70,30 @@ class VideoPlayerCubit extends Cubit<VideoPlayerState> {
       emit(VideoPlayerState.loadingFailure(e.toString()));
     }
     return null;
+  }
+
+  Future<void> shareVideo(VideoModel videoModel, bool videoIsLiked) async {
+    try {
+      final file = await _videoPlayerRepository.getVideoXFileFromFirebase(
+        videoModel.videoId,
+        videoModel.descriptionTags,
+      );
+      if (file == null) {
+        return;
+      }
+
+      final result = await Share.shareXFiles([file]);
+      if (result.status == ShareResultStatus.success) {
+        final newVideoModel = videoModel.copyWith(
+          totalShares: videoModel.totalShares + 1,
+        );
+
+        await _videoPlayerRepository.changeTotalShareCount(newVideoModel);
+        emit(VideoPlayerState.loaded(
+            videoModel: newVideoModel, videoIsLiked: videoIsLiked));
+      }
+    } on Exception catch (e) {
+      emit(VideoPlayerState.loadingFailure(e.toString()));
+    }
   }
 }

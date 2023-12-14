@@ -123,6 +123,9 @@ class _VideoLayoutState extends State<VideoLayout> {
                         ),
                       );
                     },
+                    onShareTap: () async {
+                      await _cubit.shareVideo(videoModel, isLiked);
+                    },
                   ),
                   VideoInfoBar(
                     userName: videoModel.userName,

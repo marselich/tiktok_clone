@@ -1,8 +1,7 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tiktok_clone/core/features/video_player/cubit/video_player_cubit.dart';
 import 'package:tiktok_clone/models/comment/comment_model.dart';
-import 'package:tiktok_clone/models/video/video_model.dart';
 import 'package:tiktok_clone/repository/home/i_home_repository.dart';
 import 'package:tiktok_clone/repository/video_player/i_video_player_repository.dart';
 

@@ -17,6 +17,7 @@ class VideoActionBar extends StatelessWidget {
     required this.onLikeTap,
     required this.isLikeTapped,
     required this.onCommentTap,
+    required this.onShareTap,
   });
 
   final String userId;
@@ -27,6 +28,7 @@ class VideoActionBar extends StatelessWidget {
   final VoidCallback onLikeTap;
   final bool isLikeTapped;
   final VoidCallback onCommentTap;
+  final VoidCallback onShareTap;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class VideoActionBar extends StatelessWidget {
             TiktokActionButton(
               iconData: FontAwesomeIcons.share,
               text: totalShares.toString(),
-              onTap: () {},
+              onTap: onShareTap,
               isTapped: false,
             ),
           ],
